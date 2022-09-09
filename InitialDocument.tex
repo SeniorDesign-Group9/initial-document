@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+\begin{document}
+\include{Title.tex}
+\pagenumbering{gobble}
+\tableofcontents
+\listoffigures
+\listoftables
+\pagebreak
+\pagenumbering{arabic}
+%\input{your tex file here}
+\section{Narrative}
+\input{narrative/project-inspiration.tex}
+\section{Requirements}
+\input{requirements/mcu.tex}
+\input{requirements/power.tex}
+\input{requirements/sensing.tex}
+\input{requirements/web.tex}
+\section{Block Diagrams}
+\input{block-diagrams/mcu.tex}
+\input{block-diagrams/power.tex}
+\input{block-diagrams/sensing.tex}
+\input{block-diagrams/web.tex}
+\section{Project Management}
+\input{management/finance.tex}
+\input{management/milestones.tex}
+\end{document}
