@@ -14,15 +14,15 @@
 \contentsline {subsubsection}{\numberline {2.3.2}Stretch}{1}{}%
 \contentsline {subsection}{\numberline {2.4}Web}{1}{}%
 \contentsline {subsubsection}{\numberline {2.4.1}Minimum Viable Product}{1}{}%
-\contentsline {subsubsection}{\numberline {2.4.2}Stretch}{1}{}%
-\contentsline {section}{\numberline {3}Block Diagrams}{1}{}%
-\contentsline {subsection}{\numberline {3.1}MCU}{1}{}%
-\contentsline {subsection}{\numberline {3.2}Power}{1}{}%
-\contentsline {subsection}{\numberline {3.3}Sensing}{1}{}%
-\contentsline {subsection}{\numberline {3.4}Web}{1}{}%
-\contentsline {section}{\numberline {4}Project Management}{1}{}%
-\contentsline {subsection}{\numberline {4.1}Budget}{1}{}%
-\contentsline {subsection}{\numberline {4.2}Finance}{1}{}%
-\contentsline {subsection}{\numberline {4.3}Milestones}{1}{}%
-\contentsline {subsubsection}{\numberline {4.3.1}Fall}{1}{}%
-\contentsline {subsubsection}{\numberline {4.3.2}Spring}{1}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}Stretch}{2}{}%
+\contentsline {section}{\numberline {3}Block Diagrams}{3}{}%
+\contentsline {subsection}{\numberline {3.1}MCU}{3}{}%
+\contentsline {subsection}{\numberline {3.2}Power}{3}{}%
+\contentsline {subsection}{\numberline {3.3}Sensing}{3}{}%
+\contentsline {subsection}{\numberline {3.4}Web}{3}{}%
+\contentsline {section}{\numberline {4}Project Management}{3}{}%
+\contentsline {subsection}{\numberline {4.1}Budget}{3}{}%
+\contentsline {subsection}{\numberline {4.2}Finance}{3}{}%
+\contentsline {subsection}{\numberline {4.3}Milestones}{3}{}%
+\contentsline {subsubsection}{\numberline {4.3.1}Fall}{3}{}%
+\contentsline {subsubsection}{\numberline {4.3.2}Spring}{3}{}%
