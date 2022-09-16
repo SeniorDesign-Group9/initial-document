@@ -1,2 +1,28 @@
 \subsection{Budget}
-\subsection{Finance}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{.8\textwidth}
+        {
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedleft\arraybackslash}X
+            |
+        }
+        \hline
+        Subsystem & Estimated Cost & Comment \\
+        \hline
+        MCU & \$40 & The MCU, PCB, wiring harness \\
+        \hline
+        Power & \$200 & Solar panels, batteries, control system \\
+        \hline
+        Sensing & \$100 & Components for sensing, optical sensors \\
+        \hline
+        Web & \$30 & Mini-PC to run server and other web service pricing \\
+        \hline
+        Non-Subsystem & \$100 & The plant bed, soil, water, fittings, etc \\
+        \hline
+        Total & \multicolumn{2}{|c|}{\$470}\\
+        \hline
+    \end{tabularx}
+    \caption{Breakdown of budget by subsystem}
+\end{table}
