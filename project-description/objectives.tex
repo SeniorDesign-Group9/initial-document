@@ -1,0 +1,83 @@
+\subsection{Project Objectives}
+\subsubsection*{Goals and Objectives}
+\subsubsection*{Function of Project}
+\subsubsection{Project Specifications}
+\subsubsection*{Requirements}
+The MCU subsystem should:
+\begin{itemize}
+    \item Read local sensor data (e.g. sunlight, soil moisture, temperature)
+    \item Adjust parameters of local modules (e.g. shade, water, nutrients)
+    \item Interpret user settings and adjust parameters of modules accordingly
+    \item Fulfill web requirements with at least two computers/controllers
+\end{itemize}
+It would be nice for the MCU subsystem to:
+\begin{itemize}
+    \item Fulfill web requirements with one computer/controller
+    \item Have a local user display (e.g. LCD, dot matrix, segmented)
+\end{itemize}
+The direction of power in this system:
+\begin{itemize}
+  \item Power generated through a wall outlet
+  \item AC/DC converter 
+  \item Power supply
+  \item MCU
+  \begin{itemize}
+    \item Regulators
+    \item Sensors
+    \item Mechanics
+    \item CPU
+  \end{itemize}
+\end{itemize}
+It would be nice to have:
+\begin{itemize}
+  \item Solar power, with the flow of power as follows:
+  \begin{itemize}
+    \item Solar panels 
+    \item Solar power bank 
+    \item Power supply 
+    \item MCU
+  \end{itemize}
+  \item Use the solar panels as blinds to be able to open and close as well as collect energy
+\end{itemize}
+The Sensing Capabilities of the project should include:
+\begin{itemize}
+    \item Infrared Spectroscopy Sensor which detects:
+    \begin{itemize}
+            \item Soil Moisture
+            \item Soil Temperature
+            \item Soil OH group content (acidity)
+    \end{itemize}
+    \item Infrared Spectra signal processing
+\end{itemize}
+It would be nice to have:
+\begin{itemize}
+    \item Scanning Capabilities for checking various parts of the garden bed
+    \item Soil Nutrient Estimation and other variables possible via IR Spectroscopy
+\end{itemize}
+The web component of the project should:
+\begin{itemize}
+    \item Attach to a weather API to receive:
+    \begin{itemize}
+        \item Rain
+        \item Sun light
+        \item Temperature
+        \item Frost warnings
+        \item Humidity
+    \end{itemize}
+    \item Alert users of conditions outside of automatic control (i.e. soil composition and frost)
+    \item Change control parameters:
+    \begin{itemize}
+        \item Sun light
+        \item Water
+        \item Soil parameters
+    \end{itemize}
+    \item Have an intuitive user interface
+    \item Communicate with the MCU
+\end{itemize}
+It would be nice to have the web component:
+\begin{itemize}
+    \item Set control parameters based on presets for plants
+    \item Get plant data from the web to pass to MCU
+    \item Communicate over secure channels
+\end{itemize}
+\subsubsection{Project Block Diagram}
