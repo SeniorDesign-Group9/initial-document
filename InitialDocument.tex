@@ -3,6 +3,12 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue}
 \begin{document}
 \include{Title.tex}
 \pagenumbering{gobble}
@@ -12,7 +18,7 @@
 \pagebreak
 \pagenumbering{arabic}
 %\input{your tex file here}
-\section{Executive Summary}
+\section{Executive Summary}                     % Section 1
 New gardeners typically struggle getting their garden started due to a lack of tending to their plants. This project seeks to solve  many of the problems that new gardeners have through sensing and control. The main issues with plant growth relate to soil composition, soil moisture, temperatue, and sun light. This project seeks to use optics to measure the soil moisture and composition; then an MCU will capture this data and control solar shades to control sunlight and solenoids to control watering. A web component will be included to check the weather as well as notify the user of impending weather events that could affect their plants adversively (frost or heat wave). The entire system will be powered with solar panels that are capable of tracking the sun through the sky and can act as blinds over the plants.
 
 This project all starts with scoping out the project. The team has immediately compiling a list of must-have requirements and some things the team would like to accomplish as ``nice to haves". The team started this process by looking at all the similar projects that have already been done and looked at all the ways the team can expand on the work they have already accomplished. For example, the team liked the weather aspects of a project for getting rain information; a problem the team were thinking about was how to get the system in as much of a ``set it and forget it" state as possible as it pertained to frost. The solution is to integrate with a weather service online and send notifications when there is a frost or freeze advisory.
@@ -20,26 +26,26 @@ This project all starts with scoping out the project. The team has immediately c
 After assembling the list of requirements, the team set out to create a high-level functional block diagram for each of the subsystems. This helps the team see where the different systems integrate for the future as well as breaking out all the different components that may need to be purchased.
 
 The ultimate novelty in this project is all of the sensing that will be done through spectroscopy. The team has found a plethora of research on the topic and has started familiarizing themselves with the limitations and capabilities of the available technology. Ideally, the team would like to find a scalable solution to the sensing in which the optical sensing could be attached to a drone or satellite to survey fields for farming.
-\section{Project Description}
-\input{project-description/project-bg.tex}
-\input{project-description/objectives.tex}
-\input{project-description/requirements.tex}
-\section{Research}
-\input{research/previous-work.tex}
-\input{research/technology.tex}
-\input{research/part-selection.tex}
+\section{Project Description}                   % Section 2
+\input{project-description/project-bg.tex}      % Section 2.1
+\input{project-description/objectives.tex}      % Section 2.2
+\input{project-description/requirements.tex}    % Section 2.3
+\section{Research}                              % Section 3
+\input{research/previous-work.tex}              % Section 3.1
+\input{research/technology.tex}                 % Section 3.2
+\input{research/part-selection.tex}             % Section 3.3
 
-\section{Design Constraints}
-\input{design-constraints/standards.tex}
-\input{design-constraints/realistic-constraints.tex}
-\section{System Hardware and Software Design}
+\section{Design Constraints}                    % Section 4
+\input{design-constraints/standards.tex}        % Section 4.1
+\input{design-constraints/realistic-constraints.tex} % Section 4.2-4.9
+\section{System Hardware and Software Design}   % Section 5
 High level overview of design
-\input{design-details/mcu.tex}
-\input{design-details/power.tex}
-\input{design-details/sensing.tex}
-\input{design-details/web.tex}
-\section{Testing}
-\section{Administrative Content}
-\input{admin-content/milestones.tex}
-\input{admin-content/finance.tex}
+\input{design-details/mcu.tex}                  % Section 5.1
+\input{design-details/power.tex}                % Section 5.2
+\input{design-details/sensing.tex}              % Section 5.3
+\input{design-details/web.tex}                  % Section 5.4
+\section{Testing}                               % Section 6
+\section{Administrative Content}                % Section 7
+\input{admin-content/milestones.tex}            % Section 7.1
+\input{admin-content/finance.tex}               % Section 7.2
 \end{document}

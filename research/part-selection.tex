@@ -1,4 +1,164 @@
 \subsection{Part Selection}
-\subsubsection{Controller Subsystem}
+\subsubsection{Controller Subsystem}                % Changed 2022-09-29 by Brendan
+At minimum, any chosen single-board computers (SBCs) or microcontrollers (MCUs) shall support
+natively, or by addition of a module, these features and traits:
+\begin{itemize}
+    \item Analog-to-digital converter (ADC)
+    \item In stock and available to order
+    \item JTAG module or equivalent
+    \item Module communication bus (UART, I2C, SPI)
+    \item Onboard CPU sufficient for our purposes
+    \item Onboard memory sufficient for our purposes
+    \item Pins dedicated to analog input
+    \item Pins dedicated to digital I/O
+    \item Wireless communication protocols (e.g. BLE, 802.11)
+\end{itemize}
+These features would be "nice to have" on any SBC or MCU selected, but are not required:
+\begin{itemize}
+    \item Digital-to-analog converter (DAC)
+    \item microSD card slot
+    \item Onboard battery
+    \item Onboard GPU
+    \item Onboard nonvolatile memory
+    \item Operating system (OS) support
+    \item Pins dedicated to pulse-width modulation (PWM)
+    \item Timer(s) and an RTC
+    \item USB compatibility
+\end{itemize}
+The following selections, not listed in any particular order, match the above criteria and are
+being considered for selection:
+\\\\
+Single-board computers (SBCs)
+\begin{itemize}
+    \item
+    \href{https://www.ti.com/tool/BEAGL-BONE-BLACK}{Texas Instruments BEAGL-BONE-BLACK} (\$53,
+    possibly free)
+    \begin{itemize}
+        \item Processor(s): Sitara AM3358BZCZ100 (Single ARM Cortex-A8 @1GHz), SGX530 3D (GPU)
+        \item Memory: 512MB DDR3L, 8GB eMMC
+        \item Communications protocols: 10/100baseT, USB2.0, UART, I2C, SPI
+        \item Features: 8-channel 12-bit SARADC, JTAG, microSD, HDMI, McASP, LCD controller, Timers
+        (8), RTC, WDT, PWM
+        \item OS compatibility: Linux
+        \item Voltage requirements: 5V
+        \item Physical size: 3.4” $\times$ 2.1”
+        \item Availability: Digikey, Mouser, Newark, OKdo 
+        \item Notes: wireless module needed
+    \end{itemize}
+
+    \item
+    \href{https://www.pine64.org/quartz64b/}{PINE64 Quartz64 Model B} (\$60)
+    \begin{itemize}
+        \item Processor(s): Rockchip RK3566 (Quad ARM Cortex-A55 @1.8 GHz), Mali-G52 2EE Bifrost
+        (GPU)
+        \item Memory: 4GB LPDDR4, optional eMMC
+        \item Communications protocols: 10/100/1000baseT, 802.11b/g/n/ac, BT5.0, USB2.0/3.0,
+        UART, I2C, I2S, SPI
+        \item Features: 4-channel 10-bit SARADC, microSD, HDMI, Timers, RTC, WDT, PWM
+        \item OS compatibility: Armbian, Manjaro ARM, ... (community-based releases)
+        \item Voltage requirements: 5V
+        \item Physical size: 3.3" $\times$ 2.2"
+        \item Availability: PINE64
+    \end{itemize}
+
+    \item
+    \href{https://www.pine64.org/devices/single-board-computers/pine-a64-lts/}{PINE64 A64-LTS}
+    (\$40)
+    \begin{itemize}
+        \item Processor(s): Allwinner A64 (Quad ARM Cortex-A53 @1.152 GHz), Mali400MP2 GPU
+        \item Memory: 2GB LPDDR3
+        \item Communications protocols: 10/100/1000baseT, 802.11b/g/n, USB2.0, SPI, TWI, UART 
+        \item Features: 6-bit KEYADC, microSD, Timers, RTC, PWM
+        \item OS compatibility: \href{https://wiki.pine64.org/wiki/SOPINE_Software_Release}{SOPINE}
+        \item Voltage requirements: 5V
+        \item Physical size: 5.2" $\times$ 3.1"
+        \item Availability: PINE64
+        \item Notes: wireless module needed
+    \end{itemize}
+\end{itemize}
+Microcontrollers (MCUs)
+\begin{itemize}
+    \item
+    \href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{Texas Instruments LAUNCHXL-CC26X2R1} (\$40,
+    possibly free)
+    \begin{itemize}
+        \item Processor(s): TI CC2652R (Single ARM Cortex-M4F @48 MHz)
+        \item Memory: 256KB ROM, 352KB flash, 80KB + 16KB + 4KB SRAM
+        \item Communications protocols: BLE5.2, Zigbee, Thread, UART, I2C, I2S, SPI
+        \item Features: 8-channel 12-bit ADC, 8-bit DAC, JTAG, Timers, WDT, RTC
+        \item Voltage requirements: 3V3, 5V
+        \item Physical size: n/a
+        \item Availability: TI
+    \end{itemize}
+
+    \item
+    \href{https://www.ti.com/tool/MSP-EXP430FR6989}{Texas Instruments MSP-EXP430FR6989}
+    (\$20, possibly free)
+    \begin{itemize}
+        \item Processor(s): MSP430FR6989 (Single RISC @16 MHz)
+        \item Memory: 128KB FRAM, 2KB SRAM
+        \item Communications protocols: UART, SPI, I2C
+        \item Features: 16-channel 12-bit ADC, JTAG, Timers, RTC, WDT
+        \item Voltage requirements: 3V3, 5V
+        \item Physical size: n/a
+        \item Availability: TI
+        \item Notes: wireless module needed
+    \end{itemize}
+
+    \item
+    \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{Texas Instruments LAUNCHCC3220MODASF} (\$60,
+    possibly free)
+    \begin{itemize}
+        \item Processor(s): CC3220MODASF (Single ARM Cortex-M4 @80MHz)
+        \item Memory: 1MB flash, 256KB RAM
+        \item Communications protocols: 802.11b/g/n, UART, I2C, SPI,
+        \item Features: 4-channel 12-bit ADC, JTAG, McASP, Timer, WDT
+        \item Voltage requirements: 3V3, 5V
+        \item Physical size: n/a
+        \item Availability: TI
+    \end{itemize}
+
+    \item
+    \href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Raspberry Pi Pico W} (\$6)
+    \begin{itemize}
+        \item Processor(s): RP2040 (Dual ARM Cortex-M0+ @133MHz)
+        \item Memory: 264KB SRAM
+        \item Communications protocols: 802.11n, USB1.1, UART, SPI, I2C, PIO
+        \item Features: 4-channel 12-bit SARADC, Timer, RTC, WDT, PWM
+        \item Voltage requirements: 5V, 3V3 I/O
+        \item Physical size: 2.0" $\times$ 0.83"
+        \item Availability: Digikey, Canakit
+        \item Notes: wireless module needed
+    \end{itemize}
+
+    \item
+    \href{https://store-usa.arduino.cc/products/arduino-due?selectedStore=us}{Arduino Due} (\$48)
+    \begin{itemize}
+        \item Processor(s): Atmel SAM3X8E (Single ARM Cortex-M3 @84 MHz)
+        \item Memory: 512KB flash, 96K SRAM 
+        \item Communications protocols: 10/100baseT UART, TWI, SPI, USB2.0,\
+        \item Features: 16-channel 12-bit ADC, DAC, JTAG, Timer, WDT, PWM
+        \item Voltage requirements: 3V3
+        \item Physical size: 4.0" $\times$ 2.1"
+        \item Availability: Arduino
+    \end{itemize}
+
+    \item
+    \href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Arduino Nano 33
+    BLE} (\$28)
+    \begin{itemize}
+        \item Processor(s): Nordic Semiconductors nRF52840 (Single ARM Cortex-M4 @64 MHz)
+        \item Memory: 1MB flash, 256K SRAM
+        \item Communications protocols: BLE5, 802.15.4-2006, NFC, UART, SPI, I2C, I2S, USB2.0
+        \item Features: 8-channel 12-bit ADC, Timer, RTC
+        \item Voltage requirements: 3V3
+        \item Physical size: 1.8" $\times$ 0.71"
+        \item Availability: OKdo
+    \end{itemize}
+\end{itemize}
+Ultimately, SBCs may not need to be used if a cURL library is used on an MCU in conjunction with
+Amazon EC2 services.
+
+
 \subsubsection{Power Subsystem}
 \subsubsection{Sensing Subsystem}
