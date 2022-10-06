@@ -30,6 +30,21 @@
     The following selections, not listed in any particular order, match the above criteria and are
     being considered for selection:
 \end{flushleft}
+\begin{table}[]
+    \centering
+    \begin{tabular}{|p{0.12\linewidth}|p{0.32\linewidth}|p{0.32\linewidth}|p{0.08\linewidth}|}
+    \hline
+    \multicolumn{4}{|c|}{\textbf{Summary of Microcontrollers}}                                                    \\ \hline
+    \textbf{Manu\-facturer} & \textbf{Model}                                                                                & \textbf{Processor}                                        & \textbf{Price (\$)} \\ \hline
+    Texas Instruments       & \href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCHXL-CC26X2R1}                           & CC2652R (1x ARM Cortex-M4F @48MHz)                        & 40    \\ \hline
+    Texas Instruments       & \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF}                         & CC3220MODASF (1x ARM Cortex-M4 @80MHz)                    & 60    \\ \hline
+    Raspberry Pi            & \href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}                        & RP2040 (2x ARM Cortex-M0+ @133MHz)                        & 6     \\ \hline
+    Arduino                 & \href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE} & Nordic Semiconductors nRF52840 (1x ARM Cortex-M4 @64MHz)  & 28    \\ \hline
+    STMicro\-electronics    & \href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}             & STM32L4S5VIT6 (1x ARM Cortex-M4 @120MHz)                  & 53    \\ \hline
+    \end{tabular}
+    \caption{Placeholder}
+    \label{tab:my-table} 
+\end{table}
 \begin{flushleft}
     Microcontrollers (MCUs)
     \begin{itemize}
@@ -44,20 +59,6 @@
             \item Voltage requirements: 3V3, 5V
             \item Physical size: n/a
             \item Availability: TI
-        \end{itemize}
-
-        \item
-        \href{https://www.ti.com/tool/MSP-EXP430FR6989}{Texas Instruments MSP-EXP430FR6989}
-        (\$20, possibly free)
-        \begin{itemize}
-            \item Processor(s): MSP430FR6989 (Single RISC @16MHz)
-            \item Memory: 128KB FRAM, 2KB SRAM
-            \item Communications protocols: UART, SPI, I2C
-            \item Features: 16-channel 12-bit ADC, JTAG, Timers, RTC, WDT
-            \item Voltage requirements: 3V3, 5V
-            \item Physical size: n/a
-            \item Availability: TI
-            \item Notes: wireless module needed
         \end{itemize}
 
         \item
@@ -83,18 +84,6 @@
             \item Voltage requirements: 5V, 3V3 I/O
             \item Physical size: 2.0" $\times$ 0.83"
             \item Availability: Digikey, Canakit
-        \end{itemize}
-
-        \item
-        \href{https://store-usa.arduino.cc/products/arduino-due?selectedStore=us}{Arduino Due} (\$48)
-        \begin{itemize}
-            \item Processor(s): Atmel SAM3X8E (Single ARM Cortex-M3 @84MHz)
-            \item Memory: 512KB flash, 96K SRAM 
-            \item Communications protocols: 10/100baseT UART, TWI, SPI, USB2.0,\
-            \item Features: 16-channel 12-bit ADC, DAC, JTAG, Timer, WDT, PWM
-            \item Voltage requirements: 3V3
-            \item Physical size: 4.0" $\times$ 2.1"
-            \item Availability: Arduino
         \end{itemize}
 
         \item
@@ -126,17 +115,6 @@
     \end{itemize}
 \end{flushleft}
 \begin{flushleft}
-    Wifi Modules
-    \begin{itemize}
-        \item ESP8266 (\$8)
-        \begin{itemize}
-            \item Communications protocols: 802.11 b/g/n
-            \item Voltage requirements: 3V3
-            \item Availability: Digikey, Sparkfun
-        \end{itemize}
-    \end{itemize}
-\end{flushleft}
-\begin{flushleft}
     Use of single-board computers (SBCs) was considered, but will not not need to be used; cURL 
     used on an MCU in conjunction with \href{https://aws.amazon.com/ec2/}{Amazon EC2} services will
     allow us to offload computing to a cloud solution.
@@ -160,6 +138,7 @@
             \item Errata
         \end{itemize}
     \end{itemize}
+    Therefore, all of the MCUs listed above support the 802.11 sta
 \end{flushleft}
 
 \subsubsection{Power Subsystem}
