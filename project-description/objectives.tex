@@ -1,83 +1,26 @@
-\subsection{Project Objectives}
-\subsubsection*{Goals and Objectives}
-\subsubsection*{Function of Project}
-\subsubsection{Project Specifications}
-\subsubsection*{Requirements}
-The MCU subsystem should:
+\subsection{Objectives}
+\subsubsection{Goals}
+There are four distinct subsystems each that have their own necessary and stretch goals.
+
+The first of the subsystems is the controller subsystem comprised of the microcontroller and links to the sensing subsystem and the web subsystem. Through the use of digital signal processing the MCU will be able to read sensor data and adjust parameters of the controllable interfaces accordingly. The necessary goal for this interface is to be able to supply water to the plant bed. The stretch goal however is to use the solar panel array as blinds to reduce/increase sunlight and temperature. The MCU will also be able to send data to the web subsystem for alerting the user of different conditions present within the plant bed.
+
+The power subsystem as a necessary goal should be able to supply power to all the necessary components via a solar panel array and batteries. The stretch goal is to incorporate this array into the control scheme by having the array act as blinds and allow more or less sunlight to the plant bed as necessitated by the plant health parameters and battery charge parameters.
+
+The sensing subsystem will include infrared spectroscopy to detect soil moisture, soil temperature, and soil OH group content which will provide useful data about soil acidity. This will accomplished using infrared spectra signal processing. The stretch goals for this subsystem is to be able to check on various areas of the plant bed and take multiple samples as opposed to a single static sample on the same area of the plant bed. Soil nutrient estimation is also a stretch goal for this subsystem.
+
+The web subsystem will be able to communicate with a weather service API to get rain, temperature, frost, and humidity data and be able to relay this information to the microcontroller. The web subsystem will also be able to alert the user to conditions outside of the control of the plant bed (i.e. soil composition and frost). From the web subsystem the user will be able to change different control parameters such as sun light or water. This will all be accomplished via a graphical user interface. The stretch goals for the web subsystem are to be able to take a plant type and find the ideal parameters for growth and all the communications would occur over a secure connection such as TLSv1.2 or later.
+\subsubsection{Requirements Specifications}
+* ``The system'' refers to the plant bed and is subsystems (control, sensing, power and web)
 \begin{itemize}
-    \item Read local sensor data (e.g. sunlight, soil moisture, temperature)
-    \item Adjust parameters of local modules (e.g. shade, water, nutrients)
-    \item Interpret user settings and adjust parameters of modules accordingly
-    \item Fulfill web requirements with at least two computers/controllers
+  \item The system shall take up no more than a meter cubed of volume
+  \item The system shall use solar energy and battery power with an AC source backup
+  \item The power system shall have an overcharge protection
+  \item The power system shall have current leakage protection
+  \item The system shall be able to control the water supply
+  \item The microcontroller shall be capable of internet communication via HTTP requests
+  \item The microcontroller shall be capable of digital signal processing
+  \item The system shall be able to convert analog signals to digital signals for processing
+  \item The system shall be weatherproof
+  \item The system shall weigh no more than 40 pounds empty of soil
+  \item The system shall be of physical construction pursuant to any governing construction standards
 \end{itemize}
-It would be nice for the MCU subsystem to:
-\begin{itemize}
-    \item Fulfill web requirements with one computer/controller
-    \item Have a local user display (e.g. LCD, dot matrix, segmented)
-\end{itemize}
-The direction of power in this system:
-\begin{itemize}
-  \item Power generated through a wall outlet
-  \item AC/DC converter 
-  \item Power supply
-  \item MCU
-  \begin{itemize}
-    \item Regulators
-    \item Sensors
-    \item Mechanics
-    \item CPU
-  \end{itemize}
-\end{itemize}
-It would be nice to have:
-\begin{itemize}
-  \item Solar power, with the flow of power as follows:
-  \begin{itemize}
-    \item Solar panels 
-    \item Solar power bank 
-    \item Power supply 
-    \item MCU
-  \end{itemize}
-  \item Use the solar panels as blinds to be able to open and close as well as collect energy
-\end{itemize}
-The Sensing Capabilities of the project should include:
-\begin{itemize}
-    \item Infrared Spectroscopy Sensor which detects:
-    \begin{itemize}
-            \item Soil Moisture
-            \item Soil Temperature
-            \item Soil OH group content (acidity)
-    \end{itemize}
-    \item Infrared Spectra signal processing
-\end{itemize}
-It would be nice to have:
-\begin{itemize}
-    \item Scanning Capabilities for checking various parts of the garden bed
-    \item Soil Nutrient Estimation and other variables possible via IR Spectroscopy
-\end{itemize}
-The web component of the project should:
-\begin{itemize}
-    \item Attach to a weather API to receive:
-    \begin{itemize}
-        \item Rain
-        \item Sun light
-        \item Temperature
-        \item Frost warnings
-        \item Humidity
-    \end{itemize}
-    \item Alert users of conditions outside of automatic control (i.e. soil composition and frost)
-    \item Change control parameters:
-    \begin{itemize}
-        \item Sun light
-        \item Water
-        \item Soil parameters
-    \end{itemize}
-    \item Have an intuitive user interface
-    \item Communicate with the MCU
-\end{itemize}
-It would be nice to have the web component:
-\begin{itemize}
-    \item Set control parameters based on presets for plants
-    \item Get plant data from the web to pass to MCU
-    \item Communicate over secure channels
-\end{itemize}
-\subsubsection{Project Block Diagram}
