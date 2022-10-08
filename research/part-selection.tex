@@ -102,4 +102,146 @@
 \end{flushleft}
 
 \subsubsection{Power Subsystem}
+
+\begin{flushleft} 
+	At minimum, this power subsystem will operate with the following:
+	\begin{itemize}
+		\item Solar Panels 
+		\item Rechargeable Batteries 
+		\item Solar Charge Controllers
+		\item AC/DC converterter
+	\end{itemize}
+	\textbf{Solar Panels}\par
+	The stretch goal for this project is to use solar panel arrays as blinds to increase/decrease sunlight as well as temperature. The solar panels are also use to collect energy and power our model. We must be strategic when choosing our solar panels so that they are operational, provide the proper amount of power, and more. \par
+	There are many different types of solar panels. These include monocrystalline solar panels, polycrystalline solar panels, and thin-film solar panels. Each solar panel has different compositions that make it as efficient as they are, how much power can be collected, etc. \par
+	For this project, we have selected multiple types of solar panels based on efficiency and cost.
+\end{flushleft}
+\begin{center}
+\begin{tabularx}{linewidth}
+	{
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+
+	}
+	\hline
+	\textbf{Solar Panel Type} & \textbf{Monocrystalline} & \textbf{Polycrystalline} & \textbf{Thin - Film}
+	\hline
+	\textbf{Efficiency} & >20\% & 15 - 17\% & 6 - 15\% \\
+	\hline
+	\textbf{Power Rating} & \le 300W & 240 - 300W & Indefinite \\
+	\hline
+	\textbf{Performance} & Most efficient & Efficient & Least efficient \\
+	\hline
+	\textbf{Temperature} & High Tolerance & Low Tolerance & High Tolerance \\
+	\hline
+	\textbf{Cost per Watt} & \$1 - \$1.50 & \$.70 - \$1 & \$.43 - \$.70
+	\hline
+\end{tabularx}
+\begin{flushleft}
+	From there we found these solar panels:
+\end{flushleft}
+\begin{tabularx}{linewidth}
+	{
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+
+	}
+	\hline
+	\textbf{Manu\-facturer Part \#} & P108 & P103C & P105 & SP-80X60-4-DK & SP-68X37-4-DK \\
+	\hline
+	\textbf{Manu\-facturer} & Voltaic Systems & Voltaic Systems & Voltaic Systems & AMX Solar & AMX Solar \\
+	\hline
+	\textbf{Dimensions} & 10.9 x 8.8 x .16 & 8.27 x 4.46 x .2 & 5.39 x 8.74 x 0.16 & 3.15 x 2.362 x .079 & 2.677  x 1.456  x 0.079 \\
+	\hline
+	\textbf{Voltage at Pmpp} & 17.34V & 6.5V & 6.12V & 1.5V & 5.28V \\ 
+	\hline
+	\textbf{Current at Pmpp} & 570mA & 550mA & 940mA & 440mA & 69.3mA \\
+	\hline
+	\textbf{Open Circuit Voltage} & 20.45V & 7.7V & 7.13V & 1.8V & 6.27V \\
+	\hline
+	\textbf{Price (\$)} & 49 & 39 & 35 & 36.65 & 28.94 \\
+	\hline
+end{tabularx}
+\begin{flushleft}
+	From there we needed to choose what kind of rechargeable battery we wanted to use for. Out on the market there are many different types of batteries including Nickel-Cadmium(NiCd), Nickel-Metal Hydride(NiMH), Lithium Ion(Li-Ion), and so many more.\par
+	Of these batteries, we decided to go with the Lithium Ion battery because it was the most commonly used battery for electronic devices while allowing high output voltage.
+\end{flushleft}
+\begin{tabularx}{linewidth}
+		{
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+
+	}
+	\hline
+	\textbf{Manu\-facturer} & \textbf{Ampere Time} & \textbf{ExpertPower} & \textbf{Eco Worthy} & \textbf{Eco Worthy} \\
+	\hline
+	\textbf{Voltage} & 12 & 12 & 12 & 12 \\
+	\hline
+	\textbf{mAh} & 6000 & 10000 & 5000 & 8000 \\
+	\hline
+	\textbf{Price (\$)} & 29.99 & 59.99 & 35.99 & 43.99 \\ 
+	\hline
+end{tabularx}
+\begin{flushleft}
+	For the solar panels, having a solar charge controller is important to the system. The purpose of the solar charge controller is to optimize the charging of the battierys by the solar panels. There are two major types of solar charge controllers: Maximum Power Point Tracking (MPPT) and Pulse Width Modulated (PWM). \par 
+	With these two in mind we chose these charge conrollers:
+\end{flushleft}
+\begin{tabularx}{linewidth}
+		{
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+
+	}
+	\hline
+	\textbf{Manu\-facturer} & \textbf{ExpertPower} & \textbf{ExpertPower} & \textbf{Renogy} &  \textbf{Renogy} \\
+	\hline
+	\textbf{Nominal Voltage} & 12\slash24V  & 12\slash24V & 12\slash24V & 12\slash24V \\
+	\hline
+	\textbf{Rated Charge Current} & 10A & 20A & 10A & 30A \\
+	\hline
+	\textbf{Max PV Input Voltage} & 50V & 100V & 50V & 50V \\
+	\hline
+	\textbf{Self Consumption} & \le10mA & \le10mA & <10mA & \le13mA \\
+	\hline
+	\textbf{Price (\$)} & 23.99 & 69.99 & 34.99 & 69.99 \\ 
+	\hline
+end{tabularx}
+\begin{flushleft}
+	While the model is charging during the day or as a back up, this will be plugged into a wall outlet for power. This means we have to be able to convert the AC voltage coming from the wall is converted to DC voltage for the model to use. 
+\end{flushleft}
+\begin{tabularx}{linewidth}
+		{
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+		| >{\raggedright\arraybackslash}X
+
+	}
+	\hline
+	\textbf{Manu\-facturer} & \textbf{SmoTecQ} & \textbf{ANLINK} & \textbf{TMEZON} \\
+	\hline
+	\textbf{Input Voltage} &  240V & 100 - 240V & 100 - 240V \\
+	\hline
+	\textbf{Output Voltage} & 12V & 12V & 12V \\
+	\hline
+	\textbf{Current Rating} & 2A & 2A & 2A \\
+	\hline
+	\textbf{Connector} &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm\\
+	\hline
+	\textbf{Price (\$)} & 12.99 for 2 & 11.59 & 8.99 \\ 
+	\hline
+end{tabularx}
+
 \subsubsection{Sensing Subsystem}
