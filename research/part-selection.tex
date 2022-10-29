@@ -1,123 +1,129 @@
 \subsection{Part Selection}
 \subsubsection{Controller Subsystem}
-At minimum, any chosen microcontrollers (MCUs) shall support natively, or by addition of a
-module, these features and traits:
-\begin{itemize}
-    \item Analog-to-digital converter (ADC)
-    \item cURL compatibility
-    \item IEEE 802.11
-    \item In stock and available to order
-    \item JTAG module or equivalent
-    \item Module communication bus (UART, I2C, SPI)
-    \item Onboard CPU sufficient for our purposes
-    \item Onboard memory sufficient for our purposes
-    \item Onboard nonvolatile memory
-    \item Pins dedicated to analog input
-    \item Pins dedicated to digital I/O
-\end{itemize}
-These features would be "nice to have" on any MCU selected, but are not required:
-\begin{itemize}
-    \item Digital-to-analog converter (DAC)
-    \item microSD card slot
-    \item Onboard battery
-    \item Pins dedicated to pulse-width modulation (PWM)
-    \item Timer(s) and an RTC
-    \item USB compatibility
-    \item Additional wireless communication protocols (e.g. BT or BLE, Zigbee)
-\end{itemize}
-The following selections, not listed in any particular order, match the above criteria and are
-being considered for selection:	
-\begin{table}
-	\centering
-	\begin{tabularx}{\textwidth}
-		{
-		    | >{\raggedright\arraybackslash}X
-		    | >{\raggedright\arraybackslash}X
-		    | >{\raggedright\arraybackslash}X
-		    | >{\raggedright\arraybackslash}X
-		    | >{\raggedright\arraybackslash}X
-		    | >{\raggedright\arraybackslash}X
-		    |
-		}
-		\caption{MCU option breakdown}
-		\label{table:mcubreakdown1} \\
-		\hline
-		\textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
-		\hline
-		\textbf{Manu\-facturer} & Texas Instruments & Texas Instruments & Raspberry Pi & Arduino & STMicro\-electronics \\
-		\hline
-		\textbf{Micro\-controller} & CC2652R & CC3220\-MODASF & RP2040 & nRF52840 & STM32\-L4S5VIT6 \\
-		\hline
-		\textbf{Processor} & 1x ARM Cortex-M4F & 1x ARM Cortex-M4 & 2x ARM Cortex-M0+ & 1x ARM Cortex-M4 & 1x ARM Cortex-M4 \\
-		\hline
-		\textbf{Maximum Speed (MHz)} & 48 & 80 & 133 & 64 & 120 \\
-		\hline
-		\textbf{Memory (KB)} & 256 ROM, 352 flash, 100 SRAM & 1024 flash, 256 RAM & 16 ROM, 264 SRAM & 1024 flash, 256 SRAM & 2048 flash, 640 RAM \\
-		\hline
-		\textbf{Wireless capability} & BLE5.2, Zigbee, Thread & 802.11b/g/n & 802.11n & BLE5.3, Zigbee, Thread, Matter & BT4.1, 802.11b/g/n, NFC \\
-		\hline
-		\textbf{Serial capability} & UART, I2C, I2S, SPI & UART, I2C, SPI & UART, I2C, SPI, USB1.1 & UART, I2C, I2S, SPI, USB2.0 & UART, I2C, SPI, USB2.0 \\
-		\hline
-		\textbf{Price (\$)} & 40, maybe free & 60, maybe free & 6 & 28 & 53 \\
-		\hline
-		\textbf{ADC} & 8-channel, 12-bit & 4-channel, 12-bit & 4-channel, 12-bit & 8-channel, 12-bit & 16-channel, 12-bit \\
-		\hline
-		\textbf{Clock capability} & Timer, RTC & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT \\
-		\hline
-		\textbf{GPIO (pins)} & 31 & 29 & 30 & 13 & 16 \\
-		\hline
-		\textbf{PWM (channels)} & Supported & Supported & 16 & 4 & 6 \\
-		\hline
-		% \textbf{AES (bits)} & 128, 256 & 256 & Not supported & 128 & 128 \\
-		% \hline
-		\textbf{Required voltage (V)} & 1.8 -- 3.8 & 2.3 -- 3.6 & 1.8 -- 3.3 & 4.5 -- 21 & 4.75 -- 5.25 \\
-		\hline
-	\end{tabularx}
-\end{table}
-% \begin{table}[H]
-% 	\centering
-% 	\begin{tabularx}{\textwidth}
-% 		{
-% 		    | >{\raggedright\arraybackslash}X
-% 		    | >{\raggedright\arraybackslash}X
-% 		    | >{\raggedright\arraybackslash}X
-% 		    | >{\raggedright\arraybackslash}X
-% 		    | >{\raggedright\arraybackslash}X
-% 		    | >{\raggedright\arraybackslash}X
-% 		    |
-% 		}
-% 		\caption{MCU breakdown (continued)}
-% 		\label{table:mcubreakdown2} \\
-% 		\hline
-% 		\textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
-% 		\hline
-% 		\textbf{Other features} & Battery monitor, comparators, DAC, DMA, temperature monitor, TRNG & Camera interface, DMA, SDMMC & DMA, PIO, temperature sensor & Compar\-ators, Temperature sensor, RNG & Barometer, camera interface, comparator, humidity sensor, gesture-detection sensor, gyroscope, magnetometer, microphones, RNG, time-of-flight sensor  \\
-% 		\hline
-% 	\end{tabularx}
-% \end{table}
-Use of single-board computers (SBCs) was considered, but will not not need to be used; cURL 
-used on an MCU in conjunction with \href{https://aws.amazon.com/ec2/}{Amazon EC2} services will
-allow us to offload computing to a cloud solution.
-
-Use of an external Wifi module is discouraged due to the following:
-\begin{itemize}
-    \item Added cost
-    \item Added complexity
-    \item Modules in common use by hobbyists often have poor or no proper documentation, to the
-    extent of:
-    \begin{itemize}
-        \item Quick start guide
-        \item User's guide
-        \item Datasheets
-        \item Theory of operation
-        \item Application uses
-        \item Troubleshooting guide
-        \item Schematics and mechanicals
-        \item Quality and reliability
-        \item Errata
-    \end{itemize}
-\end{itemize}
-Therefore, all of the MCUs listed above support either the 802.11 or Bluetooth standards.
+\begin{flushleft}
+	At minimum, any chosen microcontrollers (MCUs) shall support natively, or by addition of a
+	module, these features and traits:
+	\begin{itemize}
+		\item Analog-to-digital converter (ADC)
+		\item cURL compatibility
+		\item IEEE 802.11
+		\item In stock and available to order
+		\item JTAG module or equivalent
+		\item Module communication bus (UART, I2C, SPI)
+		\item Onboard CPU sufficient for our purposes
+		\item Onboard memory sufficient for our purposes
+		\item Onboard nonvolatile memory
+		\item Pins dedicated to analog input
+		\item Pins dedicated to digital I/O
+	\end{itemize}
+	These features would be "nice to have" on any MCU selected, but are not required:
+	\begin{itemize}
+		\item Digital-to-analog converter (DAC)
+		\item microSD card slot
+		\item Onboard battery
+		\item Pins dedicated to pulse-width modulation (PWM)
+		\item Timer(s) and an RTC
+		\item USB compatibility
+		\item Additional wireless communication protocols (e.g. BT or BLE, Zigbee)
+	\end{itemize}
+\end{flushleft}
+\begin{flushleft}
+	The selections, listed in \autoref{table:mcubreakdown1} and not in any particular order, match
+	the above criteria and are being considered for selection.
+	\begin{table}
+		\centering
+		\begin{tabularx}{\textwidth}
+			{
+				| >{\raggedright\arraybackslash}X
+				| >{\raggedright\arraybackslash}X
+				| >{\raggedright\arraybackslash}X
+				| >{\raggedright\arraybackslash}X
+				| >{\raggedright\arraybackslash}X
+				| >{\raggedright\arraybackslash}X
+				|
+			}
+			\caption{MCU option breakdown}
+			\label{table:mcubreakdown1} \\
+			\hline
+			\textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
+			\hline
+			\textbf{Manu\-facturer} & Texas Instruments & Texas Instruments & Raspberry Pi & Arduino & STMicro\-electronics \\
+			\hline
+			\textbf{Micro\-controller} & CC2652R & CC3220\-MODASF & RP2040 & nRF52840 & STM32\-L4S5VIT6 \\
+			\hline
+			\textbf{Processor} & 1x ARM Cortex-M4F & 1x ARM Cortex-M4 & 2x ARM Cortex-M0+ & 1x ARM Cortex-M4 & 1x ARM Cortex-M4 \\
+			\hline
+			\textbf{Maximum Speed (MHz)} & 48 & 80 & 133 & 64 & 120 \\
+			\hline
+			\textbf{Memory (KB)} & 256 ROM, 352 flash, 100 SRAM & 1024 flash, 256 RAM & 16 ROM, 264 SRAM & 1024 flash, 256 SRAM & 2048 flash, 640 RAM \\
+			\hline
+			\textbf{Wireless capability} & BLE5.2, Zigbee, Thread & 802.11b/g/n & 802.11n & BLE5.3, Zigbee, Thread, Matter & BT4.1, 802.11b/g/n, NFC \\
+			\hline
+			\textbf{Serial capability} & UART, I2C, I2S, SPI & UART, I2C, SPI & UART, I2C, SPI, USB1.1 & UART, I2C, I2S, SPI, USB2.0 & UART, I2C, SPI, USB2.0 \\
+			\hline
+			\textbf{Price (\$)} & 40, maybe free & 60, maybe free & 6 & 28 & 53 \\
+			\hline
+			\textbf{ADC} & 8-channel, 12-bit & 4-channel, 12-bit & 4-channel, 12-bit & 8-channel, 12-bit & 16-channel, 12-bit \\
+			\hline
+			\textbf{Clock capability} & Timer, RTC & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT \\
+			\hline
+			\textbf{GPIO (pins)} & 31 & 29 & 30 & 13 & 16 \\
+			\hline
+			\textbf{PWM (channels)} & Supported & Supported & 16 & 4 & 6 \\
+			\hline
+			% \textbf{AES (bits)} & 128, 256 & 256 & Not supported & 128 & 128 \\
+			% \hline
+			\textbf{Required voltage (V)} & 1.8 -- 3.8 & 2.3 -- 3.6 & 1.8 -- 3.3 & 4.5 -- 21 & 4.75 -- 5.25 \\
+			\hline
+		\end{tabularx}
+	\end{table}
+\end{flushleft}
+\begin{flushleft}
+	Use of single-board computers (SBCs) was considered, but will not not need to be used; cURL 
+	used on an MCU in conjunction with \href{https://aws.amazon.com/ec2/}{Amazon EC2} services will
+	allow us to offload computing to a cloud solution.
+\end{flushleft}
+\begin{flushleft}
+	Use of an external Wifi module is discouraged due to the following:
+	\begin{itemize}
+		\item Added cost
+		\item Added complexity
+		\item Modules in common use by hobbyists often have poor or no proper documentation, to the
+		extent of:
+		\begin{itemize}
+			\item Quick start guide
+			\item User's guide
+			\item Datasheets
+			\item Theory of operation
+			\item Application uses
+			\item Troubleshooting guide
+			\item Schematics and mechanicals
+			\item Quality and reliability
+			\item Errata
+		\end{itemize}
+	\end{itemize}
+\end{flushleft}
+\begin{flushleft}
+	Therefore, all of the MCUs listed above support either the 802.11 or Bluetooth standards.
+\end{flushleft}
+\begin{flushleft}
+	Ultimately, the \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF}
+	was chosen as the microcontroller development board for this project. In the event that the
+	aforementioned LaunchPad is not able to be obtained, the
+	\href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} has equivalent capability
+	for the project's needs.
+\end{flushleft}
+\begin{flushleft}
+	These boards, henceforth referred to as the CC3220, are able to be requested from our
+	university at no upfront cost to our team. This was the driving factor behind choosing 
+	the CC3220 over other microcontroller development boards. It was also determined that
+	the microcontroller \emph{must} be able to interface via the 802.11 (WiFi) standard, for reasons
+	that are detailed in \autoref{sec:controller_subsystem}---therefore, the LAUNCHXL-CC26X2R1
+	and Nano 33 BLE were disqualified from selection. The Pico W was considered due to its low cost,
+	and the B-L4S5I-IOT01A considered because of its abundant peripherals, but both ultimately lost
+	out to the Texas Instruments products.
+\end{flushleft}
+% End Controller Subsystem
 
 \subsubsection{Power Subsystem}
 At minimum, this power subsystem will operate with the following:
