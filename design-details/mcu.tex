@@ -29,6 +29,7 @@
     that most, if not all, end-users have a wireless access point and internet
     access. Thus, connection via the 802.11/WiFi standard was a natural choice
     for our use case.
+    % maybe diagram of chip or network stack?
 \end{flushleft}
 \begin{flushleft}
     % How the MCU connects to the internet (local network, LAN -> NAT -> WAN,
@@ -54,9 +55,15 @@
     % option a) web interface for user to long in to WLAN
     % option b) WPS button
     % don't forget IP addressing (most likely DHCP)
+    % Interim: hardcode network login
 \end{flushleft}
 \begin{flushleft}
     % TCP sockets
+    The MCU will communicate with AWS through TCP sockets. After connection to
+    the user's home network, the MCU will check if there is an internet
+    connection. Once an internet connection has been established, the MCU will
+    open a socket and connect to the AWS instance via its URL (using the
+    default DNS nameserver provided to network clients).
 \end{flushleft}
 \begin{flushleft}
     % Parameters for connection and how often it tries
@@ -110,26 +117,80 @@
 \end{flushleft}
 \begin{flushleft}
     % Will program in C++. Any libraries, multithreading?
+    % Singleton Pattern Thread for scheduling tasks
     It should be expected that all headers from the C++ standard library (as
     defined in C++23) will be used, along with the following nonstandard
-    libraries: \texttt{TBD}. Additionally, it is expected that the MCU program
-    will run on a single thread.
+    libraries: Texas Instruments SimpleLink™ CC32xx SDK. Additionally, it is
+    expected that the MCU program will schedule tasks using a Singleton Pattern
+    thread to ensure thread safety when accessing variables.
 \end{flushleft}
 \begin{flushleft}
     % Classes and class diagram
-    There will be a few classes defined in the MCU's programming:
-    \begin{center}
-        \texttt{Class FromWeb \{}  \\
-        \texttt{uint32\_t time\_until\_exec;} \\
-        \texttt{uint32\_t time\_until\_exec;} \\
-        \texttt{uint32\_t time\_until\_exec;} \\
-        \texttt{uint32\_t time\_until\_exec;} \\
-    \end{center}
+    There will be a few classes defined in the MCU's programming.
+    %\begin{figure}[H]
+        %\label{classes_uml}
+        %\caption{UML diagram of the classes used}
+        %\centering
+        %\includegraphics[width=0.75\textwidth]{images/classes_uml.png}
+    %\end{figure}
+    Classes will be laid out in a header file using the following defintions:
+    \begin{flushleft}
+        \texttt{class Plant \{}  \\
+        \quad\texttt{private:} \\
+        \quad\quad\texttt{bool water\_active;} \\
+        \quad\quad\texttt{double temp;} \\
+        \quad\quad\texttt{double moisture;} \\
+        \quad\quad\texttt{uint32\_t oh\_comp;} \\
+        \quad\quad\texttt{uint32\_t nutrients;} \\
+        \quad\texttt{public:} \\
+        \quad\quad\texttt{Plant();} \\
+        \quad\quad\texttt{set\_water\_active();} \\
+        \quad\quad\texttt{get\_water\_active();} \\
+        \quad\quad\texttt{set\_temp();} \\
+        \quad\quad\texttt{get\_temp();} \\
+        \quad\quad\texttt{set\_moisture();} \\
+        \quad\quad\texttt{get\_moisture();} \\
+        \quad\quad\texttt{set\_oh\_comp();} \\
+        \quad\quad\texttt{get\_oh\_comp();} \\
+        \quad\quad\texttt{set\_nutrients();} \\
+        \quad\quad\texttt{get\_nutrients();} \\
+        \texttt{\};} \\
+    \end{flushleft}
+    \begin{flushleft}
+        \texttt{class Solar \{}  \\
+        \quad\texttt{private:} \\
+        \quad\quad\texttt{double theta;} \\
+        \quad\quad\texttt{double phi;} \\
+        \quad\quad\texttt{double voltage;} \\
+        \quad\texttt{public:} \\
+        \quad\quad\texttt{Solar();} \\
+        \quad\quad\texttt{set\_theta();} \\
+        \quad\quad\texttt{get\_theta();} \\
+        \quad\quad\texttt{set\_phi();} \\
+        \quad\quad\texttt{get\_phi();} \\
+        \quad\quad\texttt{set\_voltage();} \\
+        \quad\quad\texttt{get\_voltage();} \\
+        \texttt{\};} \\
+    \end{flushleft}
+    \begin{flushleft}
+        \texttt{class Web \{}  \\
+        \quad\texttt{private:} \\
+        \quad\quad\texttt{string ip;} \\
+        \quad\quad\texttt{int port;} \\
+        \quad\texttt{public:} \\
+        \quad\quad\texttt{Web();} \\
+        \quad\quad\texttt{set\_ip();} \\
+        \quad\quad\texttt{get\_ip();} \\
+        \quad\quad\texttt{set\_port();} \\
+        \quad\quad\texttt{get\_port();} \\
+        \texttt{\};} \\
+    \end{flushleft}
 
+    % Turn structs into classes
+    % Get rid of telemetry
+    % Implement default state
 
-    TBD, add UML class diagrams.
-    % Structs -> classes
-    % Classes:
+    % Structs (or maybe classes):
     %  Water
     %  Solar
     %  Battery/charge controller
@@ -138,15 +199,53 @@
 \end{flushleft}
 \begin{flushleft}
     % Send to AWS, format and types of commands
+    % Send straight data from the struct
+    No data that would be exclusively considered telemetry will be transmitted 
+    between AWS and the MCU (e.g. processor temperature). Instead, all
+    "telemetry" values will be handled with interrupts and ISRs/functions
+    on-chip, while current settings and sensor readings will be transmitted
+    back to AWS.
 \end{flushleft}
 \begin{flushleft}
     % Global vars
+    No global variables plan to be implemented at this time.
 \end{flushleft}
 \begin{flushleft}
     % Functions
 \end{flushleft}
 \begin{flushleft}
     % Interrupts and ISRs
+    If the charge controller indicates that the battery has fallen below a
+    certain voltage (named "low voltage"), the MCU will raise an interrupt and
+    execute \texttt{isr\_low\_power()}. This ISR performs housekeeping before
+    putting the MCU into a low power state, limiting use of its functions.
+\end{flushleft}
+\begin{flushleft}
+    % Interrupts and ISRs (cont.)
+    If the charge controller indicates that the battery has fallen below a
+    certain voltage (named "critical voltage"), the MCU will raise an interrupt
+    and execute \texttt{isr\_critical\_power()}. This ISR performs further 
+    housekeeping before putting the MCU into an extreme low power state,
+    limiting all but the features necessary to maintain a connection with AWS.
+\end{flushleft}
+\begin{flushleft}
+    % Interrupts and ISRs (cont.)
+    If the MCU, AWS, or any other devices transmit indication of a dangerous
+    state or if the MCU, AWS, or any other devices transmit indication of a
+    shut down the MCU will raise an interrupt and execute
+    \texttt{isr\_shut\_down()}. This ISR immediately shuts down all able
+    subsystems, and puts all other subsystems in a fail safe state. This ISR
+    fails safe the entire system.
+\end{flushleft}
+\begin{flushleft}
+    % Interrupts and ISRs (cont.)
+    If the MCU receives indication of a start up (via a momentary switch), the
+    MCU will raise an interrupt and execute \texttt{isr\_start\_up()}. This ISR
+    starts up all relevant subsystems and begins the MCU's programming. This
+    ISR starts up the entire system.
+\end{flushleft}
+\begin{flushleft}
+    % File organization (main, header files, other source files, etc.)
 \end{flushleft}
 \begin{flushleft}
     % How the MCU gets data from sensors (ADC)
@@ -156,8 +255,17 @@
 \end{flushleft}
 \begin{flushleft}
     % What sort of telemetry we'll have
+    % No telemetry
 \end{flushleft}
 \begin{flushleft}
     % What kind of development model?
     % Probably agile
+    An Agile development model will be used.
+\end{flushleft}
+\begin{flushleft}
+    % IDE and Git
+    Texas Instruments Code Composer Studio v12 will be used to program,
+    compile (via TI ARM compiler v20), and debug the C++-based project. GitHub
+    will be used as a repository for the project, using Git for version
+    control.
 \end{flushleft}
