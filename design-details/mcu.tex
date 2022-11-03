@@ -8,6 +8,7 @@
     \includegraphics[width=0.75\textwidth]{images/mcu_block_diagram.png}
 \end{figure}
 % I need to write 11 pages lmfao
+% 4 more pages (page total 27)
 \begin{flushleft}
     % Why the MCU connects to the internet
     In order for our system to be as self-sufficient and power efficient as
@@ -127,12 +128,12 @@
 \begin{flushleft}
     % Classes and class diagram
     There will be a few classes defined in the MCU's programming.
-    %\begin{figure}[H]
-        %\label{classes_uml}
-        %\caption{UML diagram of the classes used}
-        %\centering
-        %\includegraphics[width=0.75\textwidth]{images/classes_uml.png}
-    %\end{figure}
+    \begin{figure}[H]
+        \label{classes_uml}
+        \caption{UML diagram of the classes used}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/classes_uml.png}
+    \end{figure}
     Classes will be laid out in a header file using the following defintions:
     \begin{flushleft}
         \texttt{class Plant \{}  \\
@@ -144,6 +145,7 @@
         \quad\quad\texttt{uint32\_t nutrients;} \\
         \quad\texttt{public:} \\
         \quad\quad\texttt{Plant();} \\
+        \quad\quad\texttt{$\sim$Plant();} \\
         \quad\quad\texttt{set\_water\_active();} \\
         \quad\quad\texttt{get\_water\_active();} \\
         \quad\quad\texttt{set\_temp();} \\
@@ -152,8 +154,10 @@
         \quad\quad\texttt{get\_moisture();} \\
         \quad\quad\texttt{set\_oh\_comp();} \\
         \quad\quad\texttt{get\_oh\_comp();} \\
+        \quad\quad\texttt{get\_oh\_comp\_raw();} \\
         \quad\quad\texttt{set\_nutrients();} \\
         \quad\quad\texttt{get\_nutrients();} \\
+        \quad\quad\texttt{get\_nutrients\_raw();} \\
         \texttt{\};} \\
     \end{flushleft}
     \begin{flushleft}
@@ -164,6 +168,7 @@
         \quad\quad\texttt{double voltage;} \\
         \quad\texttt{public:} \\
         \quad\quad\texttt{Solar();} \\
+        \quad\quad\texttt{$\sim$Solar();} \\
         \quad\quad\texttt{set\_theta();} \\
         \quad\quad\texttt{get\_theta();} \\
         \quad\quad\texttt{set\_phi();} \\
@@ -179,32 +184,36 @@
         \quad\quad\texttt{int port;} \\
         \quad\texttt{public:} \\
         \quad\quad\texttt{Web();} \\
+        \quad\quad\texttt{$\sim$Web();} \\
         \quad\quad\texttt{set\_ip();} \\
         \quad\quad\texttt{get\_ip();} \\
         \quad\quad\texttt{set\_port();} \\
         \quad\quad\texttt{get\_port();} \\
+        \quad\quad\texttt{receive();} \\
+        \quad\quad\texttt{send();} \\
         \texttt{\};} \\
     \end{flushleft}
 
     % Turn structs into classes
     % Get rid of telemetry
     % Implement default state
-
-    % Structs (or maybe classes):
-    %  Water
-    %  Solar
-    %  Battery/charge controller
-    %  AWS/socket
-    %  Telemetry (own system)
 \end{flushleft}
 \begin{flushleft}
     % Send to AWS, format and types of commands
     % Send straight data from the struct
-    No data that would be exclusively considered telemetry will be transmitted 
-    between AWS and the MCU (e.g. processor temperature). Instead, all
-    "telemetry" values will be handled with interrupts and ISRs/functions
-    on-chip, while current settings and sensor readings will be transmitted
-    back to AWS.
+    Unlike commands received from AWS, the MCU will simply send data directly
+    from its classes to AWS. This is done to minimize the overhead of sending
+    extraneous symbols and preserve power stored in the battery, as receiving
+    uses far less power than transmitting in the MCU subsystem. Further
+    optimization can be performed in the future to further reduce overhead
+    (e.g. reducing \texttt{water\_active} to occupy 1 bit and using the rest of
+    the symbol to encode other data).
+    \begin{figure}[H]
+        \label{toweb_encoding}
+        \caption{Bitwise representation of data sent to AWS}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/toweb_encoding.png}
+    \end{figure}
 \end{flushleft}
 \begin{flushleft}
     % Global vars
@@ -241,8 +250,17 @@
     % Interrupts and ISRs (cont.)
     If the MCU receives indication of a start up (via a momentary switch), the
     MCU will raise an interrupt and execute \texttt{isr\_start\_up()}. This ISR
-    starts up all relevant subsystems and begins the MCU's programming. This
-    ISR starts up the entire system.
+    starts up all relevant subsystems and begins the MCU's programming. All
+    classes will be initialized to default values. This ISR starts up the
+    entire system.
+\end{flushleft}
+\begin{flushleft}
+    % Interrupts and ISRs (cont.)
+    If the MCU determines it must reset the system to a default state, the
+    MCU will raise an interrupt and execute \texttt{isr\_default\_state()}.
+    This ISR returns all relevant subsystems to their default state, almost
+    as if the MCU had just executed \texttt{isr\_start\_up()}. All classes will
+    be initialized to default values. This ISR resets the entire system.
 \end{flushleft}
 \begin{flushleft}
     % File organization (main, header files, other source files, etc.)
@@ -255,12 +273,24 @@
 \end{flushleft}
 \begin{flushleft}
     % What sort of telemetry we'll have
-    % No telemetry
+    No data that would be exclusively considered telemetry will be transmitted 
+    between AWS and the MCU (e.g. processor temperature). Instead, all
+    "telemetry" values will be handled with interrupts and ISRs/functions
+    on-chip, while current settings and sensor readings will be transmitted
+    back to AWS.
 \end{flushleft}
 \begin{flushleft}
     % What kind of development model?
     % Probably agile
-    An Agile development model will be used.
+    An Agile development model will be used. Code reviews will be performed on
+    an as-needed basis by a convening of members of the MCU subsystem and the
+    websubsystem teams.
+    \begin{figure}[H]
+        \label{mcu_agile_uml}
+        \caption{UML diagram of the project's development methodology}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/mcu_agile_uml.png}
+    \end{figure}
 \end{flushleft}
 \begin{flushleft}
     % IDE and Git
