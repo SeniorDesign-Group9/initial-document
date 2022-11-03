@@ -1,8 +1,8 @@
 \subsection{Controller Subsystem}
 \label{sec:controller_subsystem}
 \begin{figure}[H]
-    \label{mcu_block_diagram}
     \caption{MCU block diagram}
+    \label{mcu_block_diagram}
     \centering
     % Need to update block diagram
     \includegraphics[width=0.75\textwidth]{images/mcu_block_diagram.png}
@@ -11,15 +11,15 @@
 % 4 more pages (page total 27)
 \begin{flushleft}
     % Why the MCU connects to the internet
-    In order for our system to be as self-sufficient and power efficient as
-    possible from an end-user perspective, it was determined that our system
+    In order for our system to be as self and power efficient as
+    possible from an end-user perspective, it was determined that our product
     would require an internet connection to offload remote command-and-control
     to an Amazon Web Services EC2 instance (hence referred to as "AWS" and detailed in
     \autoref{sec:web_subsystem}). To make the process of operating our product 
     as hands-off as possible to end-users, the microcontroller will connect to
     the user's home WiFi network for access to AWS. Bluetooth, Zigbee, Thread,
     and other short-range 2.4 GHz communication protocols were disfavored over
-    WiFi, as we predict most users will not have a device to dedicate to
+    WiFi, as we predict most users will not have a device dedicated to
     connecting our product via such protocols. Long range (LoRa) protocols were
     deemed unncessary, as the intended placement of our product is outside, 
     near or next to the user's home. We do not expect our product to produce
@@ -35,11 +35,28 @@
 \begin{flushleft}
     % How the MCU connects to the internet (local network, LAN -> NAT -> WAN,
     % TCP stack)
-    The Texas Instruments CC3220-series of microcontrollers are WiFi-enabled
+    The Texas Instruments CC3220-series (hence referred to as the "CC3220", the
+    "MCU", or the "microcontroller") of microcontrollers are WiFi-enabled
     chips with an ARM Cortex-M4 central processor and a WiFi network processor,
-    along with many useful peripherals and power management modules. The WiFi
-    network processor supports the following standards/features useful to our
-    development:
+    along with many useful peripherals and power management modules. This
+    series of processors is delivered alongside a software development kit
+    (SDK) provided by Texas Instruments to ease the development of
+    Internet-of-Things (IoT) applications.
+    \begin{figure}[H]
+        \caption{CC3220 system-on-chip block diagram (\href{https://www.ti.com/lit/ug/swru465/swru465.pdf}{CC3220 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual}, Fig. 1-1)}
+        \label{cc3220_soc}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/cc3220_soc.png}
+    \end{figure}
+    \begin{figure}[H]
+        \caption{CC3220 embedded software overview (\href{https://www.ti.com/lit/ds/symlink/cc3220s.pdf}{SimpleLink™ Wi-Fi® CC3x20, CC3x3x Network Processor (Rev. M)}, Fig. 1-2)}
+        \label{cc3220_sw_overview}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/cc3220_sw_overview.png}
+    \end{figure}
+    The CC3220's WiFi network processor supports the following
+    standards/features useful to our development
+    (see \autoref{cc3220_network_subsystem}):
     \begin{itemize}
         \item WiFi standards: 802.11b/g/n
         \item WiFi security: WEP, WPA/WPA2 PSK, WPA2 enterprise, WPA3 personal,
@@ -51,12 +68,41 @@
         \item Host interface: UART, SPI
         \item Built-in transceiver and 2.4 GHz antenna
     \end{itemize}
-    Our microcontroller will 
-    % WHAT KIND OF INTERFACE????
+    The CC3220's networking subsysem is further detailed in
+    \autoref{cc3220_network_subsystem}.
+    \begin{figure}[H]
+        \caption{CC3220 networking subsystem (\href{https://www.ti.com/lit/ug/swru455m/swru455m.pdf}{CC3220 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual})}
+        \label{cc3220_network_subsystem}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/cc3220_network_subsystem.png}
+    \end{figure}
+    During development of our product, our microcontroller will be hardcoded
+    for the selected WLAN it will access. In the future, there are multiple
+    options our team will be able to explore to allow our product to connect to
+    a wide variety of networks. 
+\end{flushleft}   
+\begin{flushleft}
     % option a) web interface for user to long in to WLAN
+    The first option would allow unanimous adaptation of
+    our product for home users. This option consists of performing first-time
+    setup through a WiFi Direct connection to the MCU and allowing the user
+    to login through a web portal to finish setup of their device. The portal
+    would allow a user to connect to their WLAN of choice, and would
+    also allow the user to login to the MCU locally to view telemetry and 
+    settings. The user would also be able to configure the MCU for static
+    IP addressing or DHCP IP addressing.
+\end{flushleft}
+\begin{flushleft}
     % option b) WPS button
-    % don't forget IP addressing (most likely DHCP)
-    % Interim: hardcode network login
+    The second option would be to implement a momentary switch which is
+    programmed to connect to the MCU's WiFi Protected Setup (WPS) feature.
+    This would still allow the user to connect to their network of
+    choice---however, the user's wireless access point (WAP) would need to
+    support WPS. Furthermore, DHCP IP addressing would be forced, and there
+    would be no web portal for the user to access for viewing telemetry and
+    settings. This option would greatly ease development, though, and would
+    let the MCU and web teams focus on developing and refining their
+    respective subsystems.
 \end{flushleft}
 \begin{flushleft}
     % TCP sockets
@@ -64,7 +110,15 @@
     the user's home network, the MCU will check if there is an internet
     connection. Once an internet connection has been established, the MCU will
     open a socket and connect to the AWS instance via its URL (using the
-    default DNS nameserver provided to network clients).
+    default DNS nameserver provided to network clients). The software control
+    flow of TCP sockets as our product will implement them is detailed in
+    \autoref{tcp_socket_flow}.
+    \begin{figure}[H]
+        \caption{TCP socket control flow (\href{https://www.ti.com/lit/ds/symlink/cc3220s.pdf}{SimpleLink™ Wi-Fi® CC3x20, CC3x3x Network Processor (Rev. M)}, Fig. 6-1)}
+        \label{tcp_socket_flow}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/tcp_socket_flow.png}
+    \end{figure}
 \end{flushleft}
 \begin{flushleft}
     % Parameters for connection and how often it tries
@@ -110,8 +164,8 @@
     of 45$\degree$ as a double-precision float. This is to maintain a
     consistent command string size amongst all transmissions.
     \begin{figure}[H]
-        \label{command_bitwise}
         \caption{Bitwise representation of command}
+        \label{command_bitwise}
         \centering
         \includegraphics[width=0.75\textwidth]{images/command_encoding.png}
     \end{figure}
@@ -127,14 +181,37 @@
 \end{flushleft}
 \begin{flushleft}
     % Classes and class diagram
-    There will be a few classes defined in the MCU's programming.
+    There will be a few classes defined in the MCU's programming, detailed
+    in \autoref{classes_uml}.
     \begin{figure}[H]
-        \label{classes_uml}
         \caption{UML diagram of the classes used}
+        \label{classes_uml}
         \centering
         \includegraphics[width=0.75\textwidth]{images/classes_uml.png}
     \end{figure}
     Classes will be laid out in a header file using the following defintions:
+    \begin{flushleft}
+        \texttt{class ADC \{}  \\
+        \quad\texttt{private:} \\
+        \quad\quad\texttt{int pin;} \\
+        \quad\quad\texttt{int channel;} \\
+        \quad\quad\texttt{uint16\_t res\_raw;} \\
+        \quad\quad\texttt{uint16\_t res\_timestamp;} \\
+        \quad\texttt{public:} \\
+        \quad\quad\texttt{ADC();} \\
+        \quad\quad\texttt{$\sim$ADC();} \\
+        \quad\quad\texttt{set\_pin();} \\
+        \quad\quad\texttt{get\_pin();} \\
+        \quad\quad\texttt{set\_channel();} \\
+        \quad\quad\texttt{get\_channel();} \\
+        \quad\quad\texttt{set\_res\_raw;();} \\
+        \quad\quad\texttt{get\_res\_raw();} \\
+        \quad\quad\texttt{get\_res();} \\
+        \quad\quad\texttt{set\_res\_timestamp();} \\
+        \quad\quad\texttt{get\_res\_timestamp();} \\
+        \quad\quad\texttt{convert();} \\
+        \texttt{\};} \\
+    \end{flushleft}
     \begin{flushleft}
         \texttt{class Plant \{}  \\
         \quad\texttt{private:} \\
@@ -193,10 +270,6 @@
         \quad\quad\texttt{send();} \\
         \texttt{\};} \\
     \end{flushleft}
-
-    % Turn structs into classes
-    % Get rid of telemetry
-    % Implement default state
 \end{flushleft}
 \begin{flushleft}
     % Send to AWS, format and types of commands
@@ -209,18 +282,16 @@
     (e.g. reducing \texttt{water\_active} to occupy 1 bit and using the rest of
     the symbol to encode other data).
     \begin{figure}[H]
-        \label{toweb_encoding}
         \caption{Bitwise representation of data sent to AWS}
+        \label{toweb_encoding}
         \centering
         \includegraphics[width=0.75\textwidth]{images/toweb_encoding.png}
     \end{figure}
 \end{flushleft}
 \begin{flushleft}
     % Global vars
-    No global variables plan to be implemented at this time.
-\end{flushleft}
-\begin{flushleft}
-    % Functions
+    No global variables plan to be implemented at this time. Macros may be
+    defined for configuration of the ADC and any other dependent modules.
 \end{flushleft}
 \begin{flushleft}
     % Interrupts and ISRs
@@ -241,7 +312,7 @@
     % Interrupts and ISRs (cont.)
     If the MCU, AWS, or any other devices transmit indication of a dangerous
     state or if the MCU, AWS, or any other devices transmit indication of a
-    shut down the MCU will raise an interrupt and execute
+    shut down, the MCU will raise an interrupt and execute
     \texttt{isr\_shut\_down()}. This ISR immediately shuts down all able
     subsystems, and puts all other subsystems in a fail safe state. This ISR
     fails safe the entire system.
@@ -258,18 +329,64 @@
     % Interrupts and ISRs (cont.)
     If the MCU determines it must reset the system to a default state, the
     MCU will raise an interrupt and execute \texttt{isr\_default\_state()}.
-    This ISR returns all relevant subsystems to their default state, almost
+    This ISR returns all relevant subsystems to their default state,
     as if the MCU had just executed \texttt{isr\_start\_up()}. All classes will
     be initialized to default values. This ISR resets the entire system.
 \end{flushleft}
 \begin{flushleft}
     % File organization (main, header files, other source files, etc.)
+    Classes, macros, functions, and variables will be defined/prototyped to the
+    extent required in a header file to be named \texttt{garden.h}. These
+    classes, functions, and variables will be further defined in a seperate
+    source file named \texttt{garden.cpp} as needed. The \texttt{main()}
+    function and the remaining classes, macros, functions, and variables,
+    required will be located in \texttt{main.cpp}.
 \end{flushleft}
 \begin{flushleft}
     % How the MCU gets data from sensors (ADC)
+    The CC3220 contains a 12-bit general purpose analog-to-digital converter
+    (ADC) with 4 externally-accessible channels and a sampling periodicity of
+    16 $\upmu$s per channel (62.5 ksps per channel). The architecture of the
+    CC3220's ADC is shown in \autoref{cc3220_adc_arch}.
+    \begin{figure}[H]
+        \caption{CC3220 ADC module architecture (\href{https://www.ti.com/lit/ug/swru465/swru465.pdf}{CC3220 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual}, Fig. 13-1)}
+        \label{cc3220_adc_arch}
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/cc3220_adc_arch.png}
+    \end{figure}
+\end{flushleft}
+\begin{flushleft}
+    % How the MCU gets data from sensors (ADC, cont.)
+    It is expected that the spectrometer circuit will provide a current
+    between 20 $\upmu$V and 80 mV. The 12-bit ADC provides for an input range of
+    between 0 and 1.8 V. Therefore, the resolution of the ADC is calculated
+    below:
+    \begin{equation}
+        \label{eq:adc_res}
+        \frac{(1.8 - 0)\,\mathrm{V}}{2^{12}\,\mathrm{steps}} =
+        0.4395\,\mathrm{mV}/\mathrm{step}
+    \end{equation}
+    Thus, given our ADC resolution and the expected range of our spectrometer,
+    the number of discrete steps of range is given below:
+    \begin{equation}
+        \label{eq:adc_steps}
+        \frac{(80 - 0.02)\,\mathrm{mV}}{0.4395\,\mathrm{mV}/\mathrm{step}} =
+        \lfloor181.98\rfloor = 181
+    \end{equation}
+    These steps will be used to measure OH composition and nutrients in the
+    soil, and functions from the class \texttt{ADC} will be used to perform
+    analog-to-digital conversion to update values in the class \texttt{Plant}.
+\end{flushleft}
+\begin{flushleft}
+    In the future, a more precise ADC module could be explored to give the
+    CC3220 more resolution when performing spectroscopy.
 \end{flushleft}
 \begin{flushleft}
     % How MCU sends data to servos
+    The MCU will directly control GPIO and bit-bang values to the servo motors
+    controlling the orientation of the solar panels when using functions from
+    the class \texttt{Solar}. This method of control may be refined further in
+    the future.
 \end{flushleft}
 \begin{flushleft}
     % What sort of telemetry we'll have
@@ -281,13 +398,12 @@
 \end{flushleft}
 \begin{flushleft}
     % What kind of development model?
-    % Probably agile
     An Agile development model will be used. Code reviews will be performed on
     an as-needed basis by a convening of members of the MCU subsystem and the
-    websubsystem teams.
+    web subsystem teams.
     \begin{figure}[H]
+        \caption{UML diagram of the subsystem's development methodology}
         \label{mcu_agile_uml}
-        \caption{UML diagram of the project's development methodology}
         \centering
         \includegraphics[width=0.75\textwidth]{images/mcu_agile_uml.png}
     \end{figure}
