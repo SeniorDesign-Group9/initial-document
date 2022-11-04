@@ -253,7 +253,11 @@ With these two in mind we chose these charge conrollers:
 		\hline
 	\end{tabularx}
 \end{table}
+
+
 While the model is charging during the day or as a back up, this will be plugged into a wall outlet for power. This means we have to be able to convert the AC voltage coming from the wall is converted to DC voltage for the model to use.
+
+
 \begin{table}[H]
     \centering
 	\begin{tabularx}{.8\textwidth}
@@ -287,9 +291,12 @@ The required sensing subsystem capabilities include:
     \begin{itemize}
         \item Spectral frequency separation
         \item Spectral range from 400 to 1700nm
+        \item High Signal to Noise Ratio
     \end{itemize}
 
-    Frequency separation mechanisms under consideration are:
+
+	Silicon photodiodes have a spectral range across the visible spectrum, usually spanning from 350 to 1000nm. In order to generate spectrographs with the relevant molecular fingerprints of soil substances, we're going to need an infrared detector. InGaAs stands out as the ideal material for this range, with most sensors ranging from 800 to 1700nm. There are several manufacturers of silicon photodiodes, and most of them offer a small selection of InGaAs photodiodes at low prices as well. Below are the four of each.
+
 
 \begin{table}[H]
 	\centering
@@ -330,3 +337,9 @@ The required sensing subsystem capabilities include:
 	\hline
 	\end{tabular}
 \end{table}
+
+
+From the above, we selected the Newark BPX 61 for our Silicon photodiode and the Excelitas C30617BH for our InGaAs photodiode.
+
+Here are the spectral sensitivity curves for each:
+
