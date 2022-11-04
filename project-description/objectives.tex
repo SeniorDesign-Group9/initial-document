@@ -10,7 +10,7 @@ The sensing subsystem will include infrared spectroscopy to detect soil moisture
 
 The web subsystem will be able to communicate with a weather service API to get rain, temperature, frost, and humidity data and be able to relay this information to the microcontroller. The web subsystem will also be able to alert the user to conditions outside of the control of the plant bed (i.e. soil composition and frost). From the web subsystem the user will be able to change different control parameters such as sun light or water. This will all be accomplished via a graphical user interface. The stretch goals for the web subsystem are to be able to take a plant type and find the ideal parameters for growth and all the communications would occur over a secure connection such as TLSv1.2 or later.
 \subsubsection{Requirements Specifications}
-* ``The system'' refers to the plant bed and is subsystems (control, sensing, power and web)
+* ``The system'' refers to the plant bed and its subsystems (control, sensing, power and web)
 \begin{itemize}
   \item The system shall take up no more than a meter cubed of volume
   \item The system shall use solar energy and battery power with an AC source backup
@@ -19,6 +19,8 @@ The web subsystem will be able to communicate with a weather service API to get 
   \item The system shall be able to control the water supply
   \item The microcontroller shall be capable of internet communication via HTTP requests
   \item The microcontroller shall be capable of digital signal processing
+  \item The sensing subsystem shall have a spectral resolution of less than 10nm
+  \item The sensing subsystem shall have a range from 400 to 1700nm
   \item The system shall be able to convert analog signals to digital signals for processing
   \item The system shall be weatherproof
   \item The system shall weigh no more than 40 pounds empty of soil
