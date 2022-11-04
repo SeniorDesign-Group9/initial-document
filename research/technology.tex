@@ -2,15 +2,18 @@
 \subsubsection{Web Technologies}
 \paragraph{Docker}
 ``Docker is a platform designed to help developers build, share, and run modern applications. We handle the tedious setup, so you can focus on the code.'' This quote comes directly from Docker's website on why developers should switch to Docker. This technology makes items more portable by making the executable platform agnostic through the use of a docker kernel and containers. The figure below should provide some clarity:
+
 \begin{figure}[H]
     \caption{Docker architecture}
     \centering
     \includegraphics[width=\textwidth]{images/Docker Architecture.png}
     \label{fig:docker_arch}
 \end{figure}
+
 A developer can program applications such as those demonstrated in figure \ref{fig:docker_arch}, package them into images and run them in containers. Docker works with the OS kernel to provide the same environment to the application each and everytime.
 
 One of the largest advantages to using and implementing Docker that the team sees is that one team member can program and package the image and it should ``just run'' on any other team member's machine. This fact will prove very useful in integration testing especially for the socket server detailed in Section \ref{sec:web_subsystem}.
+
 \paragraph{User Interface}
 Because these are web technologies we will be using Javascript frontend frameworks/libraries for creating the frontend. Based upon cursory research, the most feature-rich and most widely used are React and VueJS.
 \subparagraph{React}
@@ -27,5 +30,22 @@ The \verb|java.net| libraries are essentially a port of the network protocols th
 The \verb|@Controller| is such a great feature in Spring Boot. Java is strictly typed, leading to a lot really helpful features in executing backend requests. Also, because of the overhead, Java ORMs tend to be more fully featured and have support for a variety of other tools that increase velocity when programming. One such tool is Liquibase. Liquibase is a database changelog tool for creating and implementing database migrations based on a code.
 
 \subparagraph{ExpressJS}
-Express is a lightweight backend framework for implementing routes and middleware in JavaScript. The biggest disadvantage of using 
+Express is a lightweight backend framework for implementing routes and middleware in JavaScript. The biggest disadvantage of using Express is the lack of low-level capabilities. Express was designed to be multiple layers of abstraction away from the kernel which may prove to be tumultuous when trying to create a socket server that communicates with the MCU.
 \paragraph{Databases}
+A database is essential for tracking data and persisting it for use later. There are two main types of database, SQL and NoSQL. With these two types of database comes a variety of implementations and on top of that a variety of tools to work with them. Let's compare SQL vs NoSQL first.
+
+\begin{figure}[H]
+    \caption{Difference between SQL and NoSQL}
+    \centering
+    \includegraphics[width=\textwidth]{images/SQL vs NoSQL.png}
+    \label{fig:sql_vs_nosql}
+\end{figure}
+
+\subparagraph{SQL vs NoSQL}
+In Figure \ref{fig:sql_vs_nosql} you can see the abstracted way to think about these two different systems. SQL records are exactly that, a record at a point in time. If one entity encapsulates another then another table holds that information. In NoSQL, the information is abstracted to a document with key-value pairs to get specific data. These documents can make references to other documents but for time-ordering this is highly ineffective. SQL records are highly effective for logs and indexing a large amount of data based on a higher level entity such as user that has many garden beds; garden beds that have a lot of data, etc.
+
+\subparagraph{MySQL vs PostgreSQL}
+The two SQL databases widely used in industry are MySQL and PostgreSQL. MySQL is touted as ``a simple relational database [... that is] very efficient and user-friendly'' while PostgreSQL is widely used in data analytic and scientific applications because of the extensibility, scalability and object models. Immediately this seems like the better option but PostgreSQL may be harder to stand up immediately. Special consideration should be given to AWS solutions as well. 
+
+\subparagraph{MongoDB vs DynamoDB}
+MongoDB is ``a general-purpose, document-based'' database. DynamoDB is AWS' proprietary solution to NoSQL databases. DynamoDB is more difficult to work with as it is the newer service, it could also potentially be more expensive over time, however, DynamoDB has improvements over MongoDB for indexing and building out reference documents. 
