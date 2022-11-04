@@ -268,7 +268,37 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 		\hline
 		\textbf{Max PV Voltage} & 30V & 50V & 55V & 55V \\
 		\hline
-		\textbf{Cost} & \$44.99 (Kit) & \$34.99 & \$20.99 & \$28.99 \\ 
+		\textbf{Self Consumption} & $\leq$10mA & $\leq$10mA & \textless10mA & $\leq$13mA \\
+		\hline
+		\textbf{Price (\$)} & 23.99 & 69.99 & 34.99 & 69.99 \\ 
+		\hline
+	\end{tabularx}
+\end{table}
+While the model is charging during the day or as a back up, this will be plugged into a wall outlet for power. This means we have to be able to convert the AC voltage coming from the wall is converted to DC voltage for the model to use.
+\begin{table}[H]
+    \centering
+	\begin{tabularx}{.8\textwidth}
+		{
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			|
+		}
+		\caption{AC/DC Converter breakdown}
+		\label{table:acdcconverter} \\
+		\hline
+		\textbf{Manu\-facturer} & \textbf{SmoTecQ} & \textbf{ANLINK} & \textbf{TMEZON} \\
+		\hline
+		\textbf{Input Voltage} &  240V & 100 - 240V & 100 - 240V \\
+		\hline
+		\textbf{Output Voltage} & 12V & 12V & 12V \\
+		\hline
+		\textbf{Current Rating} & 2A & 2A & 2A \\
+		\hline
+		\textbf{Connector} &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm\\
+		\hline
+		\textbf{Price (\$)} & 12.99 for 2 & 11.59 & 8.99 \\ 
 		\hline
 	\end{tabularx}
 \end{table}
@@ -278,9 +308,12 @@ The required sensing subsystem capabilities include:
     \begin{itemize}
         \item Spectral frequency separation
         \item Spectral range from 400 to 1700nm
+        \item High Signal to Noise Ratio
     \end{itemize}
 
-    Frequency separation mechanisms under consideration are:
+
+	Silicon photodiodes have a spectral range across the visible spectrum, usually spanning from 350 to 1000nm. In order to generate spectrographs with the relevant molecular fingerprints of soil substances, we're going to need an infrared detector. InGaAs stands out as the ideal material for this range, with most sensors ranging from 800 to 1700nm. There are several manufacturers of silicon photodiodes, and most of them offer a small selection of InGaAs photodiodes at low prices as well. Below are the four of each.
+
 
 \begin{table}[H]
 	\centering
@@ -321,3 +354,9 @@ The required sensing subsystem capabilities include:
 	\hline
 	\end{tabular}
 \end{table}
+
+
+From the above, we selected the Newark BPX 61 for our Silicon photodiode and the Excelitas C30617BH for our InGaAs photodiode.
+
+Here are the spectral sensitivity curves for each:
+
