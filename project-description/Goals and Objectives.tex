@@ -1,0 +1,132 @@
+\subsection{Goals}
+
+\begin{table}
+  \centering
+  \begin{tabularx}{\textwidth}
+    {
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      |
+    }
+    \caption{MCU option breakdown}
+    \label{table:mcubreakdown1} \\
+    \hline
+    \textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
+    \hline
+    \textbf{Manu\-facturer} & Texas Instruments & Texas Instruments & Raspberry Pi & Arduino & STMicro\-electronics \\
+    \hline
+    \textbf{Micro\-controller} & CC2652R & CC3220\-MODASF & RP2040 & nRF52840 & STM32\-L4S5VIT6 \\
+    \hline
+    \textbf{Processor} & 1x ARM Cortex-M4F & 1x ARM Cortex-M4 & 2x ARM Cortex-M0+ & 1x ARM Cortex-M4 & 1x ARM Cortex-M4 \\
+    \hline
+    \textbf{Maximum Speed (MHz)} & 48 & 80 & 133 & 64 & 120 \\
+    \hline
+    \textbf{Memory (KB)} & 256 ROM, 352 flash, 100 SRAM & 1024 flash, 256 RAM & 16 ROM, 264 SRAM & 1024 flash, 256 SRAM & 2048 flash, 640 RAM \\
+    \hline
+    \textbf{Wireless capability} & BLE5.2, Zigbee, Thread & 802.11b/g/n & 802.11n & BLE5.3, Zigbee, Thread, Matter & BT4.1, 802.11b/g/n, NFC \\
+    \hline
+    \textbf{Serial capability} & UART, I2C, I2S, SPI & UART, I2C, SPI & UART, I2C, SPI, USB1.1 & UART, I2C, I2S, SPI, USB2.0 & UART, I2C, SPI, USB2.0 \\
+    \hline
+    \textbf{Price (\$)} & 40, maybe free & 60, maybe free & 6 & 28 & 53 \\
+    \hline
+    \textbf{ADC} & 8-channel, 12-bit & 4-channel, 12-bit & 4-channel, 12-bit & 8-channel, 12-bit & 16-channel, 12-bit \\
+    \hline
+    \textbf{Clock capability} & Timer, RTC & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT \\
+    \hline
+    \textbf{GPIO (pins)} & 31 & 29 & 30 & 13 & 16 \\
+    \hline
+    \textbf{PWM (channels)} & Supported & Supported & 16 & 4 & 6 \\
+    \hline
+    % \textbf{AES (bits)} & 128, 256 & 256 & Not supported & 128 & 128 \\
+    % \hline
+    \textbf{Required voltage (V)} & 1.8 -- 3.8 & 2.3 -- 3.6 & 1.8 -- 3.3 & 4.5 -- 21 & 4.75 -- 5.25 \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+
+
+
+\subsection{Objectives}
+
+\begin{table}
+  \centering
+  \begin{tabularx}{\textwidth}
+    {
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      | >{\raggedright\arraybackslash}X
+      |
+    }
+    \caption{MCU option breakdown}
+    \label{table:mcubreakdown1} \\
+    \hline
+    \textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
+    \hline
+    \textbf{Manu\-facturer} & Texas Instruments & Texas Instruments & Raspberry Pi & Arduino & STMicro\-electronics \\
+    \hline
+    \textbf{Micro\-controller} & CC2652R & CC3220\-MODASF & RP2040 & nRF52840 & STM32\-L4S5VIT6 \\
+    \hline
+    \textbf{Processor} & 1x ARM Cortex-M4F & 1x ARM Cortex-M4 & 2x ARM Cortex-M0+ & 1x ARM Cortex-M4 & 1x ARM Cortex-M4 \\
+    \hline
+    \textbf{Maximum Speed (MHz)} & 48 & 80 & 133 & 64 & 120 \\
+    \hline
+    \textbf{Memory (KB)} & 256 ROM, 352 flash, 100 SRAM & 1024 flash, 256 RAM & 16 ROM, 264 SRAM & 1024 flash, 256 SRAM & 2048 flash, 640 RAM \\
+    \hline
+    \textbf{Wireless capability} & BLE5.2, Zigbee, Thread & 802.11b/g/n & 802.11n & BLE5.3, Zigbee, Thread, Matter & BT4.1, 802.11b/g/n, NFC \\
+    \hline
+    \textbf{Serial capability} & UART, I2C, I2S, SPI & UART, I2C, SPI & UART, I2C, SPI, USB1.1 & UART, I2C, I2S, SPI, USB2.0 & UART, I2C, SPI, USB2.0 \\
+    \hline
+    \textbf{Price (\$)} & 40, maybe free & 60, maybe free & 6 & 28 & 53 \\
+    \hline
+    \textbf{ADC} & 8-channel, 12-bit & 4-channel, 12-bit & 4-channel, 12-bit & 8-channel, 12-bit & 16-channel, 12-bit \\
+    \hline
+    \textbf{Clock capability} & Timer, RTC & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT \\
+    \hline
+    \textbf{GPIO (pins)} & 31 & 29 & 30 & 13 & 16 \\
+    \hline
+    \textbf{PWM (channels)} & Supported & Supported & 16 & 4 & 6 \\
+    \hline
+    % \textbf{AES (bits)} & 128, 256 & 256 & Not supported & 128 & 128 \\
+    % \hline
+    \textbf{Required voltage (V)} & 1.8 -- 3.8 & 2.3 -- 3.6 & 1.8 -- 3.3 & 4.5 -- 21 & 4.75 -- 5.25 \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+
+
+
+There are four distinct subsystems each that have their own necessary and stretch goals.
+
+The first of the subsystems is the controller subsystem comprised of the microcontroller and links to the sensing subsystem and the web subsystem. Through the use of digital signal processing the MCU will be able to read sensor data and adjust parameters of the controllable interfaces accordingly. The necessary goal for this interface is to be able to supply water to the plant bed. The stretch goal however is to use the solar panel array as blinds to reduce/increase sunlight and temperature. The MCU will also be able to send data to the web subsystem for alerting the user of different conditions present within the plant bed.
+
+The power subsystem as a necessary goal should be able to supply power to all the necessary components via a solar panel array and batteries. The stretch goal is to incorporate this array into the control scheme by having the array act as blinds and allow more or less sunlight to the plant bed as necessitated by the plant health parameters and battery charge parameters.
+
+The sensing subsystem will include infrared spectroscopy to detect soil moisture, soil temperature, and soil OH group content which will provide useful data about soil acidity. This will accomplished using infrared spectra signal processing. The stretch goals for this subsystem is to be able to check on various areas of the plant bed and take multiple samples as opposed to a single static sample on the same area of the plant bed. Soil nutrient estimation is also a stretch goal for this subsystem.
+
+The web subsystem will be able to communicate with a weather service API to get rain, temperature, frost, and humidity data and be able to relay this information to the microcontroller. The web subsystem will also be able to alert the user to conditions outside of the control of the plant bed (i.e. soil composition and frost). From the web subsystem the user will be able to change different control parameters such as sun light or water. This will all be accomplished via a graphical user interface. The stretch goals for the web subsystem are to be able to take a plant type and find the ideal parameters for growth and all the communications would occur over a secure connection such as TLSv1.2 or later.
+\subsubsection{Requirements Specifications}
+* ``The system'' refers to the plant bed and its subsystems (control, sensing, power and web)
+\begin{itemize}
+  \item The system shall take up no more than a meter cubed of volume
+  \item The system shall use solar energy and battery power with an AC source backup
+  \item The power system shall have an overcharge protection
+  \item The power system shall have current leakage protection
+  \item The system shall be able to control the water supply
+  \item The microcontroller shall be capable of internet communication via HTTP requests
+  \item The microcontroller shall be capable of digital signal processing
+  \item The sensing subsystem shall have a spectral resolution of less than 10nm
+  \item The sensing subsystem shall have a range from 400 to 1700nm
+  \item The system shall be able to convert analog signals to digital signals for processing
+  \item The system shall be weatherproof
+  \item The system shall weigh no more than 40 pounds empty of soil
+  \item The system shall be of physical construction pursuant to any governing construction standards
+\end{itemize}
