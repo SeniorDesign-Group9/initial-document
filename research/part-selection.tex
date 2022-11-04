@@ -268,7 +268,37 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 		\hline
 		\textbf{Max PV Voltage} & 30V & 50V & 55V & 55V \\
 		\hline
-		\textbf{Cost} & \$44.99 (Kit) & \$34.99 & \$20.99 & \$28.99 \\ 
+		\textbf{Self Consumption} & $\leq$10mA & $\leq$10mA & \textless10mA & $\leq$13mA \\
+		\hline
+		\textbf{Price (\$)} & 23.99 & 69.99 & 34.99 & 69.99 \\ 
+		\hline
+	\end{tabularx}
+\end{table}
+While the model is charging during the day or as a back up, this will be plugged into a wall outlet for power. This means we have to be able to convert the AC voltage coming from the wall is converted to DC voltage for the model to use.
+\begin{table}[H]
+    \centering
+	\begin{tabularx}{.8\textwidth}
+		{
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			|
+		}
+		\caption{AC/DC Converter breakdown}
+		\label{table:acdcconverter} \\
+		\hline
+		\textbf{Manu\-facturer} & \textbf{SmoTecQ} & \textbf{ANLINK} & \textbf{TMEZON} \\
+		\hline
+		\textbf{Input Voltage} &  240V & 100 - 240V & 100 - 240V \\
+		\hline
+		\textbf{Output Voltage} & 12V & 12V & 12V \\
+		\hline
+		\textbf{Current Rating} & 2A & 2A & 2A \\
+		\hline
+		\textbf{Connector} &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm\\
+		\hline
+		\textbf{Price (\$)} & 12.99 for 2 & 11.59 & 8.99 \\ 
 		\hline
 	\end{tabularx}
 \end{table}
@@ -276,40 +306,68 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 \subsubsection{Sensing Subsystem}
 The required sensing subsystem capabilities include:
     \begin{itemize}
-        \item Diffraction Grating or Diffraction Wheel
-        \item Motorized frequency selection mechanism
-        \item SWIR regime Photodiode
+        \item Spectral frequency separation
+        \item Spectral range from 400 to 1700nm
+        \item High Signal to Noise Ratio
     \end{itemize}
 
-    Frequency separation mechanisms under consideration are:
-    
+
+	Silicon photodiodes have a spectral range across the visible spectrum, usually spanning from 350 to 1000nm. In order to generate spectrographs with the relevant molecular fingerprints of soil substances, we're going to need an infrared detector. InGaAs stands out as the ideal material for this range, with most sensors ranging from 800 to 1700nm. There are several manufacturers of silicon photodiodes, and most of them offer a small selection of InGaAs photodiodes at low prices as well. Below are the four of each.
+
+
 \begin{table}[H]
-\begin{tabularx}{\textwidth}
-    {
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        |
-    }
-	\caption{Infrared Sensors} 
-	\label{table:sensors}\\
+	\centering
+	\label{table:VISsensors}
+	\caption{VIS Sensors}
+	\begin{tabular}{|p{2cm}|l|l|l|l|}
+	\hline    
+	Model & BPX 61 & ODD-5W & FDS100 & PIN-3CD\\
     \hline
-    \textbf{Model} & \textbf{\href{https://www.edmundoptics.com/p/ingaas-detector-70mum-dia-to-46/12571/}{0.07mm Dia., TO-46 Package, InGaAs Photodiode}} & \textbf{\href{https://www.edmundoptics.com/p/ingaas-detector-120mum-dia-to-46/12574/}{0.12mm Dia., TO-46 Package, InGaAs Photodiode}} & \textbf{\href{https://www.thorlabs.com/thorproduct.cfm?partnumber=FGA01}{FGA01 - InGaAs Photodiode}} & \textbf{\href{https://www.thorlabs.com/thorproduct.cfm?partnumber=FGA015}{FGA015 - InGaAs Photodiode}} \\
+	Manufacturer & Newark & Digikey Opto Diode Corp & Thorlabs & Edmund Optics\\
     \hline
-    \textbf{Manu\-facturer} & Edmund Optics & Edmund Optics & ThorLabs & Thorlabs \\
+	Spectral Range (nm) & 400-1100 & 300-1100 & 350-1100 & 350-1100\\
     \hline
-    \textbf{Spectral Response (nm)} & 900 - 1700 & 900 - 1700 & 800 - 1700 & 800 - 1700 \\
+	Active Area (mm sqrd) & 7.02 & 5 & 13 & 3.2\\
     \hline
-    \textbf{Active Area Diameter (mm):} & 0.07 & 0.12 & 0.01 & 0.018 \\
+	Cost (\$) & 13.06 & 14.50 & 16.08 & 34.00\\
     \hline
-    \textbf{Responsivity (A/W)} & 0.9 & 0.9 & 1.003 & 0.95 \\
-    \hline
-    \textbf{Price (\$)} & 88 & 88 & 67.55 & 63 \\
-    \hline
-	\end{tabularx}
+	\end{tabular}
 \end{table}
 
-Diffraction gratings and LED Probes are still being evaluated for necessity:
+
+
+\begin{table}[H]
+	\centering
+	\label{table:NIRsensors}
+	\caption{NIR Sensors}
+	\begin{tabular}{|p{2cm}|l|l|l|l|}
+	\hline    
+	Model & C30617BH & 0800-3111-011 & FGA015 & N/A\\
+	\hline
+	Manufacturer & Digikey Excelitas & Digikey Advanced Photonix & Thorlabs & Edmund Optics\\
+	\hline
+	Spectral Range (nm) & 800-1700 & 800-1700 & 800-1700 & 800-1700\\
+	\hline
+	Active Area (mm sqrd) & 0.1 & 1.36 & 0.018 & 0.12\\
+	\hline
+	Cost (\textdollar) & 43.58 & 50.21 & 63.00 & 88.00 \\
+	\hline
+	\end{tabular}
+\end{table}
+
+
+From the above, we selected the Newark BPX 61 for our Silicon photodiode and the Excelitas C30617BH for our InGaAs photodiode.
+
+Here are the spectral sensitivity curves for each:
+
+\begin{figure}[H]
+    \caption{VIS Photodiode Spectral Sensitivity}
+    \centering
+    \includegraphics[width=\textwidth]{images/NewarkBPX61.png}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{NIR Photodiode Spectral Sensitivity}
+    \centering
+    \includegraphics[width=\textwidth]{images/DigikeyExcilitasNIRSensor.png}
+\end{figure}
