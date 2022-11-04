@@ -1,118 +1,129 @@
 \subsection{Goals}
 
-\begin{table}
+The system is divided into four subsystems that reflect each of the team member’s specialties. The Goals Table lists the system goals in three categories: core goals, stretch goals, and advance goals. Subsystems are grouped, except when they are split up by goal category. In addition, each goal corresponds to a tagline, for reference in the Objectives Table below.
+
+
+\begin{table}[H]
   \centering
-  \begin{tabularx}{\textwidth}
-    {
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      |
-    }
-    \caption{Goals}
-    \label{table:Goals} \\
+  \begin{tabular}{|p{3cm}|p{7cm}|p{3cm}|}
     \hline
-    \textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
+    Tagline & Core goals & Area of Focus \\
     \hline
-    \textbf{Manu\-facturer} & Texas Instruments & Texas Instruments & Raspberry Pi & Arduino & STMicro\-electronics \\
+    Size & The entire system will be the size of a small garden & General\\
     \hline
-    \textbf{Micro\-controller} & CC2652R & CC3220\-MODASF & RP2040 & nRF52840 & STM32\-L4S5VIT6 \\
+    Power supply & The power subsystem will collect its own power	& Power\\
     \hline
-    \textbf{Processor} & 1x ARM Cortex-M4F & 1x ARM Cortex-M4 & 2x ARM Cortex-M0+ & 1x ARM Cortex-M4 & 1x ARM Cortex-M4 \\
+    Power supply & The power subsystem will store power	& Power\\
     \hline
-    \textbf{Maximum Speed (MHz)} & 48 & 80 & 133 & 64 & 120 \\
+    Power supply & The power subsystem will be able to connect to an external power supply as a backup & Power\\
     \hline
-    \textbf{Memory (KB)} & 256 ROM, 352 flash, 100 SRAM & 1024 flash, 256 RAM & 16 ROM, 264 SRAM & 1024 flash, 256 SRAM & 2048 flash, 640 RAM \\
+    Motor controls & The microcontroller will regulate the power generation system & MCU, Power\\
     \hline
-    \textbf{Wireless capability} & BLE5.2, Zigbee, Thread & 802.11b/g/n & 802.11n & BLE5.3, Zigbee, Thread, Matter & BT4.1, 802.11b/g/n, NFC \\
+    Motor controls & The microcontroller will control the water regulation system & MCU, Power\\
     \hline
-    \textbf{Serial capability} & UART, I2C, I2S, SPI & UART, I2C, SPI & UART, I2C, SPI, USB1.1 & UART, I2C, I2S, SPI, USB2.0 & UART, I2C, SPI, USB2.0 \\
+    Motor controls & The microcontroller will control the sensing subsystem & MCU, Sensing\\
     \hline
-    \textbf{Price (\$)} & 40, maybe free & 60, maybe free & 6 & 28 & 53 \\
+    Signal Analysis & The microcontroller will read an electrical signal from the sensing subsystem & MCU, Sensing\\
     \hline
-    \textbf{ADC} & 8-channel, 12-bit & 4-channel, 12-bit & 4-channel, 12-bit & 8-channel, 12-bit & 16-channel, 12-bit \\
+    Signal Analysis & The microcontroller will calculate variables based on the signals from the sensor. & MCU, Sensing\\
     \hline
-    \textbf{Clock capability} & Timer, RTC & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT \\
+    Cost & The sensing subsystem will be cheap to produce & Sensing\\
     \hline
-    \textbf{GPIO (pins)} & 31 & 29 & 30 & 13 & 16 \\
+    Wireless Comm/ Networking & The microcontroller will connect to the internet & MCU, Web\\
     \hline
-    \textbf{PWM (channels)} & Supported & Supported & 16 & 4 & 6 \\
+    Wireless Comm/ Networking & The microcontroller will prompt messages to the user through the web interface & MCU, Web\\
     \hline
-    % \textbf{AES (bits)} & 128, 256 & 256 & Not supported & 128 & 128 \\
-    % \hline
-    \textbf{Required voltage (V)} & 1.8 -- 3.8 & 2.3 -- 3.6 & 1.8 -- 3.3 & 4.5 -- 21 & 4.75 -- 5.25 \\
+    Wireless Comm/ Networking & The microcontroller will use internet weather projections to determine rainfall and temperature & MCU, Web\\
     \hline
-  \end{tabularx}
+  \end{tabular}
+  \label{table:CoreGoals}
+  \caption{Core Goals}
 \end{table}
 
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|p{3cm}|p{7cm}|p{3cm}|}
+    \hline
+    Stretch goals &  & \\
+    \hline
+    Motor controls & The microcontroller will control solar panel position and balance system power with plant need for sunlight, and surrounding temperature & MCU, Power\\
+    \hline
+    Motor controls & The sensing subsystem will prompt dispensing of fertilizer	Sensing, & Power\\
+    \hline
+    Motor controls & The sensing subsystem will automatically level the soil and position the sensor for data collection & Sensing, Power\\
+    \hline
+    Motor controls & The sensing subsystem will collect readings from several positions in the garden bed & Sensing, Power\\
+    \hline
+    Wireless Comm/ Networking & The web interface will use a secure communications protocol & Web\\
+    \hline
+    Wireless Comm/ Networking & The web interface will allow the user to select a plant and identify the best system parameters for growth & Web\\
+    \hline
+  \end{tabular}
+  \label{table:StretchGoals}
+  \caption{Stretch Goals}
+\end{table}
 
-
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|p{3cm}|p{7cm}|p{3cm}|}
+    \hline
+    Advance Goals &  & \\
+    \hline
+    Wireless Comm/ Networking & The web interface will allow the user to control the system parameters based on the selected plant & Web, MCU, Power\\
+    \hline
+  \end{tabular}
+  \label{table:AdvanceGoals}
+  \caption{Advance Goals}
+\end{table}
 
 \subsection{Objectives}
 
-\begin{table}
+Refer Objectives back to goals using their tagline.
+
+
+\begin{table}[H]
   \centering
-  \begin{tabularx}{\textwidth}
-    {
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      | >{\raggedright\arraybackslash}X
-      |
-    }
-    \caption{Objectives}
-    \label{table:Objectives} \\
+  \begin{tabular}{|p{3cm}|p{7cm}|p{3cm}|}
     \hline
-    \textbf{Model} & \textbf{\href{https://www.ti.com/tool/LAUNCHXL-CC26X2R1}{LAUNCH\-XL-CC26X2\-R1}} & \textbf{\href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCH\-CC3220\-MODASF}} & \textbf{\href{https://www.raspberrypi.com/products/raspberry-pi-pico/}{Pico W}} & \textbf{\href{https://store-usa.arduino.cc/products/arduino-nano-33-ble?selectedStore=u}{Nano 33 BLE}} & \textbf{\href{https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html}{B-L4S5I-IOT01A}} \\
+    Tagline / Goal & Objective	Area of Focus\\
     \hline
-    \textbf{Manu\-facturer} & Texas Instruments & Texas Instruments & Raspberry Pi & Arduino & STMicro\-electronics \\
+    Size & The system will be small, about a cubic meter & General\\
     \hline
-    \textbf{Micro\-controller} & CC2652R & CC3220\-MODASF & RP2040 & nRF52840 & STM32\-L4S5VIT6 \\
+    Power supply & The power subsystem will use solar panels to collect power & Power\\
     \hline
-    \textbf{Processor} & 1x ARM Cortex-M4F & 1x ARM Cortex-M4 & 2x ARM Cortex-M0+ & 1x ARM Cortex-M4 & 1x ARM Cortex-M4 \\
+    Power supply & The power subsystem will use a battery to store enough power for at least 24 hours of operation & Power\\
     \hline
-    \textbf{Maximum Speed (MHz)} & 48 & 80 & 133 & 64 & 120 \\
+    Power supply & The power subsystem will be AC wall plug compatible & Power\\
     \hline
-    \textbf{Memory (KB)} & 256 ROM, 352 flash, 100 SRAM & 1024 flash, 256 RAM & 16 ROM, 264 SRAM & 1024 flash, 256 SRAM & 2048 flash, 640 RAM \\
+    Power supply & The power subsystem will have current leakage protection & Power\\
     \hline
-    \textbf{Wireless capability} & BLE5.2, Zigbee, Thread & 802.11b/g/n & 802.11n & BLE5.3, Zigbee, Thread, Matter & BT4.1, 802.11b/g/n, NFC \\
+    Motor Controls & The MCU will control the position of the solar panels & Power, MCU\\
     \hline
-    \textbf{Serial capability} & UART, I2C, I2S, SPI & UART, I2C, SPI & UART, I2C, SPI, USB1.1 & UART, I2C, I2S, SPI, USB2.0 & UART, I2C, SPI, USB2.0 \\
+    Motor controls & The MCU will control water dispensing to the garden bed using a solenoid & Power, MCU\\
     \hline
-    \textbf{Price (\$)} & 40, maybe free & 60, maybe free & 6 & 28 & 53 \\
+    Signal Analysis & The sensing subsystem will be a spectrometer that uses diffraction to separate frequencies spatially & Sensing\\
     \hline
-    \textbf{ADC} & 8-channel, 12-bit & 4-channel, 12-bit & 4-channel, 12-bit & 8-channel, 12-bit & 16-channel, 12-bit \\
+    Signal Analysis & The sensing subsystem will use photodiodes to sensitive the spectral regime corresponding to soil moisture, acidity, and nutrient content & Sensing\\
     \hline
-    \textbf{Clock capability} & Timer, RTC & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT & Timer, RTC, WDT \\
+    Signal Analysis & The sensing subsystem will use a stepper motor or servo to scan the beam across the sensors & MCU, Sensing\\
     \hline
-    \textbf{GPIO (pins)} & 31 & 29 & 30 & 13 & 16 \\
+    Signal Analysis & The sensing subsystem will increase the SNR using LEDs to illuminate the soil & Sensing\\
     \hline
-    \textbf{PWM (channels)} & Supported & Supported & 16 & 4 & 6 \\
+    Signal Analysis & The sensing subsystem will have a fiber collimator to contain the beam & Sensing\\
     \hline
-    % \textbf{AES (bits)} & 128, 256 & 256 & Not supported & 128 & 128 \\
-    % \hline
-    \textbf{Required voltage (V)} & 1.8 -- 3.8 & 2.3 -- 3.6 & 1.8 -- 3.3 & 4.5 -- 21 & 4.75 -- 5.25 \\
+    Cost & The cost of the sensing subsystem will be less than \textdollar1000 & Sensing\\
     \hline
-  \end{tabularx}
+    Wireless Comm/Networking & The MCU will make HTTP Requests to connect to the internet & MCU, Web\\
+    \hline
+    Wireless Comm/Networking & The MCU will communicate through a secure protocol such as TLSv1.2 or later & Web\\
+    \hline
+  \end{tabular}
+  \label{table:Objectives}
+  \caption{Objectives}
 \end{table}
 
 
 
-
-There are four distinct subsystems each that have their own necessary and stretch goals.
-
-The first of the subsystems is the controller subsystem comprised of the microcontroller and links to the sensing subsystem and the web subsystem. Through the use of digital signal processing the MCU will be able to read sensor data and adjust parameters of the controllable interfaces accordingly. The necessary goal for this interface is to be able to supply water to the plant bed. The stretch goal however is to use the solar panel array as blinds to reduce/increase sunlight and temperature. The MCU will also be able to send data to the web subsystem for alerting the user of different conditions present within the plant bed.
-
-The power subsystem as a necessary goal should be able to supply power to all the necessary components via a solar panel array and batteries. The stretch goal is to incorporate this array into the control scheme by having the array act as blinds and allow more or less sunlight to the plant bed as necessitated by the plant health parameters and battery charge parameters.
-
-The sensing subsystem will include infrared spectroscopy to detect soil moisture, soil temperature, and soil OH group content which will provide useful data about soil acidity. This will accomplished using infrared spectra signal processing. The stretch goals for this subsystem is to be able to check on various areas of the plant bed and take multiple samples as opposed to a single static sample on the same area of the plant bed. Soil nutrient estimation is also a stretch goal for this subsystem.
-
-The web subsystem will be able to communicate with a weather service API to get rain, temperature, frost, and humidity data and be able to relay this information to the microcontroller. The web subsystem will also be able to alert the user to conditions outside of the control of the plant bed (i.e. soil composition and frost). From the web subsystem the user will be able to change different control parameters such as sun light or water. This will all be accomplished via a graphical user interface. The stretch goals for the web subsystem are to be able to take a plant type and find the ideal parameters for growth and all the communications would occur over a secure connection such as TLSv1.2 or later.
 \subsubsection{Requirements Specifications}
 * ``The system'' refers to the plant bed and its subsystems (control, sensing, power and web)
 \begin{itemize}
