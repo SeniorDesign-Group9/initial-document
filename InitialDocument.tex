@@ -58,8 +58,22 @@ High level overview of design:
 \input{design-details/power.tex}                % Section 5.2
 \input{design-details/sensing.tex}              % Section 5.3
 \input{design-details/web.tex}                  % Section 5.4
-                                                % section 5.5 - integration design add section
+\input{design-details/integration.tex}          % section 5.5
 \section{Testing}                               % Section 6 - add sections for individual test plans, and integration test
+Incremental unit testing will be used during the development process
+to ensure each subsystem fulfills design requirements as described in
+\autoref{sec:??}. Controller subsystem testing will be performed in
+\autoref{sec:controller_subsystem_testing}, power subsystem testing will be
+performed in \autoref{sec:power_subsystem_testing}, sensing subsystem testing
+will be performed in \autoref{sec:sensing_subsystem_testing}, and web subsystem
+testing will be performed in \autoref{sec:web_subsystem_testing}. After
+subsystems have fulfilled unit testing requirements, integration testing will
+be performed with the criteria defined in \autoref{sec:integration_testing}.
+\input{testing/mcu-testing.tex}                 % Section 6.1
+\input{testing/power-testing.tex}               % Section 6.2
+\input{testing/sensing-testing.tex}             % Section 6.3
+\input{testing/web-testing.tex}                 % Section 6.4
+\input{testing/integration-testing.tex}         % Section 6.5
 \section{Administrative Content}                % Section 7
 \input{admin-content/milestones.tex}            % Section 7.1 - refine backlog and move here, create gantt chart
 \input{admin-content/finance.tex}               % Section 7.2 - update finances what was budgeted versus what was spent
