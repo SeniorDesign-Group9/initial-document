@@ -177,15 +177,97 @@ according to the definitions given in the UML diagram.
 
 % Web class
 \paragraph{Web Class}
+The Web class will have 2 private variables: \texttt{ip} (string) and
+\texttt{port} (int). \texttt{ip} signifies the IPv4 address of the AWS instance
+to connect to, and \texttt{port} is the port to access AWS through. The default
+state of this class is \texttt{ip = "0.0.0.0"} and \texttt{port = 0}. It will
+have a public deconstructor and a constructor, requiring the variables string
+\texttt{ip} and int \texttt{port} to be passed to the constructor. The class
+will have 4 public setters and getters: \texttt{void set\_ip(string ip)},
+\texttt{string get\_ip(void)}, \texttt{void set\_port(int port)}, 
+\texttt{int get\_port(void)}. The class will have 2 public functions:
+\texttt{void receive(void)} and \texttt{void send(void)}.
+\texttt{receive()} will be used to receive the next command from AWS, and
+will then decode the command and use functions from other classes to execute
+the command received from AWS. \texttt{send()} will use functions from
+other classes to combine and send the current sensor readings and settings to
+AWS. Only 1 object of \texttt{class Web} will be instantiated.
 
 % Plant class
 \paragraph{Plant Class}
-
-% Solar class
-\paragraph{Solar Class}
+The Plant class will have 5 private variables: \texttt{water\_active} (bool),
+\texttt{temp} (double), \texttt{moisture} (double), \texttt{oh\_comp}
+(unsigned 32-bit int), and \texttt{nutrients} (unsigned 32-bit int).
+\texttt{water\_active} is the state of the water source feeding the plant,
+\texttt{temp} is the current air temperature near/around the plant,
+\texttt{moisture} is the moisture percentage of the soil near/around the plant,
+\texttt{oh\_comp} is an encoded word of parameters relating to the
+spectroscopic analysis of the soil's OH composition, and
+\texttt{nutrients} is an encoded word of parameters relating to the
+spectroscopic analysis of the soil's nutritional composition. The
+default state of this class is \texttt{water\_active = false},
+\texttt{temp = 77.0} (room temperature in $\degree$F), \texttt{moisture = 25.0}
+(approximate average soil moisture), \texttt{oh\_comp = 0}, and
+\texttt{nutrients = 0}. It will have a public deconstructor and a constructor,
+requiring no variables to be passed to the constructor. The class will have 12
+public setters and getters:
+\texttt{void set\_water\_active(bool water\_active)}, 
+\texttt{bool get\_water\_active(void)}, 
+\texttt{void set\_temp(double temp)}, \texttt{double get\_temp(void)}, 
+\texttt{void set\_moisture(double moisture)}, 
+\texttt{double get\_moisture(void)}, 
+\texttt{void set\_oh\_comp(uint32\_t oh\_comp)}, 
+\texttt{uint32\_t get\_oh\_comp(void)},
+\texttt{uint32\_t get\_oh\_comp\_raw(void)}, 
+\texttt{void set\_nutrients(uint32\_t nutrients)}, 
+\texttt{uint32\_t get\_nutrients(void)}, and
+\texttt{uint32\_t get\_nutrients\_raw(void)}. The purpose of the normal getters
+for \texttt{oh\_comp} and \texttt{nutrients} are to get human-readable formats
+for the OH composition of, and nutrients in the soil. The raw getters are to
+get the raw values of \texttt{oh\_comp} and \texttt{nutrients}. The setters
+accept the raw values of \texttt{oh\_comp} and \texttt{nutrients}. Only 
+1 object of \texttt{class Plant} will be instantiated.
 
 % ADC class
 \paragraph{ADC Class}
+The ADC class will have 4 private variables: \texttt{pin} (int), 
+\texttt{channel} (int), \texttt{res\_raw} (unsigned 16-bit int), and
+\texttt{res\_timestamp} (unsigned 16-bit int). \texttt{pin} is the physical
+pin of the voltage input to the ADC on the CC3220, \texttt{channel} is the
+ADC channel corresponding to the selected pin. \texttt{res\_raw} is the raw
+result of the ADC for the corresponding channel. \texttt{res\_timestamp} is the
+timestamp of the ADC result for the corresponding channel. The default state
+of this class is \texttt{res\_raw = 0} and \texttt{res\_timestamp = 0}. It will
+have a public deconstructor and a constructor, requiring the variables int
+\texttt{pin} and int \texttt{channel} to be passed to the constructor.
+The class will have 9 public setters and getters:
+\texttt{void set\_pin(int pin)}, \texttt{int get\_pin(void)},
+\texttt{void set\_channel(int channel)}, \texttt{int get\_channel(void)},
+\texttt{void set\_res\_raw(uint16\_t res\_raw)},
+\texttt{uint16\_t get\_res\_raw(void)},
+\texttt{double get\_res(void)},
+\texttt{void set\_res\_timestamp(uint\_16t res\_timestamp)},
+\texttt{uint16\_t get\_res\_timestamp(void)}. The \texttt{get\_res()} getter
+converts the raw result of the ADC into a voltage. The class will have 1 public
+function: \texttt{void convert(void)}. This function manually triggers
+conversion in the ADC module of the CC3220. Multiple objects of
+\texttt{class ADC} will be instantiated.
+
+% Solar class
+\paragraph{Solar Class}
+The Solar class will have 3 private variables: \texttt{theta} (double), 
+\texttt{phi} (double), and \texttt{voltage} (double). \texttt{theta} is the
+$\theta$ angle of the solar panels, \texttt{phi} is the $\phi$ angle of the
+solar panels, and \texttt{voltage} is the voltage of the battery updated at
+regular intervals. The default state of this class is \texttt{theta = 0.0},
+\texttt{phi = 0.0}, and \texttt{voltage = 0.0}. It will have a public
+deconstructor and a constructor, requiring no variables to be passed to the
+constructor. The class will have 6 public setters and getters:
+\texttt{void set\_theta(double theta)}, \texttt{double get\_theta(void)},
+\texttt{void set\_phi(double phi)}, \texttt{double get\_phi(void)},
+\texttt{void set\_voltage(double voltage)}, and
+\texttt{double get\_voltage(void)}. Only 
+1 object of \texttt{class Solar} will be instantiated.
 
 % Send to AWS, format and types of commands
 % Send straight data from the struct
