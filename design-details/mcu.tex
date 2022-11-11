@@ -23,6 +23,7 @@ for our use case.
 
 % How the MCU connects to the internet (local network, LAN -> NAT -> WAN,
 % TCP stack)
+\paragraph{CC3220 Overview}
 The Texas Instruments CC3220-series (hence referred to as the "CC3220", the
 "MCU", or the "microcontroller") of microcontrollers are WiFi-enabled
 chips with an ARM Cortex-M4 central processor and a WiFi network processor,
@@ -58,12 +59,14 @@ The CC3220's networking subsysem is further detailed in
     \centering
     \includegraphics[width=0.75\textwidth]{images/cc3220_network_subsystem.png}
 \end{figure}
+\paragraph{Connection}
 During development of our product, our microcontroller will be hardcoded
 for the selected WLAN it will access. In the future, there are multiple
 options our team will be able to explore to allow our product to connect to
 a wide variety of networks. 
 
 % option a) web interface for user to long in to WLAN
+\paragraph{Web Interface Option}
 The first option would allow unanimous adaptation of
 our product for home users. This option consists of performing first-time
 setup through a WiFi Direct connection to the MCU and allowing the user
@@ -74,6 +77,7 @@ settings. The user would also be able to configure the MCU for static
 IP addressing or DHCP IP addressing.
 
 % option b) WPS button
+\paragraph{WPS Option}
 The second option would be to implement a momentary switch which is
 programmed to connect to the MCU's WiFi Protected Setup (WPS) feature.
 This would still allow the user to connect to their network of
@@ -85,6 +89,7 @@ let the MCU and web teams focus on developing and refining their
 respective subsystems.
 
 % TCP sockets
+\paragraph{Communication Method}
 The MCU will communicate with AWS through TCP sockets. After connection to
 the user's home network, the MCU will check if there is an internet
 connection. Once an internet connection has been established, the MCU will
@@ -96,10 +101,11 @@ flow of TCP sockets as our product will implement them is detailed in
     \caption{TCP socket control flow (\href{https://www.ti.com/lit/ds/symlink/cc3220s.pdf}{SimpleLink™ Wi-Fi® CC3x20, CC3x3x Network Processor (Rev. M)}, Fig. 6-1)}
     \label{tcp_socket_flow}
     \centering
-    \includegraphics[width=0.75\textwidth]{images/tcp_socket_flow.png}
+    \includegraphics[width=\textwidth]{images/tcp_socket_flow.png}
 \end{figure}
 
 % Parameters for connection and how often it tries
+\paragraph{Connection Parameters}
 Once the MCU has established a connection to the internet and the AWS
 instance, it attempts to send current system settings and telemetry, as
 well as sensor readings to AWS. The microcontroller does this at least
@@ -110,11 +116,13 @@ likely will be futile. Therefore, any sort of link error handling will
 be performed by the link and not the microcontroller program.
 
 % Any over-the-air updates?
+\paragraph{Over-the-Air Updates}
 At this time, our team does not intend to provide a method for over-the-air
 updates (OTA), however, this is a provision that may be developed in the
 future.
 
 % MCU receives commands, decodes commands
+\paragraph{Commands from AWS}
 The MCU will receive commands and data from AWS in the following form:
 \begin{center}
     \texttt{t x c y}
@@ -143,11 +151,12 @@ consistent command string size amongst all transmissions.
     \caption{Bitwise representation of command}
     \label{command_bitwise}
     \centering
-    \includegraphics[width=0.75\textwidth]{images/command_encoding.png}
+    \includegraphics[width=\textwidth]{images/command_encoding.png}
 \end{figure}
 
 % Will program in C++. Any libraries, multithreading?
 % Singleton Pattern Thread for scheduling tasks
+\paragraph{C++ Structure}
 It should be expected that all headers from the C++ standard library (as
 defined in C++20) will be used, along with the following nonstandard
 libraries: Texas Instruments SimpleLink™ CC32xx SDK. Additionally, it is
@@ -155,6 +164,7 @@ expected that the MCU program will schedule tasks using a Singleton Pattern
 thread to ensure thread safety when accessing variables.
 
 % Classes and class diagram
+\paragraph{Classes}
 There will be a few classes defined in the MCU's programming, detailed
 in \autoref{classes_uml}. Classes will be laid out in the header file
 according to the definitions given in the UML diagram.
@@ -162,11 +172,24 @@ according to the definitions given in the UML diagram.
     \caption{UML diagram of the classes used}
     \label{classes_uml}
     \centering
-    \includegraphics[width=0.75\textwidth]{images/classes_uml.png}
+    \includegraphics[width=\textwidth]{images/classes_uml.png}
 \end{figure}
+
+% Web class
+\paragraph{Web Class}
+
+% Plant class
+\paragraph{Plant Class}
+
+% Solar class
+\paragraph{Solar Class}
+
+% ADC class
+\paragraph{ADC Class}
 
 % Send to AWS, format and types of commands
 % Send straight data from the struct
+\paragraph{Data to AWS}
 Unlike commands received from AWS, the MCU will simply send data directly
 from its classes to AWS. This is done to minimize the overhead of sending
 extraneous symbols and preserve power stored in the battery, as receiving
@@ -178,14 +201,16 @@ the symbol to encode other data).
     \caption{Bitwise representation of data sent to AWS}
     \label{toweb_encoding}
     \centering
-    \includegraphics[width=0.75\textwidth]{images/toweb_encoding.png}
+    \includegraphics[width=\textwidth]{images/toweb_encoding.png}
 \end{figure}
 
 % Global vars
+\paragraph{Global Variables}
 No global variables plan to be implemented at this time. Macros may be
 defined for configuration of the ADC and any other dependent modules.
 
 % Interrupts and ISRs
+\paragraph{Interrupts and ISRs}
 If the charge controller indicates that the battery has fallen below a
 certain voltage (named "low voltage"), the MCU will raise an interrupt and
 execute \texttt{isr\_low\_power()}. This ISR performs housekeeping before
@@ -221,6 +246,7 @@ as if the MCU had just executed \texttt{isr\_start\_up()}. All classes will
 be initialized to default values. This ISR resets the entire system.
 
 % File organization (main, header files, other source files, etc.)
+\paragraph{File Organization}
 Classes, macros, functions, and variables will be defined/prototyped to the
 extent required in a header file to be named \texttt{garden.h}. These
 classes, functions, and variables will be further defined in a seperate
@@ -229,6 +255,7 @@ function and the remaining classes, macros, functions, and variables,
 required will be located in \texttt{main.cpp}.
 
 % How the MCU gets data from sensors (ADC)
+\paragraph{Analog-to-digital Conversion}
 The CC3220 contains a 12-bit general purpose analog-to-digital converter
 (ADC) with 4 externally-accessible channels and a sampling periodicity of
 16 $\upmu$s per channel (62.5 ksps per channel). The architecture of the
@@ -237,7 +264,7 @@ CC3220's ADC is shown in \autoref{cc3220_adc_arch}.
     \caption{CC3220 ADC module architecture (\href{https://www.ti.com/lit/ug/swru465/swru465.pdf}{CC3220 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual}, Fig. 13-1)}
     \label{cc3220_adc_arch}
     \centering
-    \includegraphics[width=0.75\textwidth]{images/cc3220_adc_arch.png}
+    \includegraphics[width=\textwidth]{images/cc3220_adc_arch.png}
 \end{figure}
 
 % How the MCU gets data from sensors (ADC, cont.)
@@ -265,12 +292,14 @@ In the future, a more precise ADC module could be explored to give the
 CC3220 more resolution when performing spectroscopy.
 
 % How MCU sends data to servos
+\paragraph{Communication with Servos}
 The MCU will directly control GPIO and bit-bang values to the servo motors
 controlling the orientation of the solar panels when using functions from
 the class \texttt{Solar}. This method of control may be refined further in
 the future.
 
 % What sort of telemetry we'll have
+\paragraph{Telemetry}
 No data that would be exclusively considered telemetry will be transmitted 
 between AWS and the MCU (e.g. processor temperature). Instead, all
 "telemetry" values will be handled with interrupts and ISRs/functions
@@ -278,6 +307,7 @@ on-chip, while current settings and sensor readings will be transmitted
 back to AWS.
 
 % What kind of development model?
+\paragraph{Development Model}
 An Agile development model will be used. Code reviews will be performed on
 an as-needed basis by a convening of members of the MCU subsystem and the
 web subsystem teams.
@@ -289,6 +319,7 @@ web subsystem teams.
 \end{figure}
 
 % IDE and Git
+\paragraph{IDE and Git}
 Texas Instruments Code Composer Studio v12 will be used to program,
 compile (via TI ARM compiler v20), and debug the C++-based project. GitHub
 will be used as a repository for the project, using Git for version
