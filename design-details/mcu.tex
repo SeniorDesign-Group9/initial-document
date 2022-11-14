@@ -406,3 +406,21 @@ Texas Instruments Code Composer Studio v12 will be used to program,
 compile (via TI ARM compiler v20), and debug the C++-based project. GitHub
 will be used as a repository for the project, using Git for version
 control.
+
+% Power
+\paragraph{Power}
+The MCU will be connected to power from the power subsystem detailed in 
+\autoref{sec:power_subsystem}. It is expected to receive 3.3 V, and this will
+be fed to the integrated DC/DC converter on the CC3220. The converter is able
+to convert voltages from 2.3 to 3.6 V.
+
+% Pinout 
+\paragraph{Pinout Diagram}
+The CC3220 will connected to the following components as described by the
+pinout diagram shown in \autoref{cc3220_pinout}.
+\begin{figure}[H]
+    \caption{CC3220 pinout diagram overlaid on (\href{https://www.ti.com/lit/ds/symlink/cc3220mod.pdf}{CC3220MODx and CC3220MODAx SimpleLink™ Wi-Fi® CERTIFIED™ Wireless MCU Modules}, Fig. 7-2)}
+    \label{cc3220_pinout}
+    \centering
+    \includegraphics[width=\textwidth]{images/cc3220_pinout.png}
+\end{figure}
