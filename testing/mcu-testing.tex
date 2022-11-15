@@ -1,16 +1,16 @@
 \subsection{Controller Subsystem Testing}
 \label{sec:controller_subsystem_testing}
-The MCU subsystem will undergo a littany of testing. The electrical and
-logical characteristics, as well as software behavior will be tested to ensure
-a working product.
+The MCU subsystem will undergo a littany of testing. The electrical
+characteristics, as well as hardware and software behavior will be tested to
+ensure a working product. Any use of "system" or "the system" refers
+exclusively to, and the entirety of the MCU subsystem.
 
 % Electrical characteristics (to see what it can handle and what it uses)
 \subsubsection{Electrical Characteristics}
 The MCU subsystem should adhere to the following electrical characteristics
 related to power draw and voltage input in the following states. Unless noted,
 all voltages will be in direct current, and all conditions will be tested at
-room temperature (77 $\degree$F). Any use of "system" or "the system" refers
-exclusively to, and the entirety of the MCU subsystem.
+room temperature (77 $\degree$F). 
 
 \paragraph{General Requirements} The system should be able to accept a voltage
 of -0.5 to 3.8 V into V\textsubscript{BAT}, -0.5 to 4.3 V into any digital
@@ -20,6 +20,11 @@ accept a current of 0 to 620 mA into any pin without damage. The system should
 be able to regulate voltage going into V\textsubscript{BAT}, and provide 3.3 V
 (between 3.0 and 3.6 V) on its 3V3 rail to any components in the sensing
 subsystem that may require it.
+
+\paragraph{Operating Temperature} The system should be able to operate
+nominally within the temperature range of 30 to 140 $\degree$F. Crystal
+oscillators shall fall within the thermal drift ratings provided in the
+CC3220 technical reference material.
 
 \paragraph{Shutdown Power Draw} The system should not draw more than 10
 $\upmu$A in shut down mode. The system should not consume more than 100
@@ -55,16 +60,39 @@ operate nominally solely powered off of the solar and battery subsystem
 detailed in \autoref{sec:power_subsystem}. The system should not require any
 external power to operate in any modes (e.g. startup, active, etc.).
 
-\paragraph{Operating Temperature} The system should be able to operate
-nominally within the temperature range of 30 to 140 $\degree$F. Crystal
-oscillators shall fall within the thermal drift ratings provided in the
-CC3220 technical reference material.
+% Hardware behavior (ability to set and use peripherals n stuff)
+\subsubsection{Hardware Behavior}
+The MCU subsystem should pass the following tests related to use of the
+CC3220's onboard hardware, peripherals, and supported operations.
 
-% Logical characteristics (ability to set and use peripherals n stuff)
-\subsubsection{Logical Characteristics}
-\paragraph{Upload Programming}
-\paragraph{I2C}
-\paragraph{Onboard LED}
+\paragraph{Upload Programming} The developers should be able to successfully
+upload programming (software) that meets the requirements detailed in
+\autoref{sec:controller_subsystem}. The developers should be able to
+successfully upload programming that allows and/or performs unit testing
+(as detailed in this section, \autoref{sec:controller_subsystem_testing}).
+Programming uploaded to the CC3220 should execute either upon powering the
+system, upon command, or when executing an ISR to start up the system.
+
+\paragraph{I2C} The developers should be able to initialize I2C. I2C should
+function nominally if used for communication with any other modules in the
+overall garden bed system.
+
+\paragraph{Onboard LEDs} The system should be able to make use of its onboard
+LEDs for notifying the user or developers of system states. 
+When the system is in active mode, the green LED shall be solidly illuminated.
+When the system is in low power mode, the green LED shall flash 1 time for a
+period of 0.5 seconds, every 2 seconds. When the system is in critical power
+mode, the red LED shall flash 2 times for a period of 0.5 seconds per flash,
+seperated by 1 second between each flash, every 30 seconds. When the system is
+in shutdown mode, no LEDs shall be active. When the system is starting up, the
+green and red LED shall be solidly illuminated until the startup sequence is
+completed and the system transitions into a different power mode. The yellow
+LED shall solidly illuminate while receiving data through the RF antenna for
+the duration of the reception.
+The yellow LED shall blink 1 time every 0.2 seconds for a period of 0.1 second
+while transmitting data through the RF antenna for the duration of the
+transmission.
+
 \paragraph{Watchdog Timer}
 \paragraph{Real-time Clock}
 \paragraph{WiFi Module}
@@ -86,4 +114,4 @@ CC3220 technical reference material.
 \paragraph{Send (Sockets)}
 \paragraph{Receive (Command)}
 \paragraph{Send (Data)}
-\paragraph{ISR}
+\paragraph{ISRs} % Power modes
