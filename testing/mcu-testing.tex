@@ -5,35 +5,85 @@ logical characteristics, as well as software behavior will be tested to ensure
 a working product.
 
 % Electrical characteristics (to see what it can handle and what it uses)
-\paragraph{Electrical Characteristics}
-Shutoff current testing \\
-Hibernate current testing \\
-Low power current testing \\
-Active current testing \\
-Shutoff voltage testing \\
-Hibernate voltage testing \\
-Low power voltage testing \\
-Active voltage testing \\
+\subsubsection{Electrical Characteristics}
+The MCU subsystem should adhere to the following electrical characteristics
+related to power draw and voltage input in the following states. Unless noted,
+all voltages will be in direct current, and all conditions will be tested at
+room temperature (77 $\degree$F). Any use of "system" or "the system" refers
+exclusively to, and the entirety of the MCU subsystem.
+
+\paragraph{General Requirements} The system should be able to accept a voltage
+of -0.5 to 3.8 V into V\textsubscript{BAT}, -0.5 to 4.3 V into any digital
+IO-configured pin, -0.5 to 2.1 V into any RF-configured pin, and -0.5 to 2.1 V
+into any analog-configured pin without damage. The system should be able to
+accept a current of 0 to 620 mA into any pin without damage. The system should
+be able to regulate voltage going into V\textsubscript{BAT}, and provide 3.3 V
+(between 3.0 and 3.6 V) on its 3V3 rail to any components in the sensing
+subsystem that may require it.
+
+\paragraph{Shutdown Power Draw} The system should not draw more than 10
+$\upmu$A in shut down mode. The system should not consume more than 100
+$\upmu$W in shut down mode.
+
+\paragraph{Critical Power Draw} The system should not draw more than 1 mA in
+critical power mode. The system should not consume more than 5 mW in critical
+power mode.
+
+\paragraph{Low Power Draw} The system should not draw more than 100 mA while
+receiving or idling in low power mode, and should not draw more than 250
+mA while transmitting in low power mode. The system should not consume more
+than 500 mW while receiving or idling in low power mode, and should not
+consume more than 1.25 W while transmitting in low power mode. The system
+should be able to sufficiently power any components in the sensing subsystem in
+low power mode.
+
+\paragraph{Active Power Draw} The system should not draw more than 150 mA while
+receiving or idling in active mode, and should not draw more than 300
+mA while transmitting in active mode. The system should not consume more
+than 750 mW while receiving or idling in active mode, and should not
+consume more than 1.50 W while transmitting in active mode. The system
+should be able to sufficiently power any components in the sensing subsystem in
+active mode.
+
+\paragraph{Startup Power Draw} The system should not draw more than 750 mA
+within the first 20 seconds of powering on or starting up the system. The
+system should not consume more than 4.00 W within the first 20 seconds of
+powering on or starting up the system.
+
+\paragraph{Solar Panels and Battery System} The system should be able to
+operate nominally solely powered off of the solar and battery subsystem
+detailed in \autoref{sec:power_subsystem}. The system should not require any
+external power to operate in any modes (e.g. startup, active, etc.).
+
+\paragraph{Operating Temperature} The system should be able to operate
+nominally within the temperature range of 30 to 140 $\degree$F. Crystal
+oscillators shall fall within the thermal drift ratings provided in the
+CC3220 technical reference material.
 
 % Logical characteristics (ability to set and use peripherals n stuff)
-\paragraph{Logical Characteristics}
-Upload code \\
-I2C \\
-LEDs \\
-WDT \\
-RTC \\
-WiFi module \\
-GPIO low/high \\
-Interrupts/ISRs \\
-ADC \\
+\subsubsection{Logical Characteristics}
+\paragraph{Upload Programming}
+\paragraph{I2C}
+\paragraph{Onboard LED}
+\paragraph{Watchdog Timer}
+\paragraph{Real-time Clock}
+\paragraph{WiFi Module}
+\paragraph{GPIO}
+\paragraph{Interrupts/ISRs}
+\paragraph{ADC}
+\paragraph{Reset Button}
+\paragraph{Startup}
 
 % Software behavior (actual program)
-\paragraph{Software Behavior}
-Reset button \\
-Connect to network \\
-Connect to AWS \\
-Receive over sockets \\
-Send over sockets \\
-Receive command from AWS \\
-Send command to AWS \\
-ISRs \\
+\subsubsection{Software Behavior}
+\paragraph{Startup}
+\paragraph{Shutdown}
+\paragraph{Reset}
+\paragraph{Networking}
+\paragraph{Internet}
+\paragraph{AWS}
+\paragraph{Receive (Sockets)}
+\paragraph{Send (Sockets)}
+\paragraph{Receive (Command)}
+\paragraph{Send (Data)}
+\paragraph{ISR}
