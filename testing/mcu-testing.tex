@@ -63,7 +63,10 @@ external power to operate in any modes (e.g. startup, active, etc.).
 % Hardware behavior (ability to set and use peripherals n stuff)
 \subsubsection{Hardware Behavior}
 The MCU subsystem should pass the following tests related to use of the
-CC3220's onboard hardware, peripherals, and supported operations.
+CC3220's onboard hardware, peripherals, and supported operations. The
+programming developed and test the below criteria will be intended to only
+perform testing on the below modules, and may or may not be present in the
+product software build.
 
 \paragraph{Upload Programming} The developers should be able to successfully
 upload programming (software) that meets the requirements detailed in
@@ -93,18 +96,78 @@ The yellow LED shall blink 1 time every 0.2 seconds for a period of 0.1 second
 while transmitting data through the RF antenna for the duration of the
 transmission.
 
-\paragraph{Watchdog Timer}
-\paragraph{Real-time Clock}
-\paragraph{WiFi Module}
-\paragraph{GPIO}
-\paragraph{Interrupts/ISRs}
-\paragraph{ADC}
-\paragraph{Reset Button}
-\paragraph{Startup}
+\paragraph{Watchdog Timer} The developers should be able to initialize the
+watchdog timer. When the watchdog timer reaches zero, the watchdog module
+shall trigger an interrupt. The ISR triggered by the interrupt shall
+reset the watchdog timer. In the case the ISR is not able to be triggered by
+the interrupt (e.g. system freeze), the watchdog module shall reset the system.
+After the system is reset by the watchdog module, it shall start up normally
+(i.e. in a way that does not functionally differ from a regular startup).
+
+\paragraph{WiFi Module} The WiFi module should conform to the 802.11b/g/n
+standards. The developers should be able to configure the WiFi
+module to support 802.11b, 802.11g, or 802.11n in WiFi station mode.  The 
+developers should be able to configure the WiFi module to support 802.11b, or
+802.11g in WiFi Direct mode. The WiFi module shall allow the system to
+connect to either an open WLAN, or a WLAN secured by WPA2 (Personal or
+Enterprise). The MCU shall connect to a WLAN via a hardcoded password (and
+username, if needed), or via SmartConfig. The system shall receive an IPv4
+address via DHCP, or it shall be able to be statically assigned. While
+connected, the WiFi module shall be capable of sending and receiving
+data at speeds of at least 10 kbps at least 80\% of the time.
+
+\paragraph{GPIO} The developers shall be able to configure the GPIO pins to
+the configurations available as described by technical reference documentation.
+The developers shall be able to set the state of the desired GPIO pins to
+the configurations available as described by technical reference documentation.
+
+\paragraph{Interrupts/ISRs} The developers shall be able to configure
+the interrupts available on the CC3220 as described by technical reference
+documentation to trigger an ISR of their choice. ISRs shall run within 1 second
+of triggering the interrupt linked to the specific ISR. An empty ISR shall
+return the CC3220 to its previous state before the interrupt (i.e. clear any
+flags and return any registers to their previous state).
+
+\paragraph{ADC} The developers shall be able to configure the ADC on the CC3220
+to adhere to the parameters described in the technical reference documentation.
+The ADC shall be able to measure signals with a voltage of between 0 and 1.8 V.
+The ADC shall be able to accurately measure a voltage level down to a
+resolution of $\leq$1 mV. The ADC shall be able to measure at a sampling rate
+of $\geq$50 kilosamples per second per channel. The ADC shall support
+conversion on up to 4 channels. The ADC shall support the ablility to timestamp
+samples with the clock mentioned by the technical reference documentation.
+
+\paragraph{Reset Button} The reset button shall be configured, or be
+configurable to "power cycle" the system. The reset button shall not erase
+any programming uploaded to the CC3220. The reset button shall not keep the
+system from starting for more than 1 second after the button has been released.
+
+\paragraph{Startup} The system shall not take longer than 10 seconds to begin
+its programming upon sufficient power delivery to the CC3220 as described by
+the by the technical reference documentation. The system shall not perform
+the programmed startup sequence unless interrupted to do so, or if given
+sufficient power as described by the by the technical reference documentation
+after being shut down.
+
+\paragraph{Processor} The central processor of the CC3220 shall maintain at
+least a 20 MHz clock speed while in active mode.
+
+\paragraph{Memory} The programming uploaded to the CC3220 shall not take up
+more than 64 KB of space in memory.
 
 % Software behavior (actual program)
-\subsubsection{Software Behavior}
-\paragraph{Startup}
+\subsubsection{Software Behavior} The MCU subsystem should pass the following
+tests related to use of the CC3220 to support application of the product. The
+programming developed and test the below criteria is intended to be the
+product software build.
+
+\paragraph{Startup} Upon startup, the system shall initialize the watchdog
+timer, GPIO, ADC, network stack/WiFi module.
+
+Check for interrupts.
+
+
+
 \paragraph{Shutdown}
 \paragraph{Reset}
 \paragraph{Networking}
@@ -114,4 +177,6 @@ transmission.
 \paragraph{Send (Sockets)}
 \paragraph{Receive (Command)}
 \paragraph{Send (Data)}
+\paragraph{Solar and Battery}
+\paragraph{Sensing}
 \paragraph{ISRs} % Power modes
