@@ -2,85 +2,84 @@
 \label{sec:controller_subsystem_testing}
 The MCU subsystem will undergo a littany of testing. The electrical
 characteristics, as well as hardware and software behavior will be tested to
-ensure a working product. Any use of "system" or "the system" refers
-exclusively to, and the entirety of the MCU subsystem.
+ensure a working product. Any use of "system" or "the system" in this section refers exclusively to, and the entirety of the MCU subsystem.
 
 % Electrical characteristics (to see what it can handle and what it uses)
 \subsubsection{Electrical Characteristics}
-The MCU subsystem should adhere to the following electrical characteristics
+The MCU subsystem shall adhere to the following electrical characteristics
 related to power draw and voltage input in the following states. Unless noted,
 all voltages will be in direct current, and all conditions will be tested at
 room temperature (77 $\degree$F). 
 
-\paragraph{General Requirements} The system should be able to accept a voltage
+\paragraph{General Requirements} The system shall be able to accept a voltage
 of -0.5 to 3.8 V into V\textsubscript{BAT}, -0.5 to 4.3 V into any digital
 IO-configured pin, -0.5 to 2.1 V into any RF-configured pin, and -0.5 to 2.1 V
-into any analog-configured pin without damage. The system should be able to
-accept a current of 0 to 620 mA into any pin without damage. The system should
+into any analog-configured pin without damage. The system shall be able to
+accept a current of 0 to 620 mA into any pin without damage. The system shall
 be able to regulate voltage going into V\textsubscript{BAT}, and provide 3.3 V
 (between 3.0 and 3.6 V) on its 3V3 rail to any components in the sensing
 subsystem that may require it.
 
-\paragraph{Operating Temperature} The system should be able to operate
+\paragraph{Operating Temperature} The system shall be able to operate
 nominally within the temperature range of 30 to 140 $\degree$F. Crystal
 oscillators shall fall within the thermal drift ratings provided in the
 CC3220 technical reference material.
 
-\paragraph{Shutdown Power Draw} The system should not draw more than 10
-$\upmu$A in shut down mode. The system should not consume more than 100
+\paragraph{Shutdown Power Draw} The system shall not draw more than 10
+$\upmu$A in shut down mode. The system shall not consume more than 100
 $\upmu$W in shut down mode.
 
-\paragraph{Critical Power Draw} The system should not draw more than 1 mA in
-critical power mode. The system should not consume more than 5 mW in critical
+\paragraph{Critical Power Draw} The system shall not draw more than 1 mA in
+critical power mode. The system shall not consume more than 5 mW in critical
 power mode.
 
-\paragraph{Low Power Draw} The system should not draw more than 100 mA while
-receiving or idling in low power mode, and should not draw more than 250
-mA while transmitting in low power mode. The system should not consume more
-than 500 mW while receiving or idling in low power mode, and should not
+\paragraph{Low Power Draw} The system shall not draw more than 100 mA while
+receiving or idling in low power mode, and shall not draw more than 250
+mA while transmitting in low power mode. The system shall not consume more
+than 500 mW while receiving or idling in low power mode, and shall not
 consume more than 1.25 W while transmitting in low power mode. The system
-should be able to sufficiently power any components in the sensing subsystem in
+shall be able to sufficiently power any components in the sensing subsystem in
 low power mode.
 
-\paragraph{Active Power Draw} The system should not draw more than 150 mA while
-receiving or idling in active mode, and should not draw more than 300
-mA while transmitting in active mode. The system should not consume more
-than 750 mW while receiving or idling in active mode, and should not
+\paragraph{Active Power Draw} The system shall not draw more than 150 mA while
+receiving or idling in active mode, and shall not draw more than 300
+mA while transmitting in active mode. The system shall not consume more
+than 750 mW while receiving or idling in active mode, and shall not
 consume more than 1.50 W while transmitting in active mode. The system
-should be able to sufficiently power any components in the sensing subsystem in
+shall be able to sufficiently power any components in the sensing subsystem in
 active mode.
 
-\paragraph{Startup Power Draw} The system should not draw more than 750 mA
+\paragraph{Startup Power Draw} The system shall not draw more than 750 mA
 within the first 20 seconds of powering on or starting up the system. The
-system should not consume more than 4.00 W within the first 20 seconds of
+system shall not consume more than 4.00 W within the first 20 seconds of
 powering on or starting up the system.
 
-\paragraph{Solar Panels and Battery System} The system should be able to
+\paragraph{Solar Panels and Battery System} The system shall be able to
 operate nominally solely powered off of the solar and battery subsystem
-detailed in \autoref{sec:power_subsystem}. The system should not require any
+detailed in \autoref{sec:power_subsystem}. The system shall not require any
 external power to operate in any modes (e.g. startup, active, etc.).
 
 % Hardware behavior (ability to set and use peripherals n stuff)
 \subsubsection{Hardware Behavior}
-The MCU subsystem should pass the following tests related to use of the
+The MCU subsystem shall pass the following tests related to use of the
 CC3220's onboard hardware, peripherals, and supported operations. The
 programming developed and test the below criteria will be intended to only
 perform testing on the below modules, and may or may not be present in the
 product software build.
 
-\paragraph{Upload Programming} The developers should be able to successfully
+\paragraph{Upload Programming} The developers shall be able to successfully
 upload programming (software) that meets the requirements detailed in
-\autoref{sec:controller_subsystem}. The developers should be able to
+\autoref{sec:controller_subsystem}. The developers shall be able to
 successfully upload programming that allows and/or performs unit testing
 (as detailed in this section, \autoref{sec:controller_subsystem_testing}).
-Programming uploaded to the CC3220 should execute either upon powering the
+Programming uploaded to the CC3220 shall execute either upon powering the
 system, upon command, or when executing an ISR to start up the system.
 
-\paragraph{I2C} The developers should be able to initialize I2C. I2C should
+\paragraph{I2C} The developers shall be able to initialize I2C. I2C shall
 function nominally if used for communication with any other modules in the
 overall garden bed system.
 
-\paragraph{Onboard LEDs} The system should be able to make use of its onboard
+\paragraph{Onboard LEDs} The system shall be able to make use of its onboard
 LEDs for notifying the user or developers of system states. 
 When the system is in active mode, the green LED shall be solidly illuminated.
 When the system is in low power mode, the green LED shall flash 1 time for a
@@ -96,7 +95,7 @@ The yellow LED shall blink 1 time every 0.2 seconds for a period of 0.1 second
 while transmitting data through the RF antenna for the duration of the
 transmission.
 
-\paragraph{Watchdog Timer} The developers should be able to initialize the
+\paragraph{Watchdog Timer} The developers shall be able to initialize the
 watchdog timer. When the watchdog timer reaches zero, the watchdog module
 shall trigger an interrupt. The ISR triggered by the interrupt shall
 reset the watchdog timer. In the case the ISR is not able to be triggered by
@@ -104,10 +103,10 @@ the interrupt (e.g. system freeze), the watchdog module shall reset the system.
 After the system is reset by the watchdog module, it shall start up normally
 (i.e. in a way that does not functionally differ from a regular startup).
 
-\paragraph{WiFi Module} The WiFi module should conform to the 802.11b/g/n
-standards. The developers should be able to configure the WiFi
+\paragraph{WiFi Module} The WiFi module shall conform to the 802.11b/g/n
+standards. The developers shall be able to configure the WiFi
 module to support 802.11b, 802.11g, or 802.11n in WiFi station mode.  The 
-developers should be able to configure the WiFi module to support 802.11b, or
+developers shall be able to configure the WiFi module to support 802.11b, or
 802.11g in WiFi Direct mode. The WiFi module shall allow the system to
 connect to either an open WLAN, or a WLAN secured by WPA2 (Personal or
 Enterprise). The MCU shall connect to a WLAN via a hardcoded password (and
@@ -156,7 +155,7 @@ least a 20 MHz clock speed while in active mode.
 more than 64 KB of space in memory.
 
 % Software behavior (actual program)
-\subsubsection{Software Behavior} The MCU subsystem should pass the following
+\subsubsection{Software Behavior} The MCU subsystem shall pass the following
 tests related to use of the CC3220 to support application of the product. The
 programming developed and test the below criteria is intended to be the
 product software build.
