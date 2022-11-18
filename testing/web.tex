@@ -1,4 +1,4 @@
-\subsection{Web Testing}
+\subsection{Web Testing}\label{sec:web_subsystem_testing}
 There are three components to test in the web system. The first is the API endpoints and backend functionality. The second is the integration of the user interface and the API. And lastly, the functionality of the socket server must be tested as well.
 \subsubsection{API Testing} \label{sec:api-test}
 There will be two key ways that the API testing will be conducted: unit tests and integration tests. In a web context these are slightly different than in a strict engineering context. Generally speaking, a unit test of a an API or backend service checks that business logic is working as expected. For example, in our project there will be some filter to grab the correct information from the database based on the plant bed. In a unit test, we might mock the database with dummy data and ensure that this is occurring properly.
