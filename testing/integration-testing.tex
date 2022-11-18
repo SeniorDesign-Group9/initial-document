@@ -1,2 +1,34 @@
 \subsection{Integration Testing}
 \label{sec:integration_testing}
+The microntroller is the key linkage between all the other subsystem's. Integration testing between these subsystems will be done in isolation before assembling the entire project. The integrations will be done and tested in the following order before a final full system test is completed.
+\subsubsection{Web Integration}
+Due to the use of Docker, the web integration test can be done at all points in development. There are two ways this can be done, downloading and running the image, or building the image from the source code. The processes for each are as follows:
+\paragraph{Docker Image}
+\begin{enumerate}
+    \item Web developer uses docker to build the image
+    \item Microcontroller developer downloads the built image from docker hub
+    \item Use Docker Desktop to run image
+    \item Test
+\end{enumerate}
+\paragraph{Build Docker Image from Source}
+\begin{enumerate}
+    \item Web developer pushes changes to Github
+    \item Microcontroller developer pulls changes from Github
+    \item Developer builds image from new source code
+    \item Run the image and test
+\end{enumerate}
+\paragraph{Testing Areas}
+There are two key areas that need to be test in this integration. First, that the microcontroller and web are communicating appropriately following the standards and design criteria. Second, that the microntroller is able to read and translate commands sent by the server and responds accordingly.
+
+Through the use of UART on the microcontroller and verbose logging on the server application we can validate that the packets that are exchanged between the two systems are received and translated properly. Part of this test will be forcing packets to be sent, so the microcontroller will have commands in UART in order to force send packets to the web server so these can be verified. Similarly, the web component will need a way to force send packets to the microcontroller. These packets can be verified by looking at the metadata associated, the charset, length, and payload.
+
+Once the packets have been verified we need to test that the microcontroller is responding to the packets it is being sent. This can be done in two ways. First, using UART we can print a response to the packet to show that the logic is working. The second part of this testing is ensuring digital logic on the pins to the control mechanisms are also working appropriately.
+
+\subsubsection{Sensor Integration}
+The sensor integration testing will be relatively simple. Through the use of UART, we will be able to print the raw sensor data on a schedule using a timer.
+
+\subsubsection{Power Integration}
+Through the use of multimeters we will be able to test the power into the MCU and be able to do a full integration test.
+
+\subsubsection{Full Integration}
+The full integration test will bring together all parts of the system and test them in conjunction in order to see if all the systems are working. 
