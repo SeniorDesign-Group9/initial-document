@@ -269,6 +269,7 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 		\textbf{Manu\-facturer} & \textbf{Eco Worthy} & \textbf{Renogy} & \textbf{Expert\-Power} &  \textbf{Expert\-Power} \\
 		\hline
 		\textbf{Charge\-Controller Type} & PWM & PWM & PWM & PWM \\
+		\hline
 		\textbf{Output Voltage} & 12\slash24V  & 12\slash24V & 12\slash24V & 12\slash24V \\
 		\hline
 		\textbf{Rated Charge Current} & 10A & 10A & 10A & 20A \\
@@ -286,8 +287,114 @@ Voltage regulators play an important role in almost every electronic device. All
 As said before, voltage regulators play an important role in almost every electronic device. They are used for smaller devices to power components such as sensors, op-amps, and other modules, but can also be used in bigger applications such as TV’s, automotive vehicles, industrial applications, and many more. There are two main voltage regulators: linear and switching. Both of these types have the same goal, regulating a system’s voltage but operate differently depending on the application that it is used for. \par
 \subparagraph{Linear Voltage Regulators}
 Linear voltage regulators, just as the name suggests, is a type of regulator where the linear and electrical components are placed in series with the input and output. The base of the linear voltage regulator is the use of an active pass device (such as a BJT or a MOSFET) which is controlled by a high gain amplifier. To maintain a constant output voltage, the regulator uses a closed feedback loop to bias the active pass device. Linear voltage regulators are also known as step-down converters because the output voltage is always less than the input voltage. As the power is consumed and dissipated in the transistor and then is converted into heat while generating a constant output voltage. The figures below you will see the general schematic of the linear voltage regulator but also the pin-out diagram for a LM 7805 voltage regulator. As you can see, this type of voltage regulator has three pins for input, output and ground.\par
-
-
+\begin{figure}[H]
+    \caption{General Linear Voltage Regulator Circuit Schematic}
+    \centering
+    \includegraphics[width=\textwidth]{images/Gen_Linear_Voltage_Regulator.png}
+    \label{fig:general-linear-voltage-regulator}
+\end{figure}
+\begin{figure}[H]
+    \caption{LM7805 Pin Diagram}
+    \centering
+    \includegraphics[width=\textwidth]{images/LM7805_pin_diagram.png}
+    \label{fig:LM7805-pin-diagram}
+\end{figure}
+Just as any electrical device, linear voltage regulators will have their advantages and disadvantages. Linear voltage regulators are highly integrated devices. They are simple, cheap, responsive to changes in input voltage, load voltage, and there is no switching noise. Unlike linear voltage regulators, other voltage conversion circuits will have high-frequency switching noise, which may cause problems in the power system. Linear voltage regulators don’t have to worry about that issue. The biggest disadvantage is that they are inefficient. This inefficiency is due to the voltage drop across the active pass device and causes the regulator to produce a lot of heat.\par
+Just as voltage regulators can be broken up into linear and switching voltage regulators, linear voltage regulators can be broken down into different types as well. There are two main types of linear voltage regulators: series voltage regulator and shunt voltage regulator. The main difference between the two is that with a series regulator, the active pass device is connected in series where in a shunt regulator it is connected in parallel. \par
+As the name suggests for a series voltage regulator, the pass element in the circuit will be connected in series with the load, as shown in the figure below. Looking at the circuit, the output voltage is sensed through the voltage divider network in R1 and R2, and is compared to the VREF. As a result, the voltage drop across the transistor can be varied to make sure that the voltage across the load is constant. \par
+\begin{figure}[H]
+    \caption{Series Voltage Regulator}
+    \centering
+    \includegraphics[width=\textwidth]{images/Series_Voltage_Regulator.png}
+    \label{fig:series-voltage-regulator}
+\end{figure}
+The main advantages to this type of linear voltage regulator is that the current is effectively used by the load. This makes it more efficient than shunt voltage regulators. Regardless, the efficiency is still low compared to a switching voltage regulator but it is simple and the output will not have any switching spikes.\par
+The figure below shows the circuit schematic of a shunt voltage regulator. The pass element in the circuit is connected in parallel while the resistors are connected the same as in the series voltage regulator. For this voltage regulator, voltage is maintained through the current drawn through the resistors and as the current is varied, the output voltage across the load remains constant. \par
+\begin{figure}[H]
+    \caption{Shunt Voltage Regulator}
+    \centering
+    \includegraphics[width=\textwidth]{images/Shunt_Voltage_Regulator.png}
+    \label{fig:shunt-voltage-regulator}
+\end{figure}
+When compared to the series voltage regulator, it is just slightly less efficient, but is simpler to implement into the circuit. This type of linear voltage regulator is less common and is used commonly in low-powered circuits and in voltage reference circuits.\par
+\subparagraph{Switching Voltage Regulator}
+Switching voltage regulators is a type of regulator that acts as a switch, where input power is turned on until the desired voltage is reached. After the desired voltage is reached, the switch element is turned off and stops any input power from coming in. With this type of voltage regulator, switching noise occurs because of the high-frequency from the reference voltage and the amplifier. As a result of the noise, capacitors, inductors, and other electrical components are used to smoothen out and reduce the noise. Regardless of the noise that occurs with switching voltage regulators, this type still remains very efficient because of the process of switching on and off at such high speeds. As said before, this type of regulator repeats its operation at high speeds, which allows it to supply voltage more efficiently and reduce heat generation. The figures below will show what the general schematic of a switching voltage regulator looks like but also the pin-out diagram for a lm2596 voltage regulator. You can see the difference in how many pins the lm2596 voltage regulator and the lm7805 voltage regulator. That is because switching voltage regulators require two more pins for the switch element as well as the feedback.\par
+\begin{figure}[H]
+    \caption{General Switching Voltage Regulator}
+    \centering
+    \includegraphics[width=\textwidth]{images/Gen_Switching_Voltage_Regulator.png}
+    \label{fig:general-switching-voltage-regulator}
+\end{figure}
+\begin{figure}[H]
+    \caption{LM2596 Pin Diagram}
+    \centering
+    \includegraphics[width=\textwidth]{images/LM2596_pin_diagram.png}
+    \label{fig:lm2596-pin-diagram}
+\end{figure}
+Some advantages to this type of voltage regulator is that it has a much higher efficiency, it does not produce a lot of heat, and it is capable of higher power efficiencies. The downside to this is that it has a more complex design, produces more noise which will require it to have more external components added to the circuit design. The choice between linear and switching voltage regulators always depends on what it is being used for because each design requires different things but switching voltage regulators are also a popular choice because of how efficient they are with power input and its general efficiency.\par
+There are 3 main types of switching voltage regulators: buck converter, boost converter, and buck/boost converter. These three types of voltage regulators perform similar actions but all produce different output voltages.\par
+Buck converters, also known as step-down converters, will lower the output voltage than the input voltage. This is similar to linear voltage regulators because linear voltage regulators work to make sure the output voltage is always lower than the input. The difference is that there will be less waste. The figure below shows the circuit schematic of a buck converter. Normally, a transistor is used as the switching element, connecting and disconnecting the input voltage to the inductor. \par
+\begin{figure}[H]
+    \caption{Buck Converter (Step Down) Circuit Schematic}
+    \centering
+    \includegraphics[width=\textwidth]{images/Buck_Converter.png}
+    \label{fig:buck-converter-schematic}
+\end{figure}
+Boost converters, also known as step-up converters, will provide a higher output voltage than the input voltage. Even though the output voltage can be higher than the input voltage, the power being provided still has to be regulated within the output power specification of the circuit. Figure 8 shows the circuit schematic of the boost converter. As shown, the components are switched around compared to the buck converter. This allows the output voltage to increase, because when the switch is on, the voltage has to go across the inductor, increasing the current. When the switch is off, the diode is forward biased and charges the load higher than the input.\par
+\begin{figure}[H]
+    \caption{Boost Converter (Step Up) Circuit Schematic}
+    \centering
+    \includegraphics[width=\textwidth]{images/Boost_Converter.png}
+    \label{fig:boost-converter-schematic}
+\end{figure}
+The last type is the buck/boost converter and as the name suggests, this type of converter is able to supply either a larger or smaller output voltage, but can also invert the polarity. This type of voltage regulator is common with battery operated products because at first use the battery will supply full power but throughout time the battery as well as input power will depreciate. Figure 9 shows the circuit schematic of the buck/boost converter. This converter operates similarly to both the buck converter and the boost converter but differs because it is capable of inverting the polarity. This is done by forward-biasing the reverse-biased diode when the switch is off. \par
+\begin{figure}[H]
+    \caption{Buck/Boost Converter Circuit Schematic}
+    \centering
+    \includegraphics[width=\textwidth]{images/Buck_Boost_Converter.png}
+    \label{fig:buck-boost-schematic}
+\end{figure}
+This type of converter offers many benefits. One of the reasons that it offers so much is because it brings both the buck converter and the boost converter together. It also offers lower operation cycling and is more efficient between the input and output voltages. A few downsides to this is that there is no isolation between the input and output and the output is always inverted, which results in complex sensing and feedback in the circuit. \par
+\subparagraph{Voltage Regulator Selection}
+The main function of a voltage regulator is to regulate output voltage from the power source, which is the 12V battery powered by solar panels, to the microcontroller and other components, ensuring that each part receives the correct amount of voltage. The microcontroller we will be using is the CC3220MODASF (referred to as CC3220) operates at a 3.3V input voltage and as a result will require a voltage regulator that can lower the output voltage. \par
+As mentioned before, not all components are going to have the same operating voltages. With the various components and voltage requirements, multiple types of voltage regulators will be tested to see which one will be the most efficient and best fit for our model.\par
+For our system, we will be looking at the LD1117 series (Linear), LM317 (Linear), LM2576 (Switching), and LM2596 (Switching). Of the various types of regulators, these were picked because the required input voltage for the CC3220 is 3.3V. These different voltage regulators will be compared based on efficiency, output voltage, cost, and any other feature that it may offer. \par
+From the datasheets of each voltage regulator we were able to make the comparisons in the table below.\par
+\begin{table}[H]
+    \centering
+	\begin{tabularx}{\textwidth}
+			{
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash}X
+			|
+		}
+		\caption{Voltage Regulators}
+		\label{table:voltageregulators} \\
+		\hline
+		\textbf{Feature} & \textbf{LD1117\-series} & \textbf{LM317} & \textbf{LM2576} &  \textbf{LM2596} \\
+		\hline
+		\textbf{Voltage\-Regulator Type} & Linear & Linear & Switching & Switching \\
+		\hline
+		\textbf{Operating Voltage} & 15V  & 3V - 40V & 3V - 40V & 4.5V - 40V \\
+		\hline
+		\textbf{Output Voltage} & 3.3V & 1.25V - 37V & 3.3V, 5V, 12V,\-15V & 3.3V, 5V, 12V \\
+		\hline
+		\textbf{Output Option} & Fixed & Adjustable & Adjustable & Adjustable \\
+		\hline
+		\textbf{Operating Temp} & 0$^{\circ}$C - 125$^{\circ}$C & 0$^{\circ}$C - 125$^{\circ}$C  &  -40$^{\circ}$C - 125$^{\circ}$C & -40$^{\circ}$C - 125$^{\circ}$C \\
+		\hline
+		\textbf{Efficiency} & ~62\% & Varies & 75\% & 73\% \\ 
+		\hline
+		\textbf{Frequency} & N/A & N/A & 53kHz & 150kHz \\
+		\hline
+		\textbf{Cost (\$)} & \$0.90 & \$0.99 & \$3.69 & \$6.73 \\
+		\hline
+	\end{tabularx}
+\end{table}
+Through comparison, it was agreed upon to select the LM317 (linear) and the LM2576 (switching) because of what was given to us by the datasheets. These were also selected so that we can observe and comapre them even further to see which one will perform the best and be a good fit for our model.\par
 \subsubsection{Sensing Subsystem}
 The required sensing subsystem capabilities include:
     \begin{itemize}
