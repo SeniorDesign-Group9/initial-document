@@ -311,70 +311,149 @@ While the model is charging during the day or as a back up, this will be plugged
 \end{table}
 
 \subsubsection{Sensing Subsystem}
-The required sensing subsystem capabilities include:
+
+The sensing subsystem will consist of a Visible / Near Infrared Spectrometer.
+
+The spectrometer will consist of several optical, electrical and mechanical components:
     \begin{itemize}
-        \item Spectral frequency separation
-        \item Spectral range from 400 to 1700nm
-        \item High Signal to Noise Ratio
+        \item Silicon Photodiode
+        \item Near Infrared Spectrum InGaAs Photodiode
+        \item Linear Stage Actuator Carriage Rail
+        \item Reflective Diffraction Grating
+        \item Focusing Optic
+        \item Fiber Patch Cable with attached Collimator
+        \item LED Diode Array
     \end{itemize}
 
+	Silicon Photodiode
 
-	Silicon photodiodes have a spectral range across the visible spectrum, usually spanning from 350 to 1000nm. In order to generate spectrographs with the relevant molecular fingerprints of soil substances, we're going to need an infrared detector. InGaAs stands out as the ideal material for this range, with most sensors ranging from 800 to 1700nm. There are several manufacturers of silicon photodiodes, and most of them offer a small selection of InGaAs photodiodes at low prices as well. Below are the four of each.
+
+	The silicon photodiode will be one of the two detectors in the system, responsible for covering the visible spectrum of the soil emissions. Silicon photodiodes are cheap and overdeveloped for this application, much of the marketing emphasizes high speed current rise times and low dark current. Our spectrometer will not require either. Instead, it will be useful to have a detector with large surface area. This will reduce the precision required of other optical elements in the system, while retaining the flexibility to reduce the active area of the detector with a small aperture if needed. As always, low cost will be favored.
 
 
 \begin{table}[H]
 	\centering
-	\label{table:VISsensors}
-	\caption{VIS Sensors}
-	\begin{tabular}{|p{2cm}|l|l|l|l|}
-	\hline    
-	Model & BPX 61 & ODD-5W & FDS100 & PIN-3CD\\
+	\label{table:SiliconPhotodiodes}
+	\caption{Silicon Photodiodes}
+	\begin{tabular}{|l|l|l|l|l|l|}
+	\hline
+	Manufacturer & Model & Range (nm) & Area (mm squared) & Dark Current (nA) & Cost (\textdollar)\\
     \hline
-	Manufacturer & Newark & Digikey Opto Diode Corp & Thorlabs & Edmund Optics\\
+	Newark & BPX 61 & 400-1100 & 7.02 & 2 & 13.06\\
     \hline
-	Spectral Range (nm) & 400-1100 & 300-1100 & 350-1100 & 350-1100\\
+	Digikey & ODD-1B & 400-1100 & 1 & 0.2 & 15.60\\
     \hline
-	Active Area (mm sqrd) & 7.02 & 5 & 13 & 3.2\\
+	Digikey Opto Diode Corp & ODD-5W & 300-1100 & 5 & 1 & 14.50\\
     \hline
-	Cost (\$) & 13.06 & 14.50 & 16.08 & 34.00\\
+	Edmund Optics & PIN-3CD	350-1100 & 3.2 & 0.15 & 34.00\\
+    \hline
+	Thorlabs & FD11A & 320-1100 & 1.21 & 0.002 & 15.69\\
+    \hline
+	Thorlabs & FDS100 & 350-1100 & 13 & 1 & 16.08\\
     \hline
 	\end{tabular}
 \end{table}
 
 
+The BPX 61 by Newark has a substantially better size to cost ratio than other relevant devices on the market, however it also has a higher ambient current than all others. One option is to select it and then compensate by investing in more LEDs to illuminate the target area and boost the signal up over the higher dark current, or by investing in more circuitry to clean up and boost the signal. Another option is to forgo the larger surface area and choose the sensor with the least ambient noise, Thorlabs’ FD11A. There don’t appear to be any standout choices aside from those two. All the other devices make compromises between their specs, while these two have standout specs, but require compromises in design. The BPX 61 offers the greatest flexibility, so it’s our choice for the visible-spectrum photodiode.
+
+Near Infrared Spectrum InGaAs Photodiode
+
+The NIR InGaAs photodiode is responsible for detecting the majority of the spectral area of interest in this soil spectrometer. Once again, the relevant specs are active area, cost, and dark current. Most NIR photodetectors are designed for highspeed free space optical communication, but this application very forgiving in terms of sensor speeds. 
+
 
 \begin{table}[H]
 	\centering
-	\label{table:NIRsensors}
-	\caption{NIR Sensors}
-	\begin{tabular}{|p{2cm}|l|l|l|l|}
-	\hline    
-	Model & C30617BH & 0800-3111-011 & FGA015 & N/A\\
+	\label{table:InGaAsPhotodiodes}
+	\caption{InGaAs Photodiodes}
+	\begin{tabular}{|l|l|l|l|l|l|}
 	\hline
-	Manufacturer & Digikey Excelitas & Digikey Advanced Photonix & Thorlabs & Edmund Optics\\
+	Manufacturer & Model & Range (nm) & Area (mm squared) & Dark Current (nA) & Cost (\textdollar)\\
 	\hline
-	Spectral Range (nm) & 800-1700 & 800-1700 & 800-1700 & 800-1700\\
+	Digikey Excelitas & C30617BH & 800-1700 & 0.1 & 1 & 43.58\\
 	\hline
-	Active Area (mm sqrd) & 0.1 & 1.36 & 0.018 & 0.12\\
+	Digikey Advanced Photonix & 0800-3111-011 & 800-1700 & 1.36 & 0.2 & 50.21\\
 	\hline
-	Cost (\textdollar) & 43.58 & 50.21 & 63.00 & 88.00 \\
+	Thorlabs & FGA015 & 800-1700 & 0.018 & 0.5 & 63.00\\
+	\hline
+	Thorlabs & FGA01 & 800-1700 & 0.01 & 0.05 & 67.55\\
+	\hline
+	Edmund Optics & N/A & 800-1700 & 0.07 & 0.03 & 88.00\\
+	\hline
+	Edmund Optics & N/A & 800-1700 & 0.12 & 0.05 & 88.00\\
+	\hline
+	Edmund Optics & N/A	800-1700 & 0.3 & 0.3 & 94.00\\
+	\hline
+	Edmund Optics & N/A & 800-1700 & 0.4 & 0.4 & 94.00\\
 	\hline
 	\end{tabular}
 \end{table}
 
+The Advanced Photonix 0800-3111-011, distributed by Digikey has the highest active area, the second lowest cost, and an acceptable midrange dark current. This makes it the obvious choice for the system’s NIR detector.
 
-From the above, we selected the Newark BPX 61 for our Silicon photodiode and the Excelitas C30617BH for our InGaAs photodiode.
+Linear Stage Actuator Carriage Rail
 
-Here are the spectral sensitivity curves for each:
+There are several methods of detecting broad spectral regimes. Scanning is much more viable than staring in this case, since staring detection requires an array of detectors. This system is intended to keep costs low for the target user, and detectors are a disproportionately expensive part. Instead, this system will have a pair of detectors mounted on a carriage which will pass through the spatially separated beams of light. There are several important criteria for this part. It must be able to take small, precise, increment steps in order for the detectors to capture the soil emission with high resolution. It must have sufficient range of motion to cover the whole spectral range, from 400nm to 1700nm. And it must meet the size, weight, and power constraints imposed by the rest of the system. 
 
-\begin{figure}[H]
-    \caption{VIS Photodiode Spectral Sensitivity}
-    \centering
-    \includegraphics[width=\textwidth]{images/NewarkBPX61.png}
-\end{figure}
 
-\begin{figure}[H]
-    \caption{NIR Photodiode Spectral Sensitivity}
-    \centering
-    \includegraphics[width=\textwidth]{images/DigikeyExcilitasNIRSensor.png}
-\end{figure}
+\begin{table}[H]
+	\centering
+	\label{table:LinearStageActuators}
+	\caption{Linear Stage Actuator}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\hline
+	Manufacturer & Model & Stroke Length (mm) & Step Angle (degrees) & Step Size (mm) & Voltage (V) & Current (A) & Cost (\textdollar)\\
+	\hline
+	Rattmmotor & T0601-50 & 50 & 1.8 & 0.005 & 24 & 0.8 & 39.00\\
+	\hline
+	TOAUTO & T0601-100 & 100 & 1.8 & 0.005 & 24 & 0.6 & 67.00\\
+	\hline
+	TOAUTO & T0601-101 & 50 & 1.8 & 0.005 & 24 & 0.6 & 89.00\\
+	\hline
+	Zeberoxyz & SFU1605 & 200 & 1.8 & 0.025 & N/A & 1.5 & 83.89\\
+	\hline
+	\end{tabular}
+\end{table}
+
+The ratio between the stroke length and step size needs to be well above 1,500 in order to meet the criterion for spectral resolution. Luckily, the product with the least range is well over that limit, at 10,000:1. That allows cost to become the driving factor. The T0601-50, distributed by Rattmmotor, is just over half the price of the next cheapest option. This is the group’s choice of scanner
+
+
+Reflective Diffraction Grating
+
+Diffraction is the operating principle behind the spectrometer. The soil emissions will be composed of different wavelengths representing the chemical structure of the soil, and this will be increased under illumination and then separated by diffraction. A diffraction grating separates incident electromagnetic waves of different frequencies by confining them into a tightly bounded region on reflection or transmission. This confinement causes the waves to disperse, like a prism would, with waves of higher frequencies experiencing greater dispersion. Transmission gratings will not be very effective for weak signal diffraction, as in this application, because most of the optical power is concentrated straight through and not separated at all, with only weaker orders fully separating. Reflective diffraction gratings will provide the best efficiency for soil spectroscopy. In order to prevent the beam from diffracting so far that it reflects straight back into itself, where it cannot be collected, it will be necessary to acquire a diffraction grating with grooves which are blazed at an angle, so that the surface normal of the grating has a greater angle than 90 degrees. The blaze angle corresponding to the 1000 nm diffraction regime will suffice. Next, it will be necessary to calculate the angular spread of diffraction from 400nm to 1700nm off a diffraction grating from several incident angles. The first order diffraction must not overlap with the incident beam if it is to be measured. Increased size is also desirable, in order to maximize the number of wave-groove interactions and boost diffraction efficiency. 
+
+\begin{table}[H]
+	\centering
+	\label{table:DiffractionGratings}
+	\caption{Diffraction Gratings}
+	\begin{tabular}{|l|l|l|l|l|l|}
+	\hline
+	Manufacturer & Model & Density lines/mm & Dimensions (mm) & Blaze Angle (nm) & Cost (\textdollar)\\
+	\hline
+	Thorlabs & GR13-0610 & 600 & 12.7x12.7x6 & 1000 & 76.58\\
+	\hline
+	Thorlabs & GR25-1210 & 1200 & 25x25x6 & 1000 & 125.77\\
+	\hline
+	Edmund optics & Stock 43-745 & 600 & 12.7x12.7x6 & 1000 & 80.00\\
+	\hline
+	Edmund optics & Stock 43-753 & 1200 & 12.7x12.7x6 & 1000 & 80.00\\
+	\hline
+	MKS Newport & 33025FL01-520R & 600 & 12.5x12.5x6 & 1000 & 155.00\\
+	\hline
+	MKS Newport & 33025FL01-530R & 1200 & 12.5x12.5x7 & 1000 & 155.00\\
+	\hline
+	ScienceTech	631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
+	\hline
+	\end{tabular}
+\end{table}
+
+The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models.
+
+
+Focusing Optic (placeholder)
+
+Fiber Patch Cable with attached Collimator (placeholder)
+
+LED Diode Array (placeholder)
+
+
