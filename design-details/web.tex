@@ -31,9 +31,9 @@ Each user account will be linked with potentially multiple plant beds through th
 Representational State Transfer (REST) is a paradigm that indicates a certain API is platform agnostic thus allowing for any number of clients to call the API so long as they follow the standards that are implemented. REST is typically implemented through HTTP requests, this is the case for our project as well. HTTP comes fully packaged with various methods of calling different URIs (unique resource identifier). The best way to represent this is that a top-level domain refers to the server while appendages to the domain denote the resource and the verb. For example, \verb|http://autogardenbed.com/garden|, is the location of the garden resource. From there we can use HTTP methods to instruct the server on what action to take. The most common operations are POST, GET, PUT, DELETE which corresponds to create, read, update, and delete. Our API will be no different.
 
 The URIs will follow the convention of \verb|.../[noun]/[verb]/{identifier}|. The ``noun'' refers to the type of object that the request will interact with. In our case this should be something like ``garden'' or ``data''. Verbs will be used rarely but a situation that might arise is where the user wants to send a command to their garden bed. This will be accomplished through the verb portion of the URI. \autoref{table:uris} gives a high level overview of the URIs, the associated methods and what they will accomplish.
-\begin{table}[h]
+\begin{table}[H]
     \centering
-    \begin{tabular}{c|c|p{6cm}}
+    \begin{tabular}{c|p{2cm}|p{6cm}}
         \hline
         \textbf{URI} & \textbf{HTTP Method} & \textbf{Function} \\
         \hline
