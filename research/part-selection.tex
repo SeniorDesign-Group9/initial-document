@@ -281,34 +281,12 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 		\hline
 	\end{tabularx}
 \end{table}
-While the model is charging during the day or as a back up, this will be plugged into a wall outlet for power. This means we have to be able to convert the AC voltage coming from the wall is converted to DC voltage for the model to use.
-\begin{table}[H]
-    \centering
-	\begin{tabularx}{.8\textwidth}
-		{
-			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
-			|
-		}
-		\caption{AC/DC Converter breakdown}
-		\label{table:acdcconverter} \\
-		\hline
-		\textbf{Manu\-facturer} & \textbf{SmoTecQ} & \textbf{ANLINK} & \textbf{TMEZON} \\
-		\hline
-		\textbf{Input Voltage} &  240V & 100 - 240V & 100 - 240V \\
-		\hline
-		\textbf{Output Voltage} & 12V & 12V & 12V \\
-		\hline
-		\textbf{Current Rating} & 2A & 2A & 2A \\
-		\hline
-		\textbf{Connector} &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm &  5.5 mm x 2.1 mm\\
-		\hline
-		\textbf{Price (\$)} & 12.99 for 2 & 11.59 & 8.99 \\ 
-		\hline
-	\end{tabularx}
-\end{table}
+\paragraph{Voltage Regulator}
+Voltage regulators play an important role in almost every electronic device. All electronic devices operate at different voltage ranges, some requiring a constant voltage. Common operating voltages are 3V, 5V, and 12V. To provide this voltage range or constant voltage, a voltage regulator is added into the circuit design. Voltage regulators help regulate voltages during power fluctuations and different variations in loads, preventing damage to any component. They can also regulate DC and AC voltages. For this power system, we will be focusing on DC voltage. This is because solar panels produce DC voltage. \par
+As said before, voltage regulators play an important role in almost every electronic device. They are used for smaller devices to power components such as sensors, op-amps, and other modules, but can also be used in bigger applications such as TV’s, automotive vehicles, industrial applications, and many more. There are two main voltage regulators: linear and switching. Both of these types have the same goal, regulating a system’s voltage but operate differently depending on the application that it is used for. \par
+\subparagraph{Linear Voltage Regulators}
+Linear voltage regulators, just as the name suggests, is a type of regulator where the linear and electrical components are placed in series with the input and output. The base of the linear voltage regulator is the use of an active pass device (such as a BJT or a MOSFET) which is controlled by a high gain amplifier. To maintain a constant output voltage, the regulator uses a closed feedback loop to bias the active pass device. Linear voltage regulators are also known as step-down converters because the output voltage is always less than the input voltage. As the power is consumed and dissipated in the transistor and then is converted into heat while generating a constant output voltage. The figures below you will see the general schematic of the linear voltage regulator but also the pin-out diagram for a LM 7805 voltage regulator. As you can see, this type of voltage regulator has three pins for input, output and ground.\par
+
 
 \subsubsection{Sensing Subsystem}
 The required sensing subsystem capabilities include:
