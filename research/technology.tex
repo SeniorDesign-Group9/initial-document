@@ -72,3 +72,18 @@ The two SQL databases widely used in industry are MySQL and PostgreSQL. MySQL is
 
 \subparagraph{MongoDB vs DynamoDB}
 MongoDB is ``a general-purpose, document-based'' database. DynamoDB is AWS' proprietary solution to NoSQL databases. DynamoDB is more difficult to work with as it is the newer service, it could also potentially be more expensive over time, however, DynamoDB has improvements over MongoDB for indexing and building out reference documents. 
+
+\subsubsection{Proportional-integral-derivative Control}
+Proportional-integral-derivative control (PID control) is a common control algorithm (espectially in industrial control systems) to allow a control loop to have reliable performance in a variety of conditions. Simply put, this algorithm allows a controller to receive an input and calculate a proportional output, accounting for error and rapid changes in the process. This algorithm may be useful to our application because it will allow the product to better control its facilities without user input.
+
+The control function is defined in \autoref{eq:pid_controller}, where $u(t)$ is the control variable (e.g. the garden bed's water control solenoid), $K_p$, $K_i$, and $K_d$ are gain factors, and $e(t)$ (the error) is the different between a desired setpoint and measured process variable (e.g. the difference between the desired and current ounces of water dispensed).
+\begin{equation}
+    \label{eq:pid_controller}
+    u(t) = K_pe(t) + K_i\int_{0}^{t}e(\tau) \, d\tau + K_d\frac{de(t)}{dt}
+\end{equation}
+
+\paragraph{Proportional Term} The proportional term of \autoref{eq:pid_controller} is $K_pe(t)$, hence referred to as the P-term. The P-term is proportional to the current error, and the gain $K_p$ determines the magnitude of the P-term. If the gain is too large, then the process variable will oscillate.
+
+\paragraph{Integral Term} The integral term of \autoref{eq:pid_controller} is $K_i\int_{0}^{t}e(\tau) \, d\tau$, hence referred to as the I-term. This term accounts for previous values of $e(t)$ by taking the integral of the error, and the gain $K_i$ determines the magnitude of the I-term. The I-term aims to account for residual error in the control loop.
+
+\paragraph{Derivative Term} The integral term of \autoref{eq:pid_controller} is $K_d\frac{de(t)}{dt}$, hence referred to as the D-term. The D-term aims to control future values of $e(t)$ by taking the derivative of the error, and the gain $K_d$ determines the magnitude of the D-term. This term acts to damp rapid changes in the control loop. Higher values of gain may make the control loop more sensitive to noise and lead to instability.
