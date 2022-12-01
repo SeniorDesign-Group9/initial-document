@@ -501,3 +501,14 @@ the duration of the reception. The yellow LED shall blink 1 time every 0.2 secon
 
 % Watchdog
 \paragraph{Watchdog Timer} The CC3220 has an onboard watchdog timer used to detect and recover from freezes, crashes, or lockups. When the watchdog timer reaches zero, the watchdog module shall trigger an interrupt. The ISR triggered by the interrupt shall reset the watchdog timer. In the case the ISR is not able to be triggered by the interrupt (e.g. system freeze), the watchdog module shall reset the system. After the system is reset by the watchdog module, the system shall start up normally.
+
+% PCB
+\paragraph{Printed Circuit Board} Our controller subsystem will be developed and implemented on a Texas Instruments \href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} LaunchPad development board with a plug-in daughterboard hat containing sensing and other components. In an ideal scenario, our team would like to develop a custom PCB for our controller subsystem---however, decreased supply and increased lead times, as well as the extra time needed to develop, test, and implement a PCB forced our hand to use the development board in the final product.
+
+If Texas Instruments' global integrated circuit supply increases and MCUs become more available, and our team is on-time with project goals and objectives, we would like to explore design of a PCB for the controller subsystem. Because the product is using the reference design currently, our team does not yet have a custom schematic for the controller subsystem. Thus, the reference schematic for the CC3220SF-LAUNCHXL LaunchPad may be found in \autoref{launchpad_schematic}.
+\begin{figure}[H]
+    \caption{CC3220SF-LAUNCHXL reference schematic (\href{https://www.ti.com/lit/ds/symlink/cc3220sf.pdf}{CC3220R, CC3220S, and CC3220SF SimpleLink™ Wi-Fi® Single-Chip Wireless MCU Solutions}, Fig. 10-1)}
+    \label{launchpad_schematic}
+    \centering
+    \includegraphics[width=\textwidth]{images/launchpad_schematic.png}
+\end{figure}

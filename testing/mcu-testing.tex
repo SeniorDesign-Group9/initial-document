@@ -19,19 +19,23 @@ accept a current of 0 to 620 mA into any pin without damage. The system shall
 be able to regulate voltage going into V\textsubscript{BAT}, and provide 3.3 $\pm$ 0.3 V
 on its 3V3 rail to any components in the sensing
 subsystem that may require it.
+\subparagraph{Results} TBD.
 
 \paragraph{Operating Temperature} The system shall be able to operate
 nominally within the temperature range of 30 to 140 $\degree$F. Crystal
 oscillators shall fall within the thermal drift ratings provided in the
 CC3220 technical reference material.
+\subparagraph{Results} TBD.
 
 \paragraph{Shutdown Power Draw} The system shall not draw more than 10
 $\upmu$A in shut down mode. The system shall not consume more than 100
 $\upmu$W in shut down mode.
+\subparagraph{Results} TBD.
 
 \paragraph{Critical Power Draw} The system shall not draw more than 1 mA in
 critical power mode. The system shall not consume more than 5 mW in critical
 power mode.
+\subparagraph{Results} TBD.
 
 \paragraph{Low Power Draw} The system shall not draw more than 100 mA while
 receiving or idling in low power mode, and shall not draw more than 250
@@ -40,6 +44,7 @@ than 500 mW while receiving or idling in low power mode, and shall not
 consume more than 1.25 W while transmitting in low power mode. The system
 shall be able to sufficiently power any components in the sensing subsystem in
 low power mode.
+\subparagraph{Results} TBD.
 
 \paragraph{Active Power Draw} The system shall not draw more than 150 mA while
 receiving or idling in active mode, and shall not draw more than 300
@@ -48,16 +53,19 @@ than 750 mW while receiving or idling in active mode, and shall not
 consume more than 1.50 W while transmitting in active mode. The system
 shall be able to sufficiently power any components in the sensing subsystem in
 active mode.
+\subparagraph{Results} TBD.
 
 \paragraph{Startup Power Draw} The system shall not draw more than 750 mA
 within the first 20 seconds of powering on or starting up the system. The
 system shall not consume more than 4.00 W within the first 20 seconds of
 powering on or starting up the system.
+\subparagraph{Results} TBD.
 
 \paragraph{Solar Panels and Battery System} The system shall be able to
 operate nominally solely powered off of the solar and battery subsystem
 detailed in \autoref{sec:power_subsystem}. The system shall not require any
 external power to operate in any modes (e.g. startup, active, etc.).
+\subparagraph{Results} TBD.
 
 % Hardware behavior (ability to set and use peripherals n stuff)
 \subsubsection{Hardware Behavior}
@@ -74,16 +82,20 @@ successfully upload programming that allows and/or performs unit testing
 (as detailed in this section, \autoref{sec:controller_subsystem_testing}).
 Programming uploaded to the CC3220 shall execute either upon powering the
 system, upon command, or when executing an ISR to start up the system.
+\subparagraph{Results} TBD.
 
 \paragraph{I2C} The developers shall be able to initialize I2C. I2C shall
 function nominally if used for communication with any other modules in the
 overall garden bed system.
+\subparagraph{Results} TBD.
 
 \paragraph{Onboard LEDs} The system shall be able to make use of its onboard
 LEDs for notifying the user or developers of system states according to the specification in \autoref{sec:controller_subsystem}.
+\subparagraph{Results} TBD.
 
 \paragraph{Watchdog Timer} The developers shall be able to initialize the
 watchdog timer. The watchdog timer shall behave according to the specification in \autoref{sec:controller_subsystem}.
+\subparagraph{Results} TBD.
 
 \paragraph{WiFi Module} The WiFi module shall conform to the 802.11b/g/n
 standards. The developers shall be able to configure the WiFi
@@ -94,11 +106,13 @@ connect to either an open WLAN, or a WLAN secured by WPA2 (Personal or
 Enterprise). While
 connected, the WiFi module shall be capable of sending and receiving
 data at speeds of at least 10 kbps at least 80\% of the time.
+\subparagraph{Results} TBD.
 
 \paragraph{GPIO} The developers shall be able to configure the GPIO pins to
 the configurations available as described by technical reference documentation.
 The developers shall be able to set the state of the desired GPIO pins to
 the configurations available as described by technical reference documentation.
+\subparagraph{Results} TBD.
 
 \paragraph{Interrupts/ISRs} The developers shall be able to configure
 the interrupts available on the CC3220 as described by technical reference
@@ -106,6 +120,7 @@ documentation to trigger an ISR of their choice. ISRs shall run within 1 second
 of triggering the interrupt linked to the specific ISR. An empty ISR shall
 return the CC3220 to its previous state before the interrupt (i.e. clear any
 flags and return any registers to their previous state).
+\subparagraph{Results} TBD.
 
 \paragraph{ADC} The developers shall be able to configure the ADC on the CC3220
 to adhere to the parameters described in the technical reference documentation.
@@ -115,10 +130,12 @@ resolution of $\leq$1 mV. The ADC shall be able to measure at a sampling rate
 of $\geq$50 kilosamples per second per channel. The ADC shall support
 conversion on up to 4 channels. The ADC shall support the ablility to timestamp
 samples with the clock mentioned by the technical reference documentation.
+\subparagraph{Results} TBD.
 
 \paragraph{Reset Button} The reset button shall be able to "power cycle" the system. The reset button shall not erase
 any programming uploaded to the CC3220. The reset button shall not keep the
 system from starting for more than 1 second after the button has been released.
+\subparagraph{Results} TBD.
 
 \paragraph{Startup} The system shall not take longer than 10 seconds to begin
 its programming upon sufficient power delivery to the CC3220 as described by
@@ -126,12 +143,15 @@ the by the technical reference documentation. The system shall not perform
 the programmed startup sequence unless interrupted to do so, or if given
 sufficient power as described by the by the technical reference documentation
 after being shut down.
+\subparagraph{Results} TBD.
 
 \paragraph{Processor} The central processor of the CC3220 shall maintain at
 least a 20 MHz clock speed while in active mode.
+\subparagraph{Results} TBD.
 
 \paragraph{Memory} The programming uploaded to the CC3220 shall not take up
 more than 64 KB of space in memory.
+\subparagraph{Results} TBD.
 
 % Software behavior (actual program)
 \subsubsection{Software Behavior} The MCU subsystem shall pass the following
@@ -140,10 +160,13 @@ programming developed and test the below criteria is intended to be the
 product software build.
 
 \paragraph{Startup} The microcontroller shall behave according to the specifications on startup in \autoref{sec:controller_subsystem} during its startup sequence.
+\subparagraph{Results} TBD.
 
 \paragraph{Shutdown} The microcontroller shall behave according to the specifications on shutdown in \autoref{sec:controller_subsystem} during its shutdown sequence.
+\subparagraph{Results} TBD.
 
 \paragraph{Reset} The microcontroller shall behave according to the specifications on reset in \autoref{sec:controller_subsystem} during its reset sequence.
+\subparagraph{Results} TBD.
 
 \paragraph{Networking} The system shall be able to connect to the user's WLAN if it meets the following standards:
 \begin{itemize}
@@ -156,11 +179,16 @@ product software build.
     \item Provides DNS to LAN devices
     \item Able to resolve and successfully connect to \texttt{8.8.8.8} and \texttt{google.com} within 5 seconds
 \end{itemize}
+\subparagraph{Results} TBD.
 
 \paragraph{AWS} The microcontroller shall behave according to the specifications on connecting to and communicating with AWS in \autoref{sec:controller_subsystem}.
+\subparagraph{Results} TBD.
 
 \paragraph{Sockets} The microcontroller shall behave according to the specifications on sockets in \autoref{sec:controller_subsystem}.
+\subparagraph{Results} TBD.
 
 \paragraph{Solar and Battery} The system shall monitor and update the solar array current and voltage output values at least every 10 seconds. The system shall behave according to the specifications on power modes and battery percentages in \autoref{sec:controller_subsystem}.
+\subparagraph{Results} TBD.
 
 \paragraph{Sensing} The system shall monitor and perform analog-to-digital conversion on the spectroscopic sensor values at least every 10 seconds while not in shutdown or critical power mode.
+\subparagraph{Results} TBD.
