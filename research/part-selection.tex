@@ -290,13 +290,13 @@ Linear voltage regulators, just as the name suggests, is a type of regulator whe
 \begin{figure}[H]
     \caption{General Linear Voltage Regulator Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Gen_Linear_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Gen_Linear_Voltage_Regulator.png}
     \label{fig:general-linear-voltage-regulator}
 \end{figure}
 \begin{figure}[H]
     \caption{LM7805 Pin Diagram}
     \centering
-    \includegraphics[width=\textwidth]{images/LM7805_pin_diagram.png}
+    \includegraphics[width=0.5\textwidth]{images/LM7805_pin_diagram.png}
     \label{fig:LM7805-pin-diagram}
 \end{figure}
 Just as any electrical device, linear voltage regulators will have their advantages and disadvantages. Linear voltage regulators are highly integrated devices. They are simple, cheap, responsive to changes in input voltage, load voltage, and there is no switching noise. Unlike linear voltage regulators, other voltage conversion circuits will have high-frequency switching noise, which may cause problems in the power system. Linear voltage regulators don’t have to worry about that issue. The biggest disadvantage is that they are inefficient. This inefficiency is due to the voltage drop across the active pass device and causes the regulator to produce a lot of heat.\par
@@ -305,7 +305,7 @@ As the name suggests for a series voltage regulator, the pass element in the cir
 \begin{figure}[H]
     \caption{Series Voltage Regulator}
     \centering
-    \includegraphics[width=\textwidth]{images/Series_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Series_Voltage_Regulator.png}
     \label{fig:series-voltage-regulator}
 \end{figure}
 The main advantages to this type of linear voltage regulator is that the current is effectively used by the load. This makes it more efficient than shunt voltage regulators. Regardless, the efficiency is still low compared to a switching voltage regulator but it is simple and the output will not have any switching spikes.\par
@@ -313,7 +313,7 @@ The figure below shows the circuit schematic of a shunt voltage regulator. The p
 \begin{figure}[H]
     \caption{Shunt Voltage Regulator}
     \centering
-    \includegraphics[width=\textwidth]{images/Shunt_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Shunt_Voltage_Regulator.png}
     \label{fig:shunt-voltage-regulator}
 \end{figure}
 When compared to the series voltage regulator, it is just slightly less efficient, but is simpler to implement into the circuit. This type of linear voltage regulator is less common and is used commonly in low-powered circuits and in voltage reference circuits.\par
@@ -322,13 +322,13 @@ Switching voltage regulators is a type of regulator that acts as a switch, where
 \begin{figure}[H]
     \caption{General Switching Voltage Regulator}
     \centering
-    \includegraphics[width=\textwidth]{images/Gen_Switching_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Gen_Switching_Voltage_Regulator.png}
     \label{fig:general-switching-voltage-regulator}
 \end{figure}
 \begin{figure}[H]
     \caption{LM2596 Pin Diagram}
     \centering
-    \includegraphics[width=\textwidth]{images/LM2596_pin_diagram.png}
+    \includegraphics[width=0.5\textwidth]{images/LM2596_pin_diagram.png}
     \label{fig:lm2596-pin-diagram}
 \end{figure}
 Some advantages to this type of voltage regulator is that it has a much higher efficiency, it does not produce a lot of heat, and it is capable of higher power efficiencies. The downside to this is that it has a more complex design, produces more noise which will require it to have more external components added to the circuit design. The choice between linear and switching voltage regulators always depends on what it is being used for because each design requires different things but switching voltage regulators are also a popular choice because of how efficient they are with power input and its general efficiency.\par
@@ -337,21 +337,21 @@ Buck converters, also known as step-down converters, will lower the output volta
 \begin{figure}[H]
     \caption{Buck Converter (Step Down) Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Buck_Converter.png}
+    \includegraphics[width=0.5\textwidth]{images/Buck_Converter.png}
     \label{fig:buck-converter-schematic}
 \end{figure}
 Boost converters, also known as step-up converters, will provide a higher output voltage than the input voltage. Even though the output voltage can be higher than the input voltage, the power being provided still has to be regulated within the output power specification of the circuit. Figure 8 shows the circuit schematic of the boost converter. As shown, the components are switched around compared to the buck converter. This allows the output voltage to increase, because when the switch is on, the voltage has to go across the inductor, increasing the current. When the switch is off, the diode is forward biased and charges the load higher than the input.\par
 \begin{figure}[H]
     \caption{Boost Converter (Step Up) Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Boost_Converter.png}
+    \includegraphics[width=0.5\textwidth]{images/Boost_Converter.png}
     \label{fig:boost-converter-schematic}
 \end{figure}
 The last type is the buck/boost converter and as the name suggests, this type of converter is able to supply either a larger or smaller output voltage, but can also invert the polarity. This type of voltage regulator is common with battery operated products because at first use the battery will supply full power but throughout time the battery as well as input power will depreciate. Figure 9 shows the circuit schematic of the buck/boost converter. This converter operates similarly to both the buck converter and the boost converter but differs because it is capable of inverting the polarity. This is done by forward-biasing the reverse-biased diode when the switch is off. \par
 \begin{figure}[H]
     \caption{Buck/Boost Converter Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Buck_Boost_Converter.png}
+    \includegraphics[width=0.5\textwidth]{images/Buck_Boost_Converter.png}
     \label{fig:buck-boost-schematic}
 \end{figure}
 This type of converter offers many benefits. One of the reasons that it offers so much is because it brings both the buck converter and the boost converter together. It also offers lower operation cycling and is more efficient between the input and output voltages. A few downsides to this is that there is no isolation between the input and output and the output is always inverted, which results in complex sensing and feedback in the circuit. \par
@@ -419,9 +419,10 @@ The spectrometer will consist of several optical, electrical and mechanical comp
 	\centering
 	\label{table:SiliconPhotodiodes}
 	\caption{Silicon Photodiodes}
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{2.5cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 	\hline
-	Manufacturer & Model & Range (nm) & Area (mm squared) & Dark Current (nA) & Cost (\textdollar)\\
+	Manufacturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
     \hline
 	Newark & BPX 61 & 400-1100 & 7.02 & 2 & 13.06\\
     \hline
@@ -429,7 +430,7 @@ The spectrometer will consist of several optical, electrical and mechanical comp
     \hline
 	Digikey Opto Diode Corp & ODD-5W & 300-1100 & 5 & 1 & 14.50\\
     \hline
-	Edmund Optics & PIN-3CD	350-1100 & 3.2 & 0.15 & 34.00\\
+	Edmund Optics & PIN-3CD & 350-1100 & 3.2 & 0.15 & 34.00\\
     \hline
 	Thorlabs & FD11A & 320-1100 & 1.21 & 0.002 & 15.69\\
     \hline
@@ -450,9 +451,10 @@ The NIR InGaAs photodiode is responsible for detecting the majority of the spect
 	\centering
 	\label{table:InGaAsPhotodiodes}
 	\caption{InGaAs Photodiodes}
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 	\hline
-	Manufacturer & Model & Range (nm) & Area (mm squared) & Dark Current (nA) & Cost (\textdollar)\\
+	Manufacturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
 	\hline
 	Digikey Excelitas & C30617BH & 800-1700 & 0.1 & 1 & 43.58\\
 	\hline
@@ -466,7 +468,7 @@ The NIR InGaAs photodiode is responsible for detecting the majority of the spect
 	\hline
 	Edmund Optics & N/A & 800-1700 & 0.12 & 0.05 & 88.00\\
 	\hline
-	Edmund Optics & N/A	800-1700 & 0.3 & 0.3 & 94.00\\
+	Edmund Optics & N/A & 800-1700 & 0.3 & 0.3 & 94.00\\
 	\hline
 	Edmund Optics & N/A & 800-1700 & 0.4 & 0.4 & 94.00\\
 	\hline
@@ -484,7 +486,8 @@ There are several methods of detecting broad spectral regimes. Scanning is much 
 	\centering
 	\label{table:LinearStageActuators}
 	\caption{Linear Stage Actuator}
-	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.25cm}|p{1.75cm}|p{1cm}|p{1.25cm}|p{1.25cm}|p{1cm}|}
 	\hline
 	Manufacturer & Model & Stroke Length (mm) & Step Angle (degrees) & Step Size (mm) & Voltage (V) & Current (A) & Cost (\textdollar)\\
 	\hline
@@ -510,7 +513,8 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\centering
 	\label{table:DiffractionGratings}
 	\caption{Diffraction Gratings}
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{3cm}|p{2.5cm}|p{1.75cm}|p{2.25cm}|p{1.5cm}|p{1cm}|}
 	\hline
 	Manufacturer & Model & Density lines/mm & Dimensions (mm) & Blaze Angle (nm) & Cost (\textdollar)\\
 	\hline
@@ -518,15 +522,15 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\hline
 	Thorlabs & GR25-1210 & 1200 & 25x25x6 & 1000 & 125.77\\
 	\hline
-	Edmund optics & Stock 43-745 & 600 & 12.7x12.7x6 & 1000 & 80.00\\
+	Edmund Optics & Stock 43-745 & 600 & 12.7x12.7x6 & 1000 & 80.00\\
 	\hline
-	Edmund optics & Stock 43-753 & 1200 & 12.7x12.7x6 & 1000 & 80.00\\
+	Edmund Optics & Stock 43-753 & 1200 & 12.7x12.7x6 & 1000 & 80.00\\
 	\hline
 	MKS Newport & 33025FL01-520R & 600 & 12.5x12.5x6 & 1000 & 155.00\\
 	\hline
 	MKS Newport & 33025FL01-530R & 1200 & 12.5x12.5x7 & 1000 & 155.00\\
 	\hline
-	ScienceTech	631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
+	ScienceTech	& 631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
 	\hline
 	\end{tabular}
 \end{table}
