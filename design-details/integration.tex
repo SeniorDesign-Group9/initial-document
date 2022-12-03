@@ -21,7 +21,12 @@ The sensing subsystem has three key components for the control subsystem to inte
 \subsubsection{Power} The charge controller will deliver voltage of the battery to the microcontroller via
 
 \subsubsection{Web}
-The web and control subsystems interact via two way WebSocket protocol (\ref{websocket_protocol}), which will utilize TCP (\ref{tcp_standard}) as the transport layer protocol. Section \ref{sec:controller_subsystem} talks about the format of the raw texts in the packets. The web subsystem will be deployed to a fixed domain so the memory of the control system can use a fixed host for the Socket server. The web server, as discussed in Section \ref{sec:web_subsystem}, has fixed events. For example, the control system may emit a \texttt{data\_moisture} event to which the server knows to react by adding the data to the correct table.
+The web and control subsystems interact via two way WebSocket protocol (\ref{websocket_protocol}), which will utilize TCP (\ref{tcp_standard}) as the transport layer protocol. Section \ref{sec:controller_subsystem} talks about the format of the raw texts in the packets. The web subsystem will be deployed to a fixed domain so the memory of the control system can use a fixed host for the Socket server. The socket server will always start by processing the address information of the incoming socket, and grabbing previous data from the database accordingly. The socket server will process the data, storing it in the database for reporting on later. If necessary, the socket server will send a request to the plant bed to do some function. This is laid out in \autoref{fig:web-control-sequence}.
 
-\paragraph{How does the server know which plant bed to store the data under?}
-WebSocket packets carry some metadata with them such as the IP address of the client. As can be recalled from section \ref{sec:web_subsystem}, the database stores the IP of all connected plant beds, thus differentiating between unique plant beds by their system's IP.
+\begin{figure}[H]
+    \caption{Web--Plant Bed Socket Integration Sequence Diagram}
+    \centering
+    \includegraphics[width=.75\textwidth]{images/web-control-integration-sequence.png}
+    \label{fig:web-control-sequence}
+\end{figure}
+
