@@ -1,24 +1,28 @@
 \subsection{Part Selection}
 In our research for part selection we wanted to create a generalized comparison of the options we have available. We formatted this information in the tables below.
+
 \subsubsection{Controller Subsystem}
-At minimum, any chosen microcontrollers (MCUs) shall support natively, or by addition of a
-module, these features and traits:
+\paragraph{Minimum Requirements} At minimum, any chosen microcontrollers (MCUs) shall support natively, or by addition of a module, these features and traits:
 \begin{itemize}
+	\item Ability to connect to external antenna
 	\item Analog-to-digital converter (ADC)
-	\item cURL compatibility
 	\item IEEE 802.11
 	\item In stock and available to order
 	\item JTAG module or equivalent
 	\item Module communication bus (UART, I2C, SPI)
+	\item Network stack
 	\item Onboard CPU sufficient for our purposes
 	\item Onboard memory sufficient for our purposes
 	\item Onboard nonvolatile memory
+	\item Sockets support
 	\item Pins dedicated to analog input
 	\item Pins dedicated to digital I/O
 \end{itemize}
-These features would be "nice to have" on any MCU selected, but are not required:
+
+\paragraph{Nice To Have} These features would be "nice to have" on any MCU selected, but are not required:
 \begin{itemize}
 	\item Digital-to-analog converter (DAC)
+	\item Integrated antenna
 	\item microSD card slot
 	\item Onboard battery
 	\item Pins dedicated to pulse-width modulation (PWM)
@@ -27,8 +31,7 @@ These features would be "nice to have" on any MCU selected, but are not required
 	\item Additional wireless communication protocols (e.g. BT or BLE, Zigbee)
 \end{itemize}
 
-The selections, listed in \autoref{table:mcubreakdown1} and not in any particular order, match
-the above criteria and are being considered for selection.
+\paragraph{Selections} The selections, listed in \autoref{table:mcubreakdown1} and not in any particular order, match the above criteria and are being considered for selection.
 \begin{table}
 	\centering
 	\begin{tabularx}{\textwidth}
@@ -77,11 +80,9 @@ the above criteria and are being considered for selection.
 	\end{tabularx}
 \end{table}
 
-Use of single-board computers (SBCs) was considered, but will not not need to be used; cURL 
-used on an MCU in conjunction with \href{https://aws.amazon.com/ec2/}{Amazon EC2} services will
-allow us to offload computing to a cloud solution.
+\paragraph{Single-board Computers} Use of single-board computers (SBCs) was considered, but will not not need to be used; sockets will be used on an MCU in conjunction with \href{https://aws.amazon.com/ec2/}{Amazon EC2} services will allow us to offload computing to a cloud solution.
 
-Use of an external Wifi module is discouraged due to the following:
+\paragraph{External WiFi Module} Use of an external WiFi module is discouraged due to the following reasons:
 \begin{itemize}
 	\item Added cost
 	\item Added complexity
@@ -99,23 +100,13 @@ Use of an external Wifi module is discouraged due to the following:
 		\item Errata
 	\end{itemize}
 \end{itemize}
-
 Therefore, all of the MCUs listed above support either the 802.11 or Bluetooth standards.
 
-Ultimately, the \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF}
-was chosen as the microcontroller development board for this project. In the event that the
-aforementioned LaunchPad is not able to be obtained, the
-\href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} has equivalent capability
-for the project's needs.
+\paragraph{External ADC Module} Use of an external ADC was considered, but ultimately decided against. An external ADC module would only add further cost and complexity to a project where the on-chip ADC is sufficiently effective for the project's requirements. The sample rate and resolution of an on-chip ADC is more than enough for our needs, and the low-cost goal of the project directly conflicts with the idea of purchasing an external ADC module.
 
-These boards, henceforth referred to as the CC3220, are able to be requested from our
-university at no upfront cost to our team. This was the driving factor behind choosing 
-the CC3220 over other microcontroller development boards. It was also determined that
-the microcontroller \emph{must} be able to interface via the 802.11 (WiFi) standard, for reasons
-that are detailed in \autoref{sec:controller_subsystem}---therefore, the LAUNCHXL-CC26X2R1
-and Nano 33 BLE were disqualified from selection. The Pico W was considered due to its low cost,
-and the B-L4S5I-IOT01A considered because of its abundant peripherals, but both ultimately lost
-out to the Texas Instruments products.
+\paragraph{Selection} Ultimately, the \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF} was chosen as the microcontroller development board for this project. In the event that the aforementioned LaunchPad is not able to be obtained, the \href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} has  quivalent capability for the project's needs.
+
+These boards, henceforth referred to as the CC3220, are able to be requested from our university at no upfront cost to our team. This was the driving factor behind choosing the CC3220 over other microcontroller development boards. It was also determined that the microcontroller \emph{must} be able to interface via the 802.11 (WiFi) standard, for reasons that are detailed in \autoref{sec:controller_subsystem}---therefore, the LAUNCHXL-CC26X2R1 and Nano 33 BLE were disqualified from selection. The Pico W was considered due to its low cost, and the B-L4S5I-IOT01A considered because of its abundant peripherals, but both ultimately lost out to the Texas Instruments products.
 % End Controller Subsystem
 
 \subsubsection{Power Subsystem}
