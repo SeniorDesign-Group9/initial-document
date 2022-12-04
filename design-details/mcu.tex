@@ -23,21 +23,16 @@ for our use case.
 
 % How the MCU connects to the internet (local network, LAN -> NAT -> WAN,
 % TCP stack)
-\paragraph{CC3220 Overview}
-The Texas Instruments CC3220-series (hence referred to as the "CC3220", the
+\paragraph{CC3200 Overview}
+The Texas Instruments CC3200-series (hence referred to as the "CC3200", the
 "MCU", or the "microcontroller") of microcontrollers are WiFi-enabled
 chips with an ARM Cortex-M4 central processor and a WiFi network processor,
 along with many useful peripherals and power management modules. This
 series of processors is delivered alongside a software development kit
 (SDK) provided by Texas Instruments to ease the development of
 Internet-of-Things (IoT) applications.
-\begin{figure}[H]
-    \caption{CC3220 embedded software overview (\href{https://www.ti.com/lit/ds/symlink/cc3220s.pdf}{SimpleLink™ Wi-Fi® CC3x20, CC3x3x Network Processor (Rev. M)}, Fig. 1-2)}
-    \label{cc3220_sw_overview}
-    \centering
-    \includegraphics[width=0.75\textwidth]{images/cc3220_sw_overview.png}
-\end{figure}
-The CC3220's WiFi network processor supports the following
+
+The CC3200's WiFi network processor supports the following
 standards/features useful to our development
 (see \autoref{cc3220_network_subsystem}):
 \begin{itemize}
@@ -49,12 +44,10 @@ standards/features useful to our development
     \item IP addressing: static IP, DHCPv4, DHCPv6
     \item Transport: UDP, TCP, RAW
     \item Host interface: UART, SPI
-    \item Built-in transceiver and 2.4 GHz antenna
 \end{itemize}
-The CC3220's networking subsysem is further detailed in
-\autoref{cc3220_network_subsystem}.
+The CC3200's networking subsystem is identical to the CC3220's, and is further detailed in \autoref{cc3220_network_subsystem}.
 \begin{figure}[H]
-    \caption{CC3220 networking subsystem (\href{https://www.ti.com/lit/ug/swru455m/swru455m.pdf}{CC3220 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual})}
+    \caption{CC3220 networking subsystem (\href{https://www.ti.com/lit/ug/swru455m/swru455m.pdf}{CC3200 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual})}
     \label{cc3220_network_subsystem}
     \centering
     \includegraphics[width=0.75\textwidth]{images/cc3220_network_subsystem.png}
@@ -95,10 +88,10 @@ default DNS nameserver provided to network clients). The software control
 flow of TCP sockets as our product will implement them is detailed in
 \autoref{tcp_socket_flow}.
 \begin{figure}[H]
-    \caption{TCP socket control flow (\href{https://www.ti.com/lit/ds/symlink/cc3220s.pdf}{SimpleLink™ Wi-Fi® CC3x20, CC3x3x Network Processor (Rev. M)}, Fig. 6-1)}
+    \caption{TCP socket control flow (\href{https://www.ti.com/lit/ug/swru368c/swru368c.pdf}{CC3100/CC3200 SimpleLink Wi-Fi Internet-on-a-Chip User's Guide (Rev. C)}, Fig. 5-1)}
     \label{tcp_socket_flow}
     \centering
-    \includegraphics[width=\textwidth]{images/tcp_socket_flow.png}
+    \includegraphics[width=0.8\textwidth]{images/tcp_socket_flow.png}
 \end{figure}
 
 % Parameters for connection and how often it tries
@@ -281,7 +274,7 @@ accept the raw values of \texttt{oh\_comp} and \texttt{nutrients}. Only
 The ADC class will have 4 private variables: \texttt{pin} (int), 
 \texttt{channel} (int), \texttt{res\_raw} (unsigned 16-bit int), and
 \texttt{res\_timestamp} (unsigned 16-bit int). \texttt{pin} is the physical
-pin of the voltage input to the ADC on the CC3220, \texttt{channel} is the
+pin of the voltage input to the ADC on the CC3200, \texttt{channel} is the
 ADC channel corresponding to the selected pin. \texttt{res\_raw} is the raw
 result of the ADC for the corresponding channel. \texttt{res\_timestamp} is the
 timestamp of the ADC result for the corresponding channel. The default state
@@ -300,7 +293,7 @@ res(void)},
 res\_timestamp(void)}. The \texttt{get\_res()} getter
 converts the raw result of the ADC into a voltage. The class will have 1 public
 function: \texttt{void convert(void)}. This function manually triggers
-conversion in the ADC module of the CC3220. Multiple objects of
+conversion in the ADC module of the CC3200. Multiple objects of
 \texttt{class ADC} will be instantiated.
 
 % Solar class
@@ -380,15 +373,15 @@ required will be located in \texttt{main.cpp}.
 
 % How the MCU gets data from sensors (ADC)
 \paragraph{Analog-to-digital Conversion}
-The CC3220 contains a 12-bit general purpose analog-to-digital converter
+The CC3200 contains a 12-bit general purpose analog-to-digital converter
 (ADC) with 4 externally-accessible channels and a sampling periodicity of
 16 $\upmu$s per channel (62.5 ksps per channel). The architecture of the
-CC3220's ADC is shown in \autoref{cc3220_adc_arch}.
+CC3200's ADC is shown in \autoref{cc3200_adc_arch}.
 \begin{figure}[H]
-    \caption{CC3220 ADC module architecture (\href{https://www.ti.com/lit/ug/swru465/swru465.pdf}{CC3220 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual}, Fig. 13-1)}
-    \label{cc3220_adc_arch}
+    \caption{CC3200 ADC module architecture (\href{https://www.ti.com/lit/an/swra679/swra679.pdf}{SimpleLink™ Wi-Fi® CC32xx ADC}, Fig. 1-2)}
+    \label{cc3200_adc_arch}
     \centering
-    \includegraphics[width=\textwidth]{images/cc3220_adc_arch.png}
+    \includegraphics[width=\textwidth]{images/cc3200_adc_arch.png}
 \end{figure}
 
 % How the MCU gets data from sensors (ADC, cont.)
@@ -413,7 +406,7 @@ soil, and functions from the class \texttt{ADC} will be used to perform
 analog-to-digital conversion to update values in the class \texttt{Plant}.
 
 In the future, a more precise ADC module could be explored to give the
-CC3220 more resolution when performing spectroscopy.
+CC3200 more resolution when performing spectroscopy.
 
 % How MCU sends data to servos
 \paragraph{Communication with Servos}
@@ -453,18 +446,18 @@ control.
 \paragraph{Power}
 The MCU will be connected to power from the power subsystem detailed in 
 \autoref{sec:power_subsystem}. It is expected to receive 3.3 V, and this will
-be fed to the integrated DC/DC converter on the CC3220. The converter is able
+be fed to the integrated DC/DC converter on the CC3200. The converter is able
 to convert voltages from 2.3 to 3.6 V.
 
 % Pinout 
 \paragraph{Pinout Diagram}
-The CC3220 will connected to the following components as described by the
-pinout diagram shown in \autoref{cc3220_pinout}.
+The CC3200 will connected to the following components as described by the
+pinout diagram shown in \autoref{CC3200_pinout}.
 \begin{figure}[H]
-    \caption{CC3220 pinout diagram overlaid on (\href{https://www.ti.com/lit/ds/symlink/cc3220mod.pdf}{CC3220MODx and CC3220MODAx SimpleLink™ Wi-Fi® CERTIFIED™ Wireless MCU Modules}, Fig. 7-2)}
-    \label{cc3220_pinout}
+    \caption{CC3200 pinout diagram (red labels indicate pins will be connected to other components in a way that differs from the reference design)}
+    \label{CC3200_pinout}
     \centering
-    \includegraphics[width=\textwidth]{images/cc3220_pinout.png}
+    \includegraphics[width=\textwidth]{images/CC3200_pinout.png}
 \end{figure}
 
 % LEDs
@@ -500,15 +493,15 @@ the duration of the reception. The yellow LED shall blink 1 time every 0.2 secon
 \end{table}
 
 % Watchdog
-\paragraph{Watchdog Timer} The CC3220 has an onboard watchdog timer used to detect and recover from freezes, crashes, or lockups. When the watchdog timer reaches zero, the watchdog module shall trigger an interrupt. The ISR triggered by the interrupt shall reset the watchdog timer. In the case the ISR is not able to be triggered by the interrupt (e.g. system freeze), the watchdog module shall reset the system. After the system is reset by the watchdog module, the system shall start up normally.
+\paragraph{Watchdog Timer} The CC3200 has an onboard watchdog timer used to detect and recover from freezes, crashes, or lockups. When the watchdog timer reaches zero, the watchdog module shall trigger an interrupt. The ISR triggered by the interrupt shall reset the watchdog timer. In the case the ISR is not able to be triggered by the interrupt (e.g. system freeze), the watchdog module shall reset the system. After the system is reset by the watchdog module, the system shall start up normally.
 
 % PCB
-\paragraph{Printed Circuit Board} Our controller subsystem will be developed and implemented on a Texas Instruments \href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} LaunchPad development board with a plug-in daughterboard hat containing sensing and other components. In an ideal scenario, our team would like to develop a custom PCB for our controller subsystem---however, decreased supply and increased lead times, as well as the extra time needed to develop, test, and implement a PCB forced our hand to use the development board in the final product.
+\paragraph{Printed Circuit Board} Our controller subsystem will be developed and implemented on a Texas Instruments \href{https://www.ti.com/tool/CC3200SF-LAUNCHXL}{CC3200SF-LAUNCHXL} LaunchPad development board with a plug-in daughterboard hat containing sensing and other components. In an ideal scenario, our team would like to develop a custom PCB for our controller subsystem---however, decreased supply and increased lead times, as well as the extra time needed to develop, test, and implement a PCB forced our hand to use the development board in the final product.
 
-If Texas Instruments' global integrated circuit supply increases and MCUs become more available, and our team is on-time with project goals and objectives, we would like to explore design of a PCB for the controller subsystem. Because the product is using the reference design currently, our team does not yet have a custom schematic for the controller subsystem. Thus, the reference schematic for the CC3220SF-LAUNCHXL LaunchPad may be found in \autoref{launchpad_schematic}.
+If Texas Instruments' global integrated circuit supply increases and MCUs become more available, and our team is on-time with project goals and objectives, we would like to explore design of a PCB for the controller subsystem. Because the product is using the reference design currently, our team does not yet have a custom schematic for the controller subsystem. Thus, our product's schematic  may be found in \autoref{mcu_pcb_schematic}.
 \begin{figure}[H]
-    \caption{CC3220SF-LAUNCHXL reference schematic (\href{https://www.ti.com/lit/ds/symlink/cc3220sf.pdf}{CC3220R, CC3220S, and CC3220SF SimpleLink™ Wi-Fi® Single-Chip Wireless MCU Solutions}, Fig. 10-1)}
-    \label{launchpad_schematic}
+    \caption{MCU subsystem schematic}
+    \label{mcu_pcb_schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/launchpad_schematic.png}
+    \includegraphics[width=\textwidth]{images/mcu_pcb_schematic.png}
 \end{figure}
