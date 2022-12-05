@@ -250,8 +250,8 @@ Solar charge controllers play an important role in this system because this syst
 There are two main types of solar charge controllers: Maximum Power Point Tracking (MPPT) and Pulse Width Modulated (PWM). Choosing the right charge controller is based on current and voltage characteristics. This is because they regulate input voltage coming in from the solar panel and output voltage of what is coming out to the battery.\par
 Maximum power point tracking (MPPT) is a technique that observes and regulates energy coming from the solar panel and into the battery. What makes this special is that it can match the solar panel voltage to the battery voltage, which allows it to maximize the charge efficiency. They operate as a DC to DC converter, taking in high DC input from the solar panel, changing it to high AC voltage, then back down to DC voltage.\par
 Pulse width modulated (PWM) solar charge controllers are considered the original charge controller compared to the MPPT charge controller. They are less expensive and the technique behind this controller is also simpler. On a basic level, the PWM controller acts as an on-off regulator. When the battery voltage reaches a certain level, the PWM controller will slowly reduce the charging current, up until the battery reaches the maximum amount of energy. This makes it great for smaller installations because the solar panel and the controller can match better. \par
-While looking at different solar charge controllers, we came across 4 different controllers, all of which are PWM charge controllers. We did not specifically choose the PWM controller but through our search for what charge controller we wanted to use all of the choices we found were PWM. This would be great for our model regardless because our system will not be large and it will be less expensive compared to MPPT charge controllers.\par
-The solar charge controller we chose for our model is the Eco Worthy 10A PWM solar charge controller. The reason we chose this controller is because it comes as a kit along with the solar panel. As a result of it coming as a kit with the solar panel they will already be very compatible together and the price for both of them together is not expensive at all. \par
+While researching solar charge controllers, we came across various types and manufacturers such as Texas Instruments, Analog Devices, Consonance Electronics, etc. In our research and from these manufacturers, we then found a few different types of solar charge controllers all of which use the I2C interface. We specifically searched for a controller that had this feature so that it would be compatible with the CC3220 microcontroller that we are using, but also searched for a controller with a maximum power point tracking to help optimize the voltage coming in from the solar panels more effectively. \par
+The solar charge controller that we came to conclusion with was the Texas Instrument BQ25713. Unfortunately, some of the other components were unavailable and this was the only one on the market, but nonetheless this was still a great choice because it has features that meet the requirements that we have. It is compatible with multiple types of batteries, the input range meets the specifications of our battery, it uses I2C interface and is solar compatible.\par
 \begin{table}[H]
     \centering
 	\begin{tabularx}{\textwidth}
@@ -266,19 +266,13 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 		\caption{Charge Controller}
 		\label{table:chargecontroller} \\
 		\hline
-		\textbf{Manu\-facturer} & \textbf{Eco Worthy} & \textbf{Renogy} & \textbf{Expert\-Power} &  \textbf{Expert\-Power} \\
+		 & \textbf{LT8491} & \textbf{LTC4162} & \textbf{BQ25672} &  \textbf{BQ25713} \\
 		\hline
-		\textbf{Charge\-Controller Type} & PWM & PWM & PWM & PWM \\
+		\textbf{Input Voltage\-Range} & 6V-80V & 4.5V-35V & 3.6V-24V & 3.5V-24V \\
 		\hline
-		\textbf{Output Voltage} & 12\slash24V  & 12\slash24V & 12\slash24V & 12\slash24V \\
+		\textbf{Charging\-Current} & 10A & 3.2A & 3A & 8.128A \\
 		\hline
-		\textbf{Rated Charge Current} & 10A & 10A & 10A & 20A \\
-		\hline
-		\textbf{Max PV Voltage} & 30V & 50V & 55V & 55V \\
-		\hline
-		\textbf{Self Consumption} & $\leq$10mA & $\leq$10mA & \textless10mA & $\leq$13mA \\
-		\hline
-		\textbf{Price (\$)} & 23.99 & 69.99 & 34.99 & 69.99 \\ 
+		\textbf{Battery\-Chemistry} & Li-Ion, Lead Acid & Lithium Phosphate/ LiFePO4 & Li-Ion/Li-Polymer, Lithium Phosphate/ LiFePO4 & Lead Acid, Li-Ion/Li-Polymer, Lithium Phosphate/ LiFePO4, NiCd, NiMH, SuperCap \\
 		\hline
 	\end{tabularx}
 \end{table}
