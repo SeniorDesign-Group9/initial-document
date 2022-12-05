@@ -7,5 +7,5 @@
 *.toc
 *.lot
 *.lof
-# *.pdf
+*.pdf
 *.out

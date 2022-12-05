@@ -24,7 +24,7 @@ subsystem that may require it.
 \paragraph{Operating Temperature} The system shall be able to operate
 nominally within the temperature range of 30 to 140 $\degree$F. Crystal
 oscillators shall fall within the thermal drift ratings provided in the
-CC3220 technical reference material.
+MCU technical reference material.
 \subparagraph{Results} TBD.
 
 \paragraph{Shutdown Power Draw} The system shall not draw more than 10
@@ -70,7 +70,7 @@ external power to operate in any modes (e.g. startup, active, etc.).
 % Hardware behavior (ability to set and use peripherals n stuff)
 \subsubsection{Hardware Behavior}
 The MCU subsystem shall pass the following tests related to use of the
-CC3220's onboard hardware, peripherals, and supported operations. The
+MCU's onboard hardware, peripherals, and supported operations. The
 programming developed and test the below criteria will be intended to only
 perform testing on the below modules, and may or may not be present in the
 product software build.
@@ -80,7 +80,7 @@ upload programming (software) that meets the requirements detailed in
 \autoref{sec:controller_subsystem}. The developers shall be able to
 successfully upload programming that allows and/or performs unit testing
 (as detailed in this section, \autoref{sec:controller_subsystem_testing}).
-Programming uploaded to the CC3220 shall execute either upon powering the
+Programming uploaded to the MCU shall execute either upon powering the
 system, upon command, or when executing an ISR to start up the system.
 \subparagraph{Results} TBD.
 
@@ -112,17 +112,17 @@ data at speeds of at least 10 kbps at least 80\% of the time.
 the configurations available as described by technical reference documentation.
 The developers shall be able to set the state of the desired GPIO pins to
 the configurations available as described by technical reference documentation.
-\subparagraph{Results} TBD.
+\subparagraph{Results} The developers are able to configure GPIO pins to the configurations available as described by technical reference documentation via the Texas Instruments \href{https://www.ti.com/tool/SYSCONFIG}{SYSCONFIG} system configuration tool.
 
 \paragraph{Interrupts/ISRs} The developers shall be able to configure
-the interrupts available on the CC3220 as described by technical reference
+the interrupts available on the MCU as described by technical reference
 documentation to trigger an ISR of their choice. ISRs shall run within 1 second
 of triggering the interrupt linked to the specific ISR. An empty ISR shall
-return the CC3220 to its previous state before the interrupt (i.e. clear any
+return the MCU to its previous state before the interrupt (i.e. clear any
 flags and return any registers to their previous state).
 \subparagraph{Results} TBD.
 
-\paragraph{ADC} The developers shall be able to configure the ADC on the CC3220
+\paragraph{ADC} The developers shall be able to configure the ADC on the MCU
 to adhere to the parameters described in the technical reference documentation.
 The ADC shall be able to measure signals with a voltage of between 0 and 1.8 V.
 The ADC shall be able to accurately measure a voltage level down to a
@@ -133,29 +133,31 @@ samples with the clock mentioned by the technical reference documentation.
 \subparagraph{Results} TBD.
 
 \paragraph{Reset Button} The reset button shall be able to "power cycle" the system. The reset button shall not erase
-any programming uploaded to the CC3220. The reset button shall not keep the
+any programming uploaded to the MCU. The reset button shall not keep the
 system from starting for more than 1 second after the button has been released.
-\subparagraph{Results} TBD.
+\subparagraph{Results} The reset button "power cycles" the system, does not erase any programming uploaded to the MCU, and does not keep the system from starting for more than 1 second after the button has been released.
 
 \paragraph{Startup} The system shall not take longer than 10 seconds to begin
-its programming upon sufficient power delivery to the CC3220 as described by
+its programming upon sufficient power delivery to the MCU as described by
 the by the technical reference documentation. The system shall not perform
 the programmed startup sequence unless interrupted to do so, or if given
 sufficient power as described by the by the technical reference documentation
 after being shut down.
-\subparagraph{Results} TBD.
+\subparagraph{Results} The system does not take longer than 10 seconds to begin
+its programming upon sufficient power delivery to the MCU. The system does not perform
+the programmed startup sequence unless the parameters described above are met.
 
-\paragraph{Processor} The central processor of the CC3220 shall maintain at
+\paragraph{Processor} The central processor of the MCU shall maintain at
 least a 20 MHz clock speed while in active mode.
-\subparagraph{Results} TBD.
+\subparagraph{Results} The central processor of the MCU is able to maintain an 80 MHz clock speed while in active mode.
 
-\paragraph{Memory} The programming uploaded to the CC3220 shall not take up
+\paragraph{Memory} The programming uploaded to the MCU shall not take up
 more than 64 KB of space in memory.
 \subparagraph{Results} TBD.
 
 % Software behavior (actual program)
 \subsubsection{Software Behavior} The MCU subsystem shall pass the following
-tests related to use of the CC3220 to support application of the product. The
+tests related to use of the MCU to support application of the product. The
 programming developed and test the below criteria is intended to be the
 product software build.
 
