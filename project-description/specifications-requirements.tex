@@ -45,8 +45,8 @@ The team compiled a set of specifications for each of the subsystems that would 
                                         & Charging Time & \textless4 hours \\\cline{2-3}
                                         & Regulator Efficiency & \textgreater65\% \\\cline{2-3}
         \hline
-        \multirow{3}{*}{\textbf{Sensing}} & Spectra & 400nm - 1700nm \\\cline{2-3}
-                                        & Resolution & \textless10nm \\\cline{2-3}
+        \multirow{3}{*}{\textbf{Sensing}} & Spectral Range & 400nm - 1700nm \\\cline{2-3}
+                                        & Spatial Resolution & \textless50nm \\\cline{2-3}
                                         & Output voltage range & 0-1.8V \\\cline{2-3}
         \hline
         \multirow{2}{*}{\textbf{Web}} & Up-time & 95\textpm.1\% \\\cline{2-3}
@@ -63,7 +63,7 @@ The specifications in the control portion of the table are focused on future int
 \paragraph{Power}
 The power specifications were made throughout the design process. For example, the power output was an unknown until all the subsystems had a firm idea of their power requirements. The maximum instantaneous power draw of the entire system is in the 20-30W range, hence where that specification is drawn from. The battery capacity and charging time are derived from the duration the team decided the system should last on battery power and the input power from the solar panels.
 \paragraph{Sensing}
-The spectra was chosen 
+In order to ensure a suitable growing environment, the system needs to detect Carbon, Moisture Content, Phosphorous, and pH. These materials have spectral traces across the 400nm to 1700nm range. In order to create a spectrograph from the spatially separated light, the system needs sufficient spatial resolution to detect individual material fingerprints. The system must also generate electrical signals that a microcontroller can detect.
 \paragraph{Web}
 The web engineering specifications were hard to put into words. In general, the team wanted a reliable service quantified by the up-time of the web service. The service also needs to be able to store data in perpetuity for at least a single plantbed. Due to the efficiency of data storage and compression as well as the frequency of scans, the team felt that 16GB was effective enough to showcase the full system for now.
 \paragraph{Miscellaneous}
