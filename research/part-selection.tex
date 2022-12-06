@@ -624,7 +624,7 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\end{tabularx}
 \end{table}
 
-The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models.
+The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models. We selected the Stock \#43-753 from Edmund Optics.
 
 
 \paragraph{Focusing Optic}
@@ -708,3 +708,32 @@ As stated above, the beam that needs to be coupled into the fiber is not collima
 
 Since cost is equivalent for all models, the only factors are numerical aperture and beam size. All three beam sizes are acceptable and will not have a significant impact on the system quality. In order to maximize the amount of light that can be coupled into the fiber, the numerical aperture will be selected to match that of the fiber. Our group selected Model F240SMA-980 for these reasons.
 
+\paragraph{Bill of Materials}
+
+\begin{table}[H]
+	\centering
+	\label{table:SensingBOM}
+	\caption{Sensing Subsystem Bill of Materials}
+	\bigskip
+	\begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2.75cm}|p{1.75cm}|}
+	\hline
+	Qty & Cost (\textdollar) & Manufacturer & Item & Model\\
+	\hline
+	1 & 13.06 & Newark & VIS Photodiode & BPX 61\\
+	\hline
+	1 & 50.21 & Excelitas & NIR Photodiode & 0800-3111-01\\
+	\hline
+	1 & 30.76 & Rattmmotor & Linear Rail Actuator & T0601-50\\
+	\hline
+	1 & 30.76 & Edmund Optics & Blazed Reflection Grating & 43-753\\
+	\hline
+	1 & 30.76 & Thorlabs & Biconvex Lens & LB1471\\
+	\hline
+	1 & 30.76 & Thorlabs & Fiber Patch Cable & M45L02\\
+	\hline
+	1 & 30.76 & Thorlabs & Fiber Collimator & F240SMA-980\\
+	\hline
+	1 & 30.76 & Osram Sylvania & Tungsten Halogen Bulb & 54262\\
+	\hline
+	\end{tabular}
+\end{table}
