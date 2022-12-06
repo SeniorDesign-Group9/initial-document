@@ -38,4 +38,35 @@ Power-controller integration shall be performed in the following manner. The sen
 Any voltage and current figures obtained shall be printed to the computer's serial terminal for monitoring. Any voltages and current figures measured shall fall within safe expected ranges. Any error shall be calculated, and adjustments shall be made.
 
 \subsubsection{Full Integration}
-The full integration test will bring together all parts of the system and test them in conjunction in order to see if all the systems are working. 
+After testing each of the individual integrations the final test will be seeing the whole system built and put together. The goal of the previous testing should be that there are issues with the code and the invidual parts. The full integration will consist of the following parts: power, control system tuning, usability.
+
+\paragraph{Power}
+In the previous testing sections the team has not yet covered a ``stress'' test of the power system. After integrating all the parts of the project, the team will do a 1 week trial run of the power system under an elevated load. This elevated load is more frequent scanning, longer duration of scanning, more transmissions to and from the web interface. This is in the hopes of tuning the power system and proving the viability of our power system. We can differentiate this stress test from lab tests due to the ``real world load'' that is being applied that could not have been tested until the completion of all the sections.
+
+\paragraph{Control System Tuning}
+The control system will need tuning with the sensor data. Models are only so good. The point of the control system tuning will be to measure soil water content against the sensor's interpretation of the soil moisture content as well as the checking the activation levels of the microcontroller. 
+
+\paragraph{Usability}
+The team will give friends and/or family the ability to demo the garden bed in person and from the website. They will have the following rubric to grade the project in order to help fix some of the usability shortcomings:
+
+\begin{table}[H]
+    \centering
+    \caption{Usability Matrix}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Area} & \textbf{Metric} & \textbf{Grade} & \textbf{Notes} \\
+        \hline
+        \multirow{3}{*}{Web} & Navigable? & &\\
+                        & Intuitive? & &\\
+                        & Appealing? & &\\
+        \hline
+        \multirow{3}{*}{In-Person} & Durability? & & \\
+                                & Setup? & & \\
+                                & Satisfaction? & & \\
+        \hline
+    \end{tabular}
+    \label{table:usability-matrix}
+\end{table}
+
+The team felt that the user experience was an essential part of a full integration test. This is a lengthy process but something that will be invaluable for further market research as well as simple improvements to UI. The in-person metrics will help the team evaluate whether they met their design goals or not.
+
