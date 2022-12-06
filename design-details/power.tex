@@ -53,7 +53,6 @@ The linear voltage regulator schematic was designed to generate an output voltag
     \includegraphics[width=\textwidth]{images/LM317_3.3_schematic.png}
     \label{fig:3.3V-linear-voltage-regulator}
 \end{figure}
-
 In Figure 41, we re-designed the ciruit get the regulated output voltage of approximately 5V for the sensors. This is done with the same circuit as for the 3.3 output voltage regulation, but the value R is now 720Ω with CADJ still remaining at 1uF. With these values that we found we achieved an output voltage of about 5V and the adjustment current of 5.2617mA.\par
 \begin{figure}[H]
     \centering
@@ -91,7 +90,14 @@ For the adjustable version of the LM2576 switching voltage regulator, because it
     \label{fig:switching-voltage-regulator-equations}
 \end{figure}
 For this adjustable version, there is obviously no fixed value that the output voltage has to be. In this case, let's say the minimum outpute voltage of 10V We would still need to find the value in for 4 and the regulator chosen for. \par
- \paragraph{WEBENCH Designs}
+We were also able to find this specific switching voltage regulator on WEBENCH as well, in the figure below. Reading what was on WEBENCH this specific design is able to provide, 86\% efficiency, has a BOM cost of \$9.84, and has a footprint of $957mm^2$. In this circuit design, to achieve the correct regulated output voltage, it is all dependant on the values Rfbt and Rfbb. This gives the ideal resistances that allows the circuit to reach the right voltages. Luckily, were able to find this design on WEBENCH, because it helps have a better understanding for this voltage regulator with the cost and efficiency that it provides. 
+\begin{figure}[H]
+    \centering
+    \caption{LM2576 WEBENCH Design}
+    \includegraphics[width=\textwidth]{images/LM2576_WEBENCH.png}
+    \label{fig:LM2576 WEBENCH Design}
+\end{figure}
+\paragraph{WEBENCH Designs}
  WEBENCH is a resource by Texas Instruments that helps design power supplies easily. This resource can be used for DC/DC power systems and AC/DC power systems. It is customizable and helps create various power supply circuits. In this software, we have the freedom to pick and choose our input and output values, and also consider if we want the desired circuit to be balanced, low cost, have high efficiency, or have a small footprint. \par
  For this system, we used input values between 8V and 22V and then output values of 3.3V with max current of 3A. With this we were able to find TPS62933, a high-efficiency, wide input range buck converter that is easy to use. This design itself provides an efficiency of 86.5\%, a BOM cost of \$1.34, and footprint of $195mm^2$. This is one of their low cost designs.\par
  \begin{figure}[H]
