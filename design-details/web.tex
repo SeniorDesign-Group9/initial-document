@@ -33,7 +33,11 @@ Representational State Transfer (REST) is a paradigm that indicates a certain AP
 The URIs will follow the convention of \verb|.../[noun]/[verb]/{identifier}|. The ``noun'' refers to the type of object that the request will interact with. In our case this should be something like ``garden'' or ``data''. Verbs will be used rarely but a situation that might arise is where the user wants to send a command to their garden bed. This will be accomplished through the verb portion of the URI. \autoref{table:uris} gives a high level overview of the URIs, the associated methods and what they will accomplish.
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|p{2cm}|p{6cm}}
+    \begin{tabularx}{\textwidth}{
+        >{\centering\arraybackslash}X
+        |>{\centering\arraybackslash}X
+        |>{\centering\arraybackslash}X
+    }
         \hline
         \textbf{URI} & \textbf{HTTP Method} & \textbf{Function} \\
         \hline
@@ -49,7 +53,7 @@ The URIs will follow the convention of \verb|.../[noun]/[verb]/{identifier}|. Th
                           & DELETE & Delete the garden bed from the database and ensure no records are orphaned \\\hline
         \texttt{.../garden/\textbraceleft garden\_id\textbraceright/command} & POST & Sends the command specified by the request object to the garden bed \\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{URI table}
     \label{table:uris}
 \end{table}
