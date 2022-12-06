@@ -47,7 +47,7 @@ standards/features useful to our development
 \end{itemize}
 The CC3200's networking subsystem is identical to the CC3220's, and is further detailed in \autoref{cc3220_network_subsystem}.
 \begin{figure}[H]
-    \caption{CC3220 networking subsystem (\href{https://www.ti.com/lit/ug/swru455m/swru455m.pdf}{CC3200 SimpleLink™ Wi-Fi® and Internet of Things Technical Reference Manual})}
+    \caption{CC3220 networking subsystem \cite{swru455m}}
     \label{cc3220_network_subsystem}
     \centering
     \includegraphics[width=0.75\textwidth]{images/cc3220_network_subsystem.png}
@@ -88,7 +88,7 @@ default DNS nameserver provided to network clients). The software control
 flow of TCP sockets as our product will implement them is detailed in
 \autoref{tcp_socket_flow}.
 \begin{figure}[H]
-    \caption{TCP socket control flow (\href{https://www.ti.com/lit/ug/swru368c/swru368c.pdf}{CC3100/CC3200 SimpleLink Wi-Fi Internet-on-a-Chip User's Guide (Rev. C)}, Fig. 5-1)}
+    \caption{TCP socket control flow \cite{swru368c}}
     \label{tcp_socket_flow}
     \centering
     \includegraphics[width=0.8\textwidth]{images/tcp_socket_flow.png}
@@ -378,7 +378,7 @@ The CC3200 contains a 12-bit general purpose analog-to-digital converter
 16 $\upmu$s per channel (62.5 ksps per channel). The architecture of the
 CC3200's ADC is shown in \autoref{cc3200_adc_arch}.
 \begin{figure}[H]
-    \caption{CC3200 ADC module architecture (\href{https://www.ti.com/lit/an/swra679/swra679.pdf}{SimpleLink™ Wi-Fi® CC32xx ADC}, Fig. 1-2)}
+    \caption{CC3200 ADC module architecture \cite{swra679}}
     \label{cc3200_adc_arch}
     \centering
     \includegraphics[width=\textwidth]{images/cc3200_adc_arch.png}
@@ -452,9 +452,9 @@ to convert voltages from 2.3 to 3.6 V.
 % Pinout 
 \paragraph{Pinout Diagram}
 The CC3200 will connected to the following components as described by the
-pinout diagram shown in \autoref{CC3200_pinout}.
+pinout diagram shown in \autoref{CC3200_pinout}\footnote{Red labels indicate pins will be connected to other components in a way that differs from the reference design.}.
 \begin{figure}[H]
-    \caption{CC3200 pinout diagram (red labels indicate pins will be connected to other components in a way that differs from the reference design)}
+    \caption{CC3200 pinout diagram}
     \label{CC3200_pinout}
     \centering
     \includegraphics[width=\textwidth]{images/CC3200_pinout.png}
