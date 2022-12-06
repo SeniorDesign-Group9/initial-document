@@ -25,10 +25,17 @@ Through the use of UART on the microcontroller and verbose logging on the server
 Once the packets have been verified we need to test that the microcontroller is responding to the packets it is being sent. This can be done in two ways. First, using UART we can print a response to the packet to show that the logic is working. The second part of this testing is ensuring digital logic on the pins to the control mechanisms are also working appropriately.
 
 \subsubsection{Sensor Integration}
-The sensor integration testing will be relatively simple. Through the use of UART, we will be able to print the raw sensor data on a schedule using a timer.
+Sensor-controller integration shall be performed in the following manner. The sensing and controlling subsystems shall be connected according to the system schematics. This involves connecting the sensing subsystem power rail to V\textsubscript{CC}, as well as the sensing subsystem's V\textsubscript{out} to the MCU's analog-to-digital converter. The MCU shall be connected via backchannel UART to a compatible computer with a serial terminal for monitoring. The sensing subsystem shall be powered nominally and take samples on a timer providing regularly-timed samples for testing. Any raw values obtained shall be printed to the computer's serial terminal. The sensing subsystem shall measure a standardized sample, and the values obtained shall be compared against the known and calculated values of a standardized sample. Any error shall be calculated, and adjustments shall be made.
 
 \subsubsection{Power Integration}
-Through the use of multimeters we will be able to test the power into the MCU and be able to do a full integration test.
+Power-controller integration shall be performed in the following manner. The sensing and power subsystems shall be connected according to the system schematics. This involves connecting the controller subsystem power rail to V\textsubscript{CC}, the MCU's SDA and SCL buses to the power subsystem's charge controller IC, and any analog lines in to the MCU's analog-to-digital converter to the power sensing and monitoring circuitry. The MCU shall be connected via backchannel UART to a compatible computer with a serial terminal. The power subsystem shall be providing power nominally, and testing shall be performed in the following conditions:
+\begin{itemize}
+    \item Battery 100\% charged, solar panels connected
+    \item Battery 20\% charged, solar panels connected
+    \item Battery 100\% charged, solar panels disconnected
+    \item Battery 20\% charged, solar panels disconnected
+\end{itemize}
+Any voltage and current figures obtained shall be printed to the computer's serial terminal for monitoring. Any voltages and current figures measured shall fall within safe expected ranges. Any error shall be calculated, and adjustments shall be made.
 
 \subsubsection{Full Integration}
 The full integration test will bring together all parts of the system and test them in conjunction in order to see if all the systems are working. 
