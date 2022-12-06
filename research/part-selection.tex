@@ -346,13 +346,13 @@ Linear voltage regulators, just as the name suggests, is a type of regulator whe
 \begin{figure}[H]
     \caption{General Linear Voltage Regulator Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Gen_Linear_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Gen_Linear_Voltage_Regulator.png}
     \label{fig:general-linear-voltage-regulator}
 \end{figure}
 \begin{figure}[H]
     \caption{LM7805 Pin Diagram}
     \centering
-    \includegraphics[width=\textwidth]{images/LM7805_pin_diagram.png}
+    \includegraphics[width=0.5\textwidth]{images/LM7805_pin_diagram.png}
     \label{fig:LM7805-pin-diagram}
 \end{figure}
 Just as any electrical device, linear voltage regulators will have their advantages and disadvantages. Linear voltage regulators are highly integrated devices. They are simple, cheap, responsive to changes in input voltage, load voltage, and there is no switching noise. Unlike linear voltage regulators, other voltage conversion circuits will have high-frequency switching noise, which may cause problems in the power system. Linear voltage regulators don’t have to worry about that issue. The biggest disadvantage is that they are inefficient. This inefficiency is due to the voltage drop across the active pass device and causes the regulator to produce a lot of heat.\par
@@ -361,7 +361,7 @@ As the name suggests for a series voltage regulator, the pass element in the cir
 \begin{figure}[H]
     \caption{Series Voltage Regulator}
     \centering
-    \includegraphics[width=\textwidth]{images/Series_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Series_Voltage_Regulator.png}
     \label{fig:series-voltage-regulator}
 \end{figure}
 The main advantages to this type of linear voltage regulator is that the current is effectively used by the load. This makes it more efficient than shunt voltage regulators. Regardless, the efficiency is still low compared to a switching voltage regulator but it is simple and the output will not have any switching spikes.\par
@@ -369,7 +369,7 @@ The figure below shows the circuit schematic of a shunt voltage regulator. The p
 \begin{figure}[H]
     \caption{Shunt Voltage Regulator}
     \centering
-    \includegraphics[width=\textwidth]{images/Shunt_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Shunt_Voltage_Regulator.png}
     \label{fig:shunt-voltage-regulator}
 \end{figure}
 When compared to the series voltage regulator, it is just slightly less efficient, but is simpler to implement into the circuit. This type of linear voltage regulator is less common and is used commonly in low-powered circuits and in voltage reference circuits.\par
@@ -378,13 +378,13 @@ Switching voltage regulators is a type of regulator that acts as a switch, where
 \begin{figure}[H]
     \caption{General Switching Voltage Regulator}
     \centering
-    \includegraphics[width=\textwidth]{images/Gen_Switching_Voltage_Regulator.png}
+    \includegraphics[width=0.5\textwidth]{images/Gen_Switching_Voltage_Regulator.png}
     \label{fig:general-switching-voltage-regulator}
 \end{figure}
 \begin{figure}[H]
     \caption{LM2596 Pin Diagram}
     \centering
-    \includegraphics[width=\textwidth]{images/LM2596_pin_diagram.png}
+    \includegraphics[width=0.5\textwidth]{images/LM2596_pin_diagram.png}
     \label{fig:lm2596-pin-diagram}
 \end{figure}
 Some advantages to this type of voltage regulator is that it has a much higher efficiency, it does not produce a lot of heat, and it is capable of higher power efficiencies. The downside to this is that it has a more complex design, produces more noise which will require it to have more external components added to the circuit design. The choice between linear and switching voltage regulators always depends on what it is being used for because each design requires different things but switching voltage regulators are also a popular choice because of how efficient they are with power input and its general efficiency.\par
@@ -393,21 +393,21 @@ Buck converters, also known as step-down converters, will lower the output volta
 \begin{figure}[H]
     \caption{Buck Converter (Step Down) Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Buck_Converter.png}
+    \includegraphics[width=0.5\textwidth]{images/Buck_Converter.png}
     \label{fig:buck-converter-schematic}
 \end{figure}
 Boost converters, also known as step-up converters, will provide a higher output voltage than the input voltage. Even though the output voltage can be higher than the input voltage, the power being provided still has to be regulated within the output power specification of the circuit. Figure 8 shows the circuit schematic of the boost converter. As shown, the components are switched around compared to the buck converter. This allows the output voltage to increase, because when the switch is on, the voltage has to go across the inductor, increasing the current. When the switch is off, the diode is forward biased and charges the load higher than the input.\par
 \begin{figure}[H]
     \caption{Boost Converter (Step Up) Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Boost_Converter.png}
+    \includegraphics[width=0.5\textwidth]{images/Boost_Converter.png}
     \label{fig:boost-converter-schematic}
 \end{figure}
 The last type is the buck/boost converter and as the name suggests, this type of converter is able to supply either a larger or smaller output voltage, but can also invert the polarity. This type of voltage regulator is common with battery operated products because at first use the battery will supply full power but throughout time the battery as well as input power will depreciate. Figure 9 shows the circuit schematic of the buck/boost converter. This converter operates similarly to both the buck converter and the boost converter but differs because it is capable of inverting the polarity. This is done by forward-biasing the reverse-biased diode when the switch is off. \par
 \begin{figure}[H]
     \caption{Buck/Boost Converter Circuit Schematic}
     \centering
-    \includegraphics[width=\textwidth]{images/Buck_Boost_Converter.png}
+    \includegraphics[width=0.5\textwidth]{images/Buck_Boost_Converter.png}
     \label{fig:buck-boost-schematic}
 \end{figure}
 This type of converter offers many benefits. One of the reasons that it offers so much is because it brings both the buck converter and the boost converter together. It also offers lower operation cycling and is more efficient between the input and output voltages. A few downsides to this is that there is no isolation between the input and output and the output is always inverted, which results in complex sensing and feedback in the circuit. \par
@@ -461,9 +461,10 @@ The spectrometer will consist of several optical, electrical and mechanical comp
         \item Near Infrared Spectrum InGaAs Photodiode
         \item Linear Stage Actuator Carriage Rail
         \item Reflective Diffraction Grating
-        \item Focusing Optic
-        \item Fiber Patch Cable with attached Collimator
-        \item LED Diode Array
+        \item Focusing Lens
+        \item Fiber Patch Cable      
+		\item Fiber Collimator
+        \item Tungsten Lamp
     \end{itemize}
 
 	\paragraph{Silicon Photodiode}
@@ -475,9 +476,10 @@ The spectrometer will consist of several optical, electrical and mechanical comp
 	\centering
 	\label{table:SiliconPhotodiodes}
 	\caption{Silicon Photodiodes}
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{2.5cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 	\hline
-	Manufacturer & Model & Range (nm) & Area (mm squared) & Dark Current (nA) & Cost (\textdollar)\\
+	Manufacturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
     \hline
 	Newark & BPX 61 & 400-1100 & 7.02 & 2 & 13.06\\
     \hline
@@ -485,7 +487,7 @@ The spectrometer will consist of several optical, electrical and mechanical comp
     \hline
 	Digikey Opto Diode Corp & ODD-5W & 300-1100 & 5 & 1 & 14.50\\
     \hline
-	Edmund Optics & PIN-3CD	350-1100 & 3.2 & 0.15 & 34.00\\
+	Edmund Optics & PIN-3CD & 350-1100 & 3.2 & 0.15 & 34.00\\
     \hline
 	Thorlabs & FD11A & 320-1100 & 1.21 & 0.002 & 15.69\\
     \hline
@@ -506,9 +508,10 @@ The NIR InGaAs photodiode is responsible for detecting the majority of the spect
 	\centering
 	\label{table:InGaAsPhotodiodes}
 	\caption{InGaAs Photodiodes}
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
 	\hline
-	Manufacturer & Model & Range (nm) & Area (mm squared) & Dark Current (nA) & Cost (\textdollar)\\
+	Manufacturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
 	\hline
 	Digikey Excelitas & C30617BH & 800-1700 & 0.1 & 1 & 43.58\\
 	\hline
@@ -522,7 +525,7 @@ The NIR InGaAs photodiode is responsible for detecting the majority of the spect
 	\hline
 	Edmund Optics & N/A & 800-1700 & 0.12 & 0.05 & 88.00\\
 	\hline
-	Edmund Optics & N/A	800-1700 & 0.3 & 0.3 & 94.00\\
+	Edmund Optics & N/A & 800-1700 & 0.3 & 0.3 & 94.00\\
 	\hline
 	Edmund Optics & N/A & 800-1700 & 0.4 & 0.4 & 94.00\\
 	\hline
@@ -540,7 +543,8 @@ There are several methods of detecting broad spectral regimes. Scanning is much 
 	\centering
 	\label{table:LinearStageActuators}
 	\caption{Linear Stage Actuator}
-	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.25cm}|p{1.75cm}|p{1cm}|p{1.25cm}|p{1.25cm}|p{1cm}|}
 	\hline
 	Manufacturer & Model & Stroke Length (mm) & Step Angle (degrees) & Step Size (mm) & Voltage (V) & Current (A) & Cost (\textdollar)\\
 	\hline
@@ -566,7 +570,8 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\centering
 	\label{table:DiffractionGratings}
 	\caption{Diffraction Gratings}
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\bigskip
+	\begin{tabular}{|p{3cm}|p{2.5cm}|p{1.75cm}|p{2.25cm}|p{1.5cm}|p{1cm}|}
 	\hline
 	Manufacturer & Model & Density lines/mm & Dimensions (mm) & Blaze Angle (nm) & Cost (\textdollar)\\
 	\hline
@@ -574,15 +579,15 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\hline
 	Thorlabs & GR25-1210 & 1200 & 25x25x6 & 1000 & 125.77\\
 	\hline
-	Edmund optics & Stock 43-745 & 600 & 12.7x12.7x6 & 1000 & 80.00\\
+	Edmund Optics & Stock 43-745 & 600 & 12.7x12.7x6 & 1000 & 80.00\\
 	\hline
-	Edmund optics & Stock 43-753 & 1200 & 12.7x12.7x6 & 1000 & 80.00\\
+	Edmund Optics & Stock 43-753 & 1200 & 12.7x12.7x6 & 1000 & 80.00\\
 	\hline
 	MKS Newport & 33025FL01-520R & 600 & 12.5x12.5x6 & 1000 & 155.00\\
 	\hline
 	MKS Newport & 33025FL01-530R & 1200 & 12.5x12.5x7 & 1000 & 155.00\\
 	\hline
-	ScienceTech	631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
+	ScienceTech	& 631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
 	\hline
 	\end{tabular}
 \end{table}
@@ -590,10 +595,84 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models.
 
 
-\paragraph{Focusing Optic (placeholder)}
+\paragraph{Focusing Optic}
+The spectrometer needs a lens to focus each separated beam of unique wavelength onto a spot the size of the sensor. NBK-7 glass is a cheap, high quality material popular for these applications, making it the obvious choice for the focusing optic. Ray tracing analysis will show that the optimal lens will have a focal length of approximately 50mm and a diameter or height of 30mm or about 1 inch. The effective focal length is a soft constraint, since the position of the lens will contribute to total focus, however the diameter of the lens is a hard constraint. This is because if the lens is too wide, it will block the input beam before it hits the diffraction plate. The lens can either be biconvex spherical or cylindrical, with the advantage of plano-cylindrical lenses being that they require less parts to mount. In this design, while the width of the lens is a limiting factor, the center thickness and weight are unbounded.
 
-Fiber Patch Cable with attached Collimator (placeholder)
+\begin{table}[H]
+	\centering
+	\label{table:Focusing Optic}
+	\caption{Focusing Optic}
+	\bigskip
+	\begin{tabular}{|p{3cm}|p{2.5cm}|p{2cm}|p{1.5cm}|p{1.75cm}|p{1.25cm}|}
+	\hline
+	Model & Manufacturer & Shape & Focal Length (mm) & Diameter /Height (mm) & Cost (\textdollar)\\
+	\hline
+	Stock \#45-163 & Edmund Optics & Spherical & 50 & 30 & 39.00\\
+	\hline
+	SLB-30B-50P & Opto Sigma & Spherical & 51.1 & 30 & 42.84\\
+	\hline
+	LB1471 & Thorlabs & Spherical & 50 & 25.4 & 26.95\\
+	\hline
+	Stock \#35-024 & Edmund Optics & Cylindrical & 50 & 25.4 & 67.00\\
+	\hline
+	LJ1695L1 & Thorlabs & Cylindrical & 50 & 32 & 126.96\\
+	\hline
+	\end{tabular}
+\end{table}
 
-\paragraph{LED Diode Array (placeholder)}
+The priority is optical focus, however the wide selection of lens designs available ensures that this target can be reached exactly. Since lens diameter is the next limiting factor, the LB1471 and the Edmund Optics Stock \#35-024 are preferred. While the other models may technically be small enough to avoid obstructing the input beam headed towards the diffraction grating, by going several millimeters under the maximum value, the lens position can be adjusted closer to the grating, allowing for greater flexibility of focal length. The cost of the cylindrical \#35-024 is two and a half times that of the spherical LB1471. While it might have been simpler to mount, it cannot have been simple enough to justify the high cost. Our choice of lens was the LB1471. 
 
+\paragraph{Fiber Optic Patch Cable}
+
+To transmit the Electromagnetic waves from the soil to the spectrometer, we will need a waveguide. Fiber optics are a cheap, flexible waveguide coated in a durable jacket material, and fiber patch cables come with precision optical surfaces at either end, as well as attachments for connecting to lens mounts and other optical fibers. The beam coupled into the fiber is diffuse because it is being scattered off the surface of the soil. The fiber needs to have the largest possible core diameter and numerical aperture, so it will be a multimode fiber. The standard connector in spectroscopy devices is the SMA (subminiature assembly). The fiber will be contained within a space of less than a cubic meter, so 2 meters will be sufficient for all flexibility and attenuation per kilometer will be negligible with one exception. Fiber glass with trace amounts of hydroxyl ions tend to absorb optical power at around 700nm and 950nm, which is problematic because this interferes with determining whether this material is present in the soil matrix. Low OH fibers will be preferred because they minimize this absorption. Thorlabs sells a variety of fiber patch cables with Low OH and a spectral range from 400nm to 2000nm and higher.
+There are a wide range of fiber patch cable producers, however the above constraints rule out the majority of suppliers, either because they do not have documentation indicating whether the material has low Hydroxyl ion concentrations or because the fiber patch cables they offer come with unnecessary features like armor cabling or antireflective coating. Thorlabs offers the only real options for comparison.
+
+\begin{table}[H]
+	\centering
+	\label{table:Fiber Optic Patch Cable}
+	\caption{Fiber Optic Patch Cable}
+	\bigskip
+	\begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2.75cm}|p{1.75cm}|}
+	\hline
+	Model & Manufacturer & Numerical Aperture & Core Diameter (um) & Cost (\textdollar)\\
+	\hline
+	M45L02 & Thorlabs & 0.5 & 365 & 93.63\\
+	\hline
+	M44L02 & Thorlabs & 0.5 & 200 & 88.46\\
+	\hline
+	M28L02 & Thorlabs & 0.39 & 400 & 110.95\\
+	\hline
+	M38L02 & Thorlabs & 0.39 & 200 & 88.46\\
+	\hline
+	M14L02 & Thorlabs & 0.22 & 50 & 82.99\\
+	\hline
+	\end{tabular}
+\end{table}
+
+The three remaining criteria, once all other design decisions are made, are Numerical Aperture, Core Diameter, and Cost. M14L02 is the cheapest model, but not by much, and the low Numerical aperture will reduce the total light that can be focused into the fiber. This cannot be fixed with additional lenses. Models M38L02 and M44L02 are the next cheapest. They boast a much greater core diameter, and one of them has the maximum typical numerical aperture for glass fiber. The M45L02 and M28L02 have the largest core diameters, but in the M28L02 model, this comes with a reduced numerical aperture, which decreases input optical power, making it inferior to the M45L02. The M45L02 and M44L02 stand out as having the maximum possible Numerical aperture. Between the two, the question is whether the extra core size is worth the 5\textdollar for added performance. This is difficult to determine theoretically, but since the greatest difficulty of the system is achieving sufficient signal to noise ratio, we will err on the side of caution and choose model M45L02, which will best transmit a clear signal.
+
+\paragraph{Fiber Collimator}
+
+As stated above, the beam that needs to be coupled into the fiber is not collimated by the light source, the soil, or the fiber. In order for it to be coupled into the beam, a fiber collimator will be needed. Fiber optic cables come with attachments that house lens arrays focused at the surface of the fiber core. This allows light coming into the lens to be coupled into the fiber, and light coming out of the fiber to be collimated into a beam. Fiber collimators can be mechanical, optical, or optomechanical, depending on the application. Fixed collimating packages are the cheapest solution with compatible mounting for SMA fiber cables. Thorlabs offers three relevant models.
+
+\begin{table}[H]
+	\centering
+	\label{table:Fiber Collimator}
+	\caption{Fiber Collimator}
+	\bigskip
+	\begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2.75cm}|p{1.75cm}|}
+	\hline
+	Model & Manufacturer & Numerical Aperture & Output Beam Diameter (mm) & Cost (\textdollar)\\
+	\hline
+	F240SMA-980 & Thorlabs & 0.5 & 1.7 & 177.45\\
+	\hline
+	F110SMA-980 & Thorlabs & 0.37 & 1.35 & 177.45\\
+	\hline
+	F220SMA-980 & Thorlabs & 0.25 & 2.4 & 177.45\\
+	\hline
+	\end{tabular}
+\end{table}
+
+
+Since cost is equivalent for all models, the only factors are numerical aperture and beam size. All three beam sizes are acceptable and will not have a significant impact on the system quality. In order to maximize the amount of light that can be coupled into the fiber, the numerical aperture will be selected to match that of the fiber. Our group selected Model F240SMA-980 for these reasons.
 
