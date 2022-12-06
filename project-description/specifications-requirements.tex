@@ -59,13 +59,17 @@ The team compiled a set of specifications for each of the subsystems that would 
     \label{table:eng-specs}
 \end{table}
 \paragraph{Control}
-The specifications in the control portion of the table are focused on future integration. This is best exemplified by the need for a large ADC (above 8-bits) as well as the wireless capabilities. The power and voltage specifications are for convenience when integrating with the power subsystem.
+The specifications in the control portion of the table are focused on integrating the various subsystems in this product. Input voltage must be flexible to take either 3.3 V or 5 V as an input, plus or minus 0.5 V to account for possible fluctuations in power. The controls subsystem must not consume a large amount of power under nominal conditions to increase battery life and decrease battery size and capacity (and as a result, cost). Shutdown power draw must also be minimal, especially when the battery is completely drained. If the controls subsystem continues to draw from the battery past its rated capacity, the product may become a danger to the user. The processor must be fast enough to handle multiple operations concurrently and in a timely manner, while still being able to drive the network stack and wireless elements. The analog-to-digital converter must have a large enough resolution to accurately take measurements from the sensing subsystem, and must be able to sample sufficiently fast enough to take those measurements in fast enough succession to where they will be useful for our product. Transmit power must be ample enough to operate on a normal consumer WiFi network, and the receiver must be adequately sensitive enough to operate outside, away from the user's wireless access point.
+
 \paragraph{Power}
 The power specifications were made throughout the design process. For example, the power output was an unknown until all the subsystems had a firm idea of their power requirements. The maximum instantaneous power draw of the entire system is in the 20-30W range, hence where that specification is drawn from. The battery capacity and charging time are derived from the duration the team decided the system should last on battery power and the input power from the solar panels.
+
 \paragraph{Sensing}
 The spectra was chosen 
+
 \paragraph{Web}
 The web engineering specifications were hard to put into words. In general, the team wanted a reliable service quantified by the up-time of the web service. The service also needs to be able to store data in perpetuity for at least a single plantbed. Due to the efficiency of data storage and compression as well as the frequency of scans, the team felt that 16GB was effective enough to showcase the full system for now.
+
 \paragraph{Miscellaneous}
 The current miscellaneous specifications regard the physical qualities of the system. The dimensions of a meter cubed are necessary for the depth needed for various plants as well as solar panels. The weight is heavily correlated to weight of batteries, control and sensing components, as well as the soil and water hosing system. 
 \subsubsection{Marketing Requirements}
