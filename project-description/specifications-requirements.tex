@@ -18,7 +18,7 @@ In order to accomplish the first task, the chosen microcontroller (MCU) must be 
 \paragraph{Power}
 The power system's function is self-explanatory, supply power to the entire system. This will be accomplished in two ways. First, using a DC barrel-plug to the wall, the system could be powered this way. The second way, is via the solar panels, batteries, and charge controller. Both manners of supplying power to the system must be regulated. Discussed in Section \ref{sec:ps-power} are the different ways that the charge controller can efficiently switch between battery power and the panels to increase battery health and charge level.
 \paragraph{Sensing}
-The sensing subsystem is where the majority of the novelty of this project lies. A lot of problems with electronic sensing is decay in the wet environs of plant beds. To improve upon this problem and hopefully offer a more sustainable and expandable approach, the team is going to try to accomplish sensing optically via infrared spectroscopy. Through the use of spectroscopy the team will be able to collect a wider range of data than just soil moisture content which includes soil OH group content, temperatue, and acidity.
+The sensing subsystem is where the majority of the novelty of this project lies. Electronic sensing is a popular method for measuring the chemical contents of soil, however the moisture and friction of a growing environment accelerate corrosion. To improve upon this problem and hopefully offer a more sustainable and expandable approach, the team is going to try to accomplish sensing optically via infrared spectroscopy. Through the use of spectroscopy the team will be able to collect a wider range of data than just soil moisture content which includes soil Carbon content, Moisture Content, Phosphorous, and acidity.
 \paragraph{Web}
 The web component of this project accomplishes three things; data analysis, reporting, and user specified control of components. The data analysis is occurring on the web because of the greater availability of compute power and greater ease of programmability. For reporting, the web will use databases to store data ad infinitum and serve this data in the form of graphs or ``live'' metrics. The web component also will be able to take a user's input to send commands back to the control system to actuate different parts such as the solenoids or to ask for a more recent data reading.
 \subsubsection{Engineering Specifications}
@@ -48,6 +48,7 @@ The team compiled a set of specifications for each of the subsystems that would 
         \multirow{3}{*}{\textbf{Sensing}} & Spectral Range & 400nm - 1700nm \\\cline{2-3}
                                         & Spatial Resolution & \textless50nm \\\cline{2-3}
                                         & Output voltage range & 0-1.8V \\\cline{2-3}
+                                        & SNR & 2:1 \\\cline{2-3}
         \hline
         \multirow{2}{*}{\textbf{Web}} & Up-time & 95\textpm.1\% \\\cline{2-3}
                                     & Storage Capacity & \textgreater16 GB \\\cline{2-3}
