@@ -274,7 +274,7 @@ The selected solar panel that we chose was the Eco Worthy 10W 12V monocrystallin
 		{
 			| >{\raggedright\arraybackslash}X
 			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash\columncolor[gray]{0.8}}X
 			| >{\raggedright\arraybackslash}X
 			| >{\raggedright\arraybackslash}X
 			|
@@ -313,7 +313,7 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 	\begin{tabularx}{\textwidth}
 			{
 			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
+			| >{\raggedright\arraybackslash\columncolor[gray]{0.8}}X
 			| >{\raggedright\arraybackslash}X
 			| >{\raggedright\arraybackslash}X
 			| >{\raggedright\arraybackslash}X
@@ -476,14 +476,21 @@ The spectrometer will consist of several optical, electrical and mechanical comp
 	\centering
 	\label{table:SiliconPhotodiodes}
 	\caption{Silicon Photodiodes}
-	\bigskip
-	\begin{tabular}{|p{2.5cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+	\begin{tabularx}{\textwidth}{
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|
+	}
 	\hline
-	Manufacturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
+	Manu-facturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
     \hline
-	Newark & BPX 61 & 400-1100 & 7.02 & 2 & 13.06\\
+	\rowcolor[gray]{.8}Newark & BPX 61 & 400-1100 & 7.02 & 2 & 13.06\\
     \hline
-	Digikey & ODD-1B & 400-1100 & 1 & 0.2 & 15.60\\
+	Digi-key & ODD-1B & 400-1100 & 1 & 0.2 & 15.60\\
     \hline
 	Digikey Opto Diode Corp & ODD-5W & 300-1100 & 5 & 1 & 14.50\\
     \hline
@@ -493,7 +500,7 @@ The spectrometer will consist of several optical, electrical and mechanical comp
     \hline
 	Thorlabs & FDS100 & 350-1100 & 13 & 1 & 16.08\\
     \hline
-	\end{tabular}
+	\end{tabularx}
 \end{table}
 
 
@@ -508,14 +515,21 @@ The NIR InGaAs photodiode is responsible for detecting the majority of the spect
 	\centering
 	\label{table:InGaAsPhotodiodes}
 	\caption{InGaAs Photodiodes}
-	\bigskip
-	\begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+	\begin{tabularx}{\textwidth}{
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|
+	}
 	\hline
 	Manufacturer & Model & Range (nm) & Area (mm\textsuperscript{2}) & Dark Current (nA) & Cost (\textdollar)\\
 	\hline
 	Digikey Excelitas & C30617BH & 800-1700 & 0.1 & 1 & 43.58\\
 	\hline
-	Digikey Advanced Photonix & 0800-3111-011 & 800-1700 & 1.36 & 0.2 & 50.21\\
+	\rowcolor[gray]{.8}Digikey Advanced Photonix & 0800-3111-011 & 800-1700 & 1.36 & 0.2 & 50.21\\
 	\hline
 	Thorlabs & FGA015 & 800-1700 & 0.018 & 0.5 & 63.00\\
 	\hline
@@ -529,7 +543,7 @@ The NIR InGaAs photodiode is responsible for detecting the majority of the spect
 	\hline
 	Edmund Optics & N/A & 800-1700 & 0.4 & 0.4 & 94.00\\
 	\hline
-	\end{tabular}
+	\end{tabularx}
 \end{table}
 
 The Advanced Photonix 0800-3111-011, distributed by Digikey has the highest active area, the second lowest cost, and an acceptable midrange dark current. This makes it the obvious choice for the system’s NIR detector.
@@ -543,20 +557,31 @@ There are several methods of detecting broad spectral regimes. Scanning is much 
 	\centering
 	\label{table:LinearStageActuators}
 	\caption{Linear Stage Actuator}
-	\bigskip
-	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.25cm}|p{1.75cm}|p{1cm}|p{1.25cm}|p{1.25cm}|p{1cm}|}
+	\begin{tabularx}{\textwidth}{
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash\columncolor[gray]{0.8}}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|
+	}
 	\hline
-	Manufacturer & Model & Stroke Length (mm) & Step Angle (degrees) & Step Size (mm) & Voltage (V) & Current (A) & Cost (\textdollar)\\
+	Manufacturer & Rattmmotor & TOAUTO & TOAUTO & Zeberoxyz \\
 	\hline
-	Rattmmotor & T0601-50 & 50 & 1.8 & 0.005 & 24 & 0.8 & 39.00\\
+	Model & T0601-50 & T0601-100 & T0601-101 & SFU1605 \\
 	\hline
-	TOAUTO & T0601-100 & 100 & 1.8 & 0.005 & 24 & 0.6 & 67.00\\
+	Stroke Length (mm) & 50 & 100 & 50 & 200 \\
 	\hline
-	TOAUTO & T0601-101 & 50 & 1.8 & 0.005 & 24 & 0.6 & 89.00\\
+	Step Angle (\textdegree) & 1.8 & 1.8 & 1.8 & 1.8 \\
 	\hline
-	Zeberoxyz & SFU1605 & 200 & 1.8 & 0.025 & N/A & 1.5 & 83.89\\
+	Step Size (mm) & .005 & .005 & .005 & 0.025 \\
 	\hline
-	\end{tabular}
+	Voltage (V) & 24 & 24 & 24 & N/A \\
+	\hline
+	Current (A) & 0.8 & 0.6 & 0.6 & 1.6 \\
+	Cost (\textdollar) & 39.00 & 67.00 & 89.00 & 83.89 \\
+	\hline
+	\end{tabularx}
 \end{table}
 
 The ratio between the stroke length and step size needs to be well above 1,500 in order to meet the criterion for spectral resolution. Luckily, the product with the least range is well over that limit, at 10,000:1. That allows cost to become the driving factor. The T0601-50, distributed by Rattmmotor, is just over half the price of the next cheapest option. This is the group’s choice of scanner
@@ -570,10 +595,17 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\centering
 	\label{table:DiffractionGratings}
 	\caption{Diffraction Gratings}
-	\bigskip
-	\begin{tabular}{|p{3cm}|p{2.5cm}|p{1.75cm}|p{2.25cm}|p{1.5cm}|p{1cm}|}
+	\begin{tabularx}{\textwidth}{
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|>{\raggedright\arraybackslash}X
+		|
+	}
 	\hline
-	Manufacturer & Model & Density lines/mm & Dimensions (mm) & Blaze Angle (nm) & Cost (\textdollar)\\
+	Manu\-facturer & Model & Density lines/mm & Dimensions (mm) & Blaze Angle (nm) & Cost (\textdollar)\\
 	\hline
 	Thorlabs & GR13-0610 & 600 & 12.7x12.7x6 & 1000 & 76.58\\
 	\hline
@@ -587,9 +619,9 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\hline
 	MKS Newport & 33025FL01-530R & 1200 & 12.5x12.5x7 & 1000 & 155.00\\
 	\hline
-	ScienceTech	& 631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
+	\rowcolor[gray]{.8}ScienceTech & 631-0024 & 1200 & 50x50x9.5mm & 1000 & 500.00\\
 	\hline
-	\end{tabular}
+	\end{tabularx}
 \end{table}
 
 The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models.
