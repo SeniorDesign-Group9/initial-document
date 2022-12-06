@@ -13,7 +13,7 @@
     \centering
     \includegraphics[width=0.25\textwidth]{images/YuanCaoSpectrometer.png}
 \end{figure}
-\verb"Reference Link: https://caoyuan.scripts.mit.edu/ir_spec.html"
+
 
 \paragraph{Electromagnetic Analysis} Soil is a heterogeneous combination of organic and inorganic substances, and the balance of soil nutrients contributes directly to the quality of the garden environment. Each substance contributes to the total radiative emission of the soil, so by measuring the traces in a sample with unknown quantities and comparing it to traces from a sample with known quantities, the nutrients can be estimated. Soil Carbon content, Moisture Content, Phosphorous, and pH can all be detected within the 400nm to 1700nm range (reference).
 
@@ -24,7 +24,6 @@
     \centering
     \includegraphics[width=0.75\textwidth]{images/TungstenLamp.jpg}
 \end{figure}
-Reference Link: https://zeiss-campus.magnet.fsu.edu/articles/lightsources/tungstenhalogen.html
 
 \paragraph{Soil Conditions} The optical signal emitted by the soil will be weak, so it is essential that the spectrometer is influenced as much as possible by the content of the soil and as little as possible by the topology of the surface. A well-mixed, smoothly flattened, gently compressed soil sample provides the best conditions for constructing a spectrograph. If there are ridges or depressions along the sample, too much or too little optical signal will pass into the spectrometer, creating an apparent signal strength for wavelengths that is not representative of the soil emission. There are several ways to control these conditions. One is to require the user to retrieve a sample for each scan and deposit it into a spectrometer bay. Another is to require the user to flatten the soil with a spatula or other implement and position the scanner input near the soil. These reduce ease of use, which is a target for the project. Another issue is that the position of the signal input and the tungsten light source relative to the soil sample will have to be consistent to avoid signal error, for the same reasons as above. In (reference) study, this issue was resolved by building a transparent block with slots to hold the light source and the input beam. Their design is represented below, showing the block attached at the rear of a plow chisel for clearing soil while scanning. We will solve the problem of soil topology and light position the same way, by mounting the light source and input fiber in a block of some transparent material like acrylic.
 
@@ -33,7 +32,6 @@ Reference Link: https://zeiss-campus.magnet.fsu.edu/articles/lightsources/tungst
     \centering
     \includegraphics[width=0.75\textwidth]{images/Acrylic Block Fiber positioner.png}
 \end{figure}
-Reference paper titled: On line measurement of some selected soil properties using a VIS NIR sensor
 
 \paragraph{Fiber Optics} Fiber optic cables are a standard input for spectrometer devices since they allow nearly unlimited flexibility for the position and orientation of the target area relative to the device. The basic ray trace for a lens coupling light into a fiber is shown below. Fiber cores face some basic limitations when it comes to coupling. The maximum possible coupling efficiency can be achieved by pressing the optical surface of the fiber core up against a light source with equal random output in every direction (reference). If the fiber is moved some distance away from the source, less light will impede on the core-air interface. If the core diameter is increased, this will increase the light incident on the core. Light moving in random directions will also strike the fiber core at various angles, however, not all angles of incidence will couple into the fiber. Only rays within the numerical aperture of the fiber will be accepted. This is why installing large lenses at the end of the fiber does not increase the maximum possible amount of light that can be coupled. The maximum angle is determined by the fiber, rather than the collimator.
 
@@ -42,7 +40,6 @@ Reference paper titled: On line measurement of some selected soil properties usi
     \centering
     \includegraphics[width=0.75\textwidth]{images/CouplingDiffuseLighttoFiber.png}
 \end{figure}
-Reference Link: https://www.laserfocusworld.com/optics/article/14035384/lighting-up-innovative-optical-fiber-applications
 
 This project involves a large diffuse source, the illumined soil. The Fiber collimator will be attached to the fiber cable via their SMA connectors, then the collimator will be set in an acrylic block so that it rests 8.06mm above the soil. The block will also have a slot for the Light source to illuminate the soil at an angle, similar to the arrangement of the source and sensor in a computer mouse above a mousepad.
 The signal will travel through the fiber and up into the spectrometer housing, where the other connector of the cable will be mounted in place. Another collimator will take the output beam and collimate it so that it propagates through free space into the housing. The collimator has an output beam diameter of 1.7mm. This planar wavefront will strike the diffraction grating.
@@ -53,7 +50,7 @@ The signal will travel through the fiber and up into the spectrometer housing, w
     \centering
     \includegraphics[width=0.4\textwidth]{images/ThorlabsGratingTutorial.png}
 \end{figure}
-\verb"Reference link: https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=26"
+
 
 \begin{equation}
     a[sin(\theta m)+sin(\theta i)] = m\lambda
@@ -67,7 +64,6 @@ The signal will travel through the fiber and up into the spectrometer housing, w
 
 The beam coming out of the fiber will have a nonzero width. When the 1.7mm diameter beam hits the surface of the grating, since the grating is at 45 degrees from the beam, light will be propagating from an area with a diameter larger than 1.7mm.
 
-(Placeholder: trig equation and image)
 
 This means the spread of the diffracted light will be 38 degrees in and 21 degrees out from both the near edge and the far edge of the collimated beam on the surface of the grating. In order to capture this light and sort it so that the scanner can proceed linearly through each band, a focusing optic will be needed that covers the full angular range.
 
@@ -84,7 +80,6 @@ This means the spread of the diffracted light will be 38 degrees in and 21 degre
     \centering
     \includegraphics[width=0.75\textwidth]{images/BasicRayTrace.png}
 \end{figure}
-Reference Link: https://www.newport.com/n/fiber-optic-coupling
 
 \begin{figure}[H]
     \caption{Sensor Ray Trace}
@@ -92,13 +87,6 @@ Reference Link: https://www.newport.com/n/fiber-optic-coupling
     \includegraphics[width=0.5\textwidth]{images/ColimatedBeam.png}
 \end{figure}
 
-\paragraph{Linear Actuator Rail} Discuss
-
-(Placeholder: Image of actuator and schematic or pic of the rail)
-
-\paragraph{Optical Sensors} Discuss
-
-(Placeholder: responsivity diagrams)
 
 \paragraph{Circuitry} The Photodiode works by converting a small portion of the incident light into electrical current across the face of the semiconductor. The diode will have a small current running through the circuit hooked up to an amplifier for boosting the signal to a detectable level. Then another op amp will cut out the electrical noise created by unwanted frequencies generated by the diode and electromagnetic interference.
 
@@ -108,4 +96,9 @@ Reference Link: https://www.newport.com/n/fiber-optic-coupling
     \includegraphics[width=0.75\textwidth]{images/ElectricalSignalFilteringSD1.png}
 \end{figure}
 
+\begin{figure}[H]
+    \caption{Soil Spectrograph}
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/GenericSoilSpectra.png}
+\end{figure}
 
