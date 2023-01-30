@@ -22,7 +22,7 @@ AgroCares offers a Near Infrared Spectrometer specifically designed for Proximit
 
 \subsubsection{Web Technologies}\label{sec:web-tech}
 \paragraph{Docker}
-``Docker is a platform designed to help developers build, share, and run modern applications. We handle the tedious setup, so you can focus on the code.'' This quote comes directly from Docker's website on why developers should switch to Docker. This technology makes items more portable by making the executable platform agnostic through the use of a docker kernel and containers. The figure below should provide some clarity:
+``Docker is a platform designed to help developers build, share, and run modern applications. We handle the tedious setup, so you can focus on the code.'' This quote comes directly from Docker's website on why developers should switch to Docker \cite{docker-tag}. This technology makes items more portable by making the executable platform agnostic through the use of a docker kernel and containers. The figure below should provide some clarity:
 
 \begin{figure}[H]
     \caption{Docker architecture}
@@ -31,7 +31,7 @@ AgroCares offers a Near Infrared Spectrometer specifically designed for Proximit
     \label{fig:docker_arch}
 \end{figure}
 
-A developer can program applications such as those demonstrated in figure \ref{fig:docker_arch}, package them into images and run them in containers. Docker works with the OS kernel to provide the same environment to the application each and everytime.
+A developer can program applications such as those demonstrated in figure \ref{fig:docker_arch} \cite{docker-what-container}, package them into images and run them in containers. Docker works with the OS kernel to provide the same environment to the application each and everytime.
 
 One of the largest advantages to using and implementing Docker that the team sees is that one team member can program and package the image and it should ``just run'' on any other team member's machine. This fact will prove very useful in integration testing especially for the socket server detailed in Section \ref{sec:web_subsystem}.
 
