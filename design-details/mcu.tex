@@ -1,39 +1,14 @@
 \subsection{Controller Subsystem}
 \label{sec:controller_subsystem}
 % Why the MCU connects to the internet
-In order for our system to be as self and power efficient as
-possible from an end-user perspective, it was determined that our product
-would require an internet connection to offload remote command-and-control
-to an Amazon Web Services EC2 instance (hence referred to as "AWS" and detailed in
-\autoref{sec:web_subsystem}). To make the process of operating our product 
-as hands-off as possible to end-users, the microcontroller will connect to
-the user's home WiFi network for access to AWS. Bluetooth, Zigbee, Thread,
-and other short-range 2.4 GHz communication protocols were disfavored over
-WiFi, as we predict most users will not have a device dedicated to
-connecting our product via such protocols. Long range (LoRa) protocols were
-deemed unncessary, as the intended placement of our product is outside, 
-near or next to the user's home. We do not expect our product to produce
-or receive large amounts of data, so the decreased bandwidth of a
-WiFi-enabled product being beyond the outdoor walls of a building
-is not a significant drawback to our application. A wired connection
-(802.3/Ethernet) was deemed too invasive to the end-user. It is expected
-that most, if not all, end-users have a wireless access point and internet
-access. Thus, connection via the 802.11/WiFi standard was a natural choice
-for our use case.
+In order for our system to be as self and power efficient as possible from an end-user perspective, it was determined that our product would require an internet connection to offload remote command-and-control to an Amazon Web Services EC2 instance (hence referred to as "AWS" and detailed in \autoref{sec:web_subsystem}). To make the process of operating our product as hands-off as possible to end-users, the microcontroller connected to the user's home WiFi network for access to AWS. Bluetooth, Zigbee, Thread, and other short-range 2.4 GHz communication protocols were disfavored over WiFi, as it was predicted that most users would not have a device dedicated to connecting our product via such protocols. Long-range (LoRa) protocols were deemed unnecessary, as the intended placement of our product was outside, near or next to the user's home. We did not expect our product to produce or receive large amounts of data, so the decreased bandwidth of a WiFi-enabled product being beyond the outdoor walls of a building was not a significant drawback to our application. A wired connection (802.3/Ethernet) was deemed too invasive to the end-user. It was expected that most, if not all, end-users had a wireless access point and internet access. Thus, connection via the 802.11/WiFi standard was a natural choice for our use case.
 
 % How the MCU connects to the internet (local network, LAN -> NAT -> WAN,
 % TCP stack)
 \paragraph{CC3200 Overview}
-The Texas Instruments CC3200-series (hence referred to as the "CC3200", the
-"MCU", or the "microcontroller") of microcontrollers are WiFi-enabled
-chips with an ARM Cortex-M4 central processor and a WiFi network processor,
-along with many useful peripherals and power management modules. This
-series of processors is delivered alongside a software development kit
-(SDK) provided by Texas Instruments to ease the development of
-Internet-of-Things (IoT) applications.
+The Texas Instruments CC3200-series (hence referred to as the "CC3200", the "MCU", or the "microcontroller") of microcontrollers were WiFi-enabled chips with an ARM Cortex-M4 central processor and a WiFi network processor, along with many useful peripherals and power management modules. This series of processors was delivered alongside a software development kit (SDK) provided by Texas Instruments to ease the development of Internet-of-Things (IoT) applications.
 
-The CC3200's WiFi network processor supports the following
-standards/features useful to our development
+The CC3200's WiFi network processor supported the following standards/features useful to our development
 (see \autoref{cc3220_network_subsystem}):
 \begin{itemize}
     \item WiFi standards: 802.11b/g/n
@@ -45,7 +20,7 @@ standards/features useful to our development
     \item Transport: UDP, TCP, RAW
     \item Host interface: UART, SPI
 \end{itemize}
-The CC3200's networking subsystem is identical to the CC3220's, and is further detailed in \autoref{cc3220_network_subsystem}.
+The CC3200's networking subsystem was identical to the CC3220's, and is further detailed in \autoref{cc3220_network_subsystem}.
 \begin{figure}[H]
     \caption{CC3220 networking subsystem \cite{swru455m}}
     \label{cc3220_network_subsystem}
@@ -53,40 +28,27 @@ The CC3200's networking subsystem is identical to the CC3220's, and is further d
     \includegraphics[width=0.75\textwidth]{images/cc3220_network_subsystem.png}
 \end{figure}
 \paragraph{Connection}
-During development of our product, our microcontroller shall connect to a WLAN via a hardcoded password (and username, if needed), or via SmartConfig. The system shall receive an IPv4 address via DHCP, or it shall be able to be statically assigned.
+During the development of our product, the microcontroller connected to a WLAN via a hardcoded password (and username, if needed), or via SmartConfig. The system received an IPv4 address via DHCP, or it was able to be statically assigned.
 
 % option a) web interface for user to long in to WLAN
 \paragraph{Web Interface Option}
-The first option would allow unanimous adaptation of
-our product for home users. This option consists of performing first-time
-setup through a WiFi Direct connection to the MCU and allowing the user
-to login through a web portal to finish setup of their device. The portal
-would allow a user to connect to their WLAN of choice, and would
-also allow the user to login to the MCU locally to view telemetry and 
-settings. The user would also be able to configure the MCU for static
-IP addressing or DHCP IP addressing.
+The first option allowed unanimous adaptation of our product for home users. This option consisted of performing first-time setup through a WiFi Direct connection to the MCU and allowing the user to log in through a web portal to finish setup of their device. The portal allowed a user to connect to their WLAN of choice, and also allowed the user to log in to the MCU locally to view telemetry and settings. The user was also able to configure the MCU for static IP addressing or DHCP IP addressing.
 
 % option b) WPS button
 \paragraph{WPS Option}
-The second option would be to implement a momentary switch which is
+The second option was to implement a momentary switch which was
 programmed to connect to the MCU's WiFi Protected Setup (WPS) feature.
 This would still allow the user to connect to their network of
 choice---however, the user's wireless access point (WAP) would need to
 support WPS. Furthermore, DHCP IP addressing would be forced, and there
 would be no web portal for the user to access for viewing telemetry and
-settings. This option would greatly ease development, though, and would
-let the MCU and web teams focus on developing and refining their
+settings. This option would have greatly eased development, though, and would
+have let the MCU and web teams focus on developing and refining their
 respective subsystems.
 
 % TCP sockets
 \paragraph{Communication Method}
-The MCU will communicate with AWS through TCP sockets. After connection to
-the user's home network, the MCU will check if there is an internet
-connection. Once an internet connection has been established, the MCU will
-open a socket and connect to the AWS instance via its URL (using the
-default DNS nameserver provided to network clients). The software control
-flow of TCP sockets as our product will implement them is detailed in
-\autoref{tcp_socket_flow}.
+The MCU communicated with AWS through TCP sockets. After connecting to the user's home network, the MCU checked if there was an internet connection. Once an internet connection had been established, the MCU opened a socket and connected to the AWS instance via its URL (using the default DNS nameserver provided to network clients). The software control flow of TCP sockets as our product implemented them was detailed in \autoref{tcp_socket_flow}.
 \begin{figure}[H]
     \caption{TCP socket control flow \cite{swru368c}}
     \label{tcp_socket_flow}
@@ -96,20 +58,18 @@ flow of TCP sockets as our product will implement them is detailed in
 
 % Parameters for connection and how often it tries
 \paragraph{Connection Parameters}
-Once the MCU has established a connection to the internet and the AWS
-instance, it attempts to send current system settings and telemetry, as
-well as sensor readings to AWS. The microcontroller does this at least
-once every 15 minutes. Sending and receiving may occur more often if
-commanded to by AWS. Because TCP is being used to connect AWS and the
-microcontroller, any manual retries on a failed send or receive most
-likely will be futile. Therefore, any sort of link error handling will
-be performed by the link and not the microcontroller program.
+Once the MCU had established a connection to the internet and the AWS
+instance, it attempted to send current system settings and telemetry, as
+well as sensor readings to AWS. The microcontroller did this at least
+once every 15 minutes. Sending and receiving may have occurred more often if
+commanded to by AWS. Because TCP was being used to connect AWS and the
+microcontroller, any manual retries on a failed send or receive were most
+likely futile. Therefore, any sort of link error handling was performed by 
+the link and not the microcontroller program.
 
 % Any over-the-air updates?
 \paragraph{Over-the-Air Updates}
-At this time, our team does not intend to provide a method for over-the-air
-updates (OTA), however, this is a provision that may be developed in the
-future.
+At that time, our team did not intend to provide a method for over-the-air updates (OTA); however, this was a provision that could have been developed in the future.
 
 \paragraph{Startup} Upon startup, the system shall initialize these peripherals in the following order within 30 seconds of startup: watchdog timer, GPIO, ADC, network stack/WiFi module. The system shall then check for interrupts, and execute ISRs if necessary. The system shall then verify its connection to the internet, if set, by attempting to ping \texttt{8.8.8.8} and \texttt{8.8.4.4} 16 at most times over the period of 8 seconds. If 4/16 responses have been received at any point, the system shall attempt to verify network DNS status by pinging \texttt{google.com} 16 at most times over the period of 8 seconds. If 4/16 responses have been received, the system shall continue with startup and clear the no connection flag (if set). If no connection has been established (i.e. the system fails to ping the aforementioned addresses at either step), the system shall set a flag to indicate no connection has been received, and reset. If no connection has been established, and the flag is set, the system shall go into critical power mode and flash the yellow LED for 1 second, 1 time every 2 seconds. The user shall be able to correct the issue via user interface (e.g. SmartConfig or other developed interface). The system shall measure the battery voltage, and set itself to the appropriate state described earlier.
 
