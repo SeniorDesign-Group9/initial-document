@@ -302,12 +302,12 @@ The selected solar panel that we chose was the Eco Worthy 10W 12V monocrystallin
 	\end{tabularx}
 \end{table}
 \paragraph{Solar Charge Controller Selection}
-Solar charge controllers play an important role in this system because this system is running on solar energy. A solar charge controller is a regulator that goes in between the solar panel and the battery, regulating the total output power coming out of the solar panel. This is important because this will prevent the battery from overcharging and possibly reducing its effectiveness. If the wrong charge controller was picked, it could result in a loss of power that is generated, and can harm any device. As stated in the power requirement section, finding the total power needed for the whole system is important because we can use that to help determine the proper charge controller to get. \par
+Solar charge controllers play an important role in this system because this system is running on solar energy. The solar charge controller acts as another type of voltage regulator that goes in between the solar panel and the battery, regulating the total output power coming out of the solar panel and into the battery. This is important because this will prevent the battery from overcharging/undercharging and possibly reducing its effectiveness. This in all helps optimize charging and prolonging the batterylife. If the wrong charge controller was picked, it could result in a loss of power that is generated, and can harm any device. \par
 There are two main types of solar charge controllers: Maximum Power Point Tracking (MPPT) and Pulse Width Modulated (PWM). Choosing the right charge controller is based on current and voltage characteristics. This is because they regulate input voltage coming in from the solar panel and output voltage of what is coming out to the battery.\par
 Maximum power point tracking (MPPT) is a technique that observes and regulates energy coming from the solar panel and into the battery. What makes this special is that it can match the solar panel voltage to the battery voltage, which allows it to maximize the charge efficiency. They operate as a DC to DC converter, taking in high DC input from the solar panel, changing it to high AC voltage, then back down to DC voltage.\par
 Pulse width modulated (PWM) solar charge controllers are considered the original charge controller compared to the MPPT charge controller. They are less expensive and the technique behind this controller is also simpler. On a basic level, the PWM controller acts as an on-off regulator. When the battery voltage reaches a certain level, the PWM controller will slowly reduce the charging current, up until the battery reaches the maximum amount of energy. This makes it great for smaller installations because the solar panel and the controller can match better. \par
-While looking at different solar charge controllers, we came across 4 different controllers, all of which are PWM charge controllers. We did not specifically choose the PWM controller but through our search for what charge controller we wanted to use all of the choices we found were PWM. This would be great for our model regardless because our system will not be large and it will be less expensive compared to MPPT charge controllers.\par
-The solar charge controller we chose for our model is the Eco Worthy 10A PWM solar charge controller. The reason we chose this controller is because it comes as a kit along with the solar panel. As a result of it coming as a kit with the solar panel they will already be very compatible together and the price for both of them together is not expensive at all. \par
+While researching solar charge controllers, we came across various types and manufacturers such as Texas Instruments, Analog Devices, Consonance Electronics, etc. In our research and from these manufacturers, we then found a few different types of solar charge controllers all of which use the I2C interface. We specifically searched for a controller that had this feature so that it would be compatible with the CC3220 microcontroller that we are using, but also searched for a controller with a maximum power point tracking to help optimize the voltage coming in from the solar panels more effectively. \par
+The solar charge controller that we came to conclusion with was the Texas Instrument BQ25713. Unfortunately, some of the other components were unavailable and this was the only one on the market, but nonetheless this was still a great choice because it has features that meet the requirements that we have. It is compatible with multiple types of batteries, the input range meets the specifications of our battery, it uses I2C interface and is solar compatible.\par
 \begin{table}[H]
     \centering
 	\begin{tabularx}{\textwidth}
@@ -322,22 +322,22 @@ The solar charge controller we chose for our model is the Eco Worthy 10A PWM sol
 		\caption{Charge Controller}
 		\label{table:chargecontroller} \\
 		\hline
-		\textbf{Manu\-facturer} & \textbf{Eco Worthy} & \textbf{Renogy} & \textbf{Expert\-Power} &  \textbf{Expert\-Power} \\
+		 & \textbf{LT8491} & \textbf{LTC4162} & \textbf{BQ25672} &  \textbf{BQ25713} \\
 		\hline
-		\textbf{Charge\-Controller Type} & PWM & PWM & PWM & PWM \\
+		\textbf{Input Voltage\-Range} & 6V-80V & 4.5V-35V & 3.6V-24V & 3.5V-24V \\
 		\hline
-		\textbf{Output Voltage} & 12\slash24V  & 12\slash24V & 12\slash24V & 12\slash24V \\
+		\textbf{Charging\-Current} & 10A & 3.2A & 3A & 8.128A \\
 		\hline
-		\textbf{Rated Charge Current} & 10A & 10A & 10A & 20A \\
-		\hline
-		\textbf{Max PV Voltage} & 30V & 50V & 55V & 55V \\
-		\hline
-		\textbf{Self Consumption} & $\leq$10mA & $\leq$10mA & \textless10mA & $\leq$13mA \\
-		\hline
-		\textbf{Price (\$)} & 23.99 & 69.99 & 34.99 & 69.99 \\ 
+		\textbf{Battery\-Chemistry} & Li-Ion, Lead Acid & Lithium Phosphate/ LiFePO4 & Li-Ion/Li-Polymer, Lithium Phosphate/ LiFePO4 & Lead Acid, Li-Ion/Li-Polymer, Lithium Phosphate/ LiFePO4, NiCd, NiMH, SuperCap \\
 		\hline
 	\end{tabularx}
 \end{table}
+\begin{figure}[H]
+    \caption{BQ25713 General Application Schematic}
+    \centering
+    \includegraphics[width=\textwidth]{images/BQ25713_Application_Diagram.png}
+    \label{fig:BQ25713 General Application Schematic}
+\end{figure}
 \paragraph{Voltage Regulator}
 Voltage regulators play an important role in almost every electronic device. All electronic devices operate at different voltage ranges, some requiring a constant voltage. Common operating voltages are 3V, 5V, and 12V. To provide this voltage range or constant voltage, a voltage regulator is added into the circuit design. Voltage regulators help regulate voltages during power fluctuations and different variations in loads, preventing damage to any component. They can also regulate DC and AC voltages. For this power system, we will be focusing on DC voltage. This is because solar panels produce DC voltage. \par
 As said before, voltage regulators play an important role in almost every electronic device. They are used for smaller devices to power components such as sensors, op-amps, and other modules, but can also be used in bigger applications such as TV’s, automotive vehicles, industrial applications, and many more. There are two main voltage regulators: linear and switching. Both of these types have the same goal, regulating a system’s voltage but operate differently depending on the application that it is used for. \par
@@ -584,8 +584,7 @@ There are several methods of detecting broad spectral regimes. Scanning is much 
 	\end{tabularx}
 \end{table}
 
-The ratio between the stroke length and step size needs to be well above 1,500 in order to meet the criterion for spectral resolution. Luckily, the product with the least range is well over that limit, at 10,000:1. That allows cost to become the driving factor. The T0601-50, distributed by Rattmmotor, is just over half the price of the next cheapest option. This is the group’s choice of scanner
-
+The ratio between the stroke length and step size needs to be well above 1,500 in order to meet the criterion for spectral resolution. Luckily, the product with the least range is well over that limit, at 10,000:1. That allows cost to become the driving factor. The T0601-50, distributed by Rattmmotor, is just over half the price of the next cheapest option. This is the group’s choice of scanner.
 
 \paragraph{Reflective Diffraction Grating}
 
@@ -624,7 +623,7 @@ Diffraction is the operating principle behind the spectrometer. The soil emissio
 	\end{tabularx}
 \end{table}
 
-The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models.
+The spectral regime is too wide to be able to reliably use a 600 nm grating without losing information in the infrared. Unfortunately, efficiency is not a variable that can be compared from product to product, since it varies with wavelength and per polarization. This means the only remaining comparison is the ratio from cost to active area. ScienceTech can be ruled out immediately. Its cost to size ratio is not far from the other 1200 nm gratings on this list, but it would be difficult to justify doubling the project budget in order to achieve a marginal increase in grating power efficiency. This spec can also be compensated by cranking up the optical power probing the soil, presumably for less than the \textdollar45 difference between the Edmund Optics and Thorlabs models. We selected the Stock \#43-753 from Edmund Optics.
 
 
 \paragraph{Focusing Optic}
@@ -708,3 +707,32 @@ As stated above, the beam that needs to be coupled into the fiber is not collima
 
 Since cost is equivalent for all models, the only factors are numerical aperture and beam size. All three beam sizes are acceptable and will not have a significant impact on the system quality. In order to maximize the amount of light that can be coupled into the fiber, the numerical aperture will be selected to match that of the fiber. Our group selected Model F240SMA-980 for these reasons.
 
+\paragraph{Bill of Materials}
+
+\begin{table}[H]
+	\centering
+	\label{table:SensingBOM}
+	\caption{Sensing Subsystem Bill of Materials}
+	\bigskip
+	\begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2.75cm}|p{1.75cm}|}
+	\hline
+	Qty & Cost (\textdollar) & Manufacturer & Item & Model\\
+	\hline
+	1 & 13.06 & Newark & VIS Photodiode & BPX 61\\
+	\hline
+	1 & 50.21 & Excelitas & NIR Photodiode & 0800-3111-01\\
+	\hline
+	1 & 30.76 & Rattmmotor & Linear Rail Actuator & T0601-50\\
+	\hline
+	1 & 30.76 & Edmund Optics & Blazed Reflection Grating & 43-753\\
+	\hline
+	1 & 30.76 & Thorlabs & Biconvex Lens & LB1471\\
+	\hline
+	1 & 30.76 & Thorlabs & Fiber Patch Cable & M45L02\\
+	\hline
+	1 & 30.76 & Thorlabs & Fiber Collimator & F240SMA-980\\
+	\hline
+	1 & 30.76 & Osram Sylvania & Tungsten Halogen Bulb & 54262\\
+	\hline
+	\end{tabular}
+\end{table}
