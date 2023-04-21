@@ -2,10 +2,9 @@
 In our research for part selection we wanted to create a generalized comparison of the options we have available. We formatted this information in the tables below.
 
 \subsubsection{Controller Subsystem}\label{sec:ps-control}
-\paragraph{Minimum Requirements} At minimum, any chosen microcontrollers (MCUs) shall support natively, or by addition of a module, these features and traits:
+\paragraph{Minimum Requirements} At minimum, any chosen microcontrollers (MCUs) support natively, or by addition of a module, these features and traits:
 \begin{itemize}
-	\item Ability to connect to external antenna
-	\item Analog-to-digital converter (ADC)
+	\item Integrated antenna
 	\item IEEE 802.11
 	\item In stock and available to order
 	\item JTAG module or equivalent
@@ -14,18 +13,13 @@ In our research for part selection we wanted to create a generalized comparison 
 	\item Onboard CPU sufficient for our purposes
 	\item Onboard memory sufficient for our purposes
 	\item Onboard nonvolatile memory
-	\item Sockets support
-	\item Pins dedicated to analog input
 	\item Pins dedicated to digital I/O
 \end{itemize}
 
-\paragraph{Nice To Have} These features would be "nice to have" on any MCU selected, but are not required:
+\paragraph{Nice To Have} These features are "nice to have" on any MCU selected, but are not required:
 \begin{itemize}
-	\item Digital-to-analog converter (DAC)
-	\item Integrated antenna
 	\item microSD card slot
 	\item Onboard battery
-	\item Pins dedicated to pulse-width modulation (PWM)
 	\item Timer(s) and an RTC
 	\item USB compatibility
 	\item Additional wireless communication protocols (e.g. BT or BLE, Zigbee)
@@ -80,9 +74,9 @@ In our research for part selection we wanted to create a generalized comparison 
 	\end{tabularx}
 \end{table}
 
-\paragraph{Single-board Computers} Use of single-board computers (SBCs) was considered, but will not not need to be used; sockets will be used on an MCU in conjunction with \href{https://aws.amazon.com/ec2/}{Amazon EC2} services will allow us to offload computing to a cloud solution.
+\paragraph{Single-board Computers} Use of single-board computers (SBCs) was considered, but were disfavored due to their larger power draw. An MCU was sufficient for our project's purposes.
 
-\paragraph{External WiFi Module} Use of an external WiFi module is discouraged due to the following reasons:
+\paragraph{External WiFi Module} Use of an external WiFi module was discouraged due to the following reasons:
 \begin{itemize}
 	\item Added cost
 	\item Added complexity
@@ -102,75 +96,11 @@ In our research for part selection we wanted to create a generalized comparison 
 \end{itemize}
 Therefore, all of the MCUs listed above support either the 802.11 or Bluetooth standards.
 
-\paragraph{External ADC Module} Use of an external ADC was considered, but ultimately decided against. An external ADC module would only add further cost and complexity to a project where the on-chip ADC is sufficiently effective for the project's requirements. The sample rate and resolution of an on-chip ADC is more than enough for our needs, and the low-cost goal of the project directly conflicts with the idea of purchasing an external ADC module.
+\paragraph{External ADC Module} Use of an external ADC was considered and implemented. While an external ADC module added further cost and complexity, the on-chip ADC was too noisy and lacked the input range needed for our purposes. The external ADC chosen was the \href{https://www.ti.com/product/ADS7142}{Texas Instruments ADS7142}. The ADS7142 is a nanowatt, dual-channel ADC small enough to fit onto the sensing subsystem. It communicates with our MCU via ADC, and has a sample rate of 140ksps. While the ADC is factually a 12-bit ADC, it can operate in high-precision mode whereby accumulating multiple 12-bit results, it can produce a 16-bit measurement.
 
-\paragraph{Selection} Ultimately, the \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF} was chosen as the microcontroller development board for this project. In the event that the aforementioned LaunchPad is not able to be obtained, the \href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} has  quivalent capability for the project's needs.
+\paragraph{Selection} Ultimately, the \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF} was chosen as the microcontroller development board for this project. Because the aforementioned LaunchPad is not able to be obtained, the \href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} was ordered and has equivalent capability for the project's needs.
 
-These boards, henceforth referred to as the CC3220, are able to be requested from our university at no upfront cost to our team. This was the driving factor behind choosing the CC3220 over other microcontroller development boards. It was also determined that the microcontroller \emph{must} be able to interface via the 802.11 (WiFi) standard, for reasons that are detailed in \autoref{sec:controller_subsystem}---therefore, the LAUNCHXL-CC26X2R1 and Nano 33 BLE were disqualified from selection. The Pico W was considered due to its low cost, and the B-L4S5I-IOT01A considered because of its abundant peripherals, but both ultimately lost out to the Texas Instruments products.
-
-\paragraph{CC3200} Due to difficulties in acquiring the CC3220 (second-generation SimpleLink device), our team made the decision to use the CC3200 (first-generation SimpleLink). These parts are mostly identical, with the differences detailed in \autoref{table:cc32x0_diff}. Development will take place on the \href{https://www.ti.com/tool/CC3200-LAUNCHXL}{CC3200-LAUNCHXL}, with the PCB MCU part to be \href{https://www.ti.com/product/CC3200}{CC3200} (if needed).
-
-\begin{table}
-	\centering
-	\begin{tabularx}{\textwidth}
-		{
-			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash\columncolor[gray]{0.8}}X
-			| >{\raggedright\arraybackslash}X
-			|
-		}
-		\caption{Differences between CC3200 and CC3220}
-		\label{table:cc32x0_diff} \\
-		\hline
-		\textbf{Model} & \textbf{CC3200} & \textbf{CC3220} \\
-		\hline
-		\textbf{Micro\-controller} & CC3200 & CC3220SF \\
-		\hline
-		\textbf{Secure Flash (MB)} & n/a & 1 \\
-		\hline
-		\textbf{Simultaneous TCP/UDP Sockets} & 8 & 16 \\
-		\hline
-		\textbf{WiFi Receive Sensitivity (dBm, 1 DSSS)} & -95.7 & -96 \\
-		\hline
-		\textbf{WiFi Receive Sensitivity (dBm, 54 OFDM)} & -74.0 & -74.5  \\
-		\hline
-		\textbf{Hibernate Current Draw ($\upmu$A)} & 4 & 4.5  \\
-		\hline
-		
-	\end{tabularx}
-\end{table}
-
-\paragraph{Bill of Materials} The bill of materials for the controller subsystem can be found in \autoref{table:controller_bom}.
-
-\begin{table}
-	\centering
-	\begin{tabularx}{\textwidth}
-		{
-			| >{\raggedright\arraybackslash}l
-			| >{\raggedright\arraybackslash}l
-			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
-			| >{\raggedright\arraybackslash}X
-			|
-		}
-		\caption{Controller subsystem bill of materials}
-		\label{table:controller_bom} \\
-		\hline
-		\textbf{Qty} &  \begin{tabular}[c]{@{}l@{}}\textbf{Cost}\\\textbf{(\$/ea)}\end{tabular}& \textbf{Manufacturer} & \textbf{Item} & \textbf{Model Number} \\
-		\hline
-		1 & 0.00 & Texas Instruments & SimpleLink Wi-Fi CC3200 LaunchPad & CC3220-LAUNCHXL \\
-		\hline
-		2 & 10.88 & Texas Instruments & CC3200 & CC3200R1M2RGCR \\
-		\hline
-		2 & 3.80 & Taiyo Yuden & Surface Mount 2.4 GHz Antenna & AH316M245001-T \\
-		\hline
-		2 & 6.95 & Adafruit & Plastic Water Solenoid Valve & 997 \\
-		\hline
-	\end{tabularx}
-\end{table}
-
-
-
+These boards, henceforth referred to as the CC3220, were requested from our university at no upfront cost to our team. This was the driving factor behind choosing the CC3220 over other microcontroller development boards. It was also determined that the microcontroller \emph{must} be able to interface via the 802.11 (WiFi) standard, for reasons that are detailed in \autoref{sec:controller_subsystem}---therefore, the LAUNCHXL-CC26X2R1 and Nano 33 BLE were disqualified from selection. The Pico W was considered due to its low cost, and the B-L4S5I-IOT01A considered because of its abundant peripherals, but both ultimately lost out to the Texas Instruments products.
 
 % End Controller Subsystem
 
