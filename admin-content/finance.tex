@@ -29,3 +29,76 @@ The budget was created from the individual subsystem BOM. The BOMs for each subs
 \end{table}
 
 \subsection{Total Cost}
+The budget cost table and the real cost data table show some differences in terms of estimated costs versus actual costs. The budget cost table estimated a total cost of \textdollar1090, but the real cost data shows a total cost of \textdollar1543.26, which is over 40\% more than the estimated cost. Looking at the breakdown by subsystem, the biggest discrepancies appear to be in the sensing and control categories, which had estimated costs of \textdollar700 and \textdollar60 respectively, but actual costs of \textdollar680.22 and \textdollar332.07. On the other hand, the power and non-subsystem categories were closer to their estimated costs. Despite the differences, the real cost data table provides a comprehensive breakdown of the actual costs incurred, allowing for a more accurate assessment of the project's expenses.
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{.8\textwidth}
+        {
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedleft\arraybackslash}X
+            |
+        }
+        \caption{Total cost itemized}\\
+        \hline
+        Description & Category & Cost (USD) \\
+        \hline
+        IR photodiode & Sensing & 50.21 \\
+        Linear Rail Actuator & Sensing & 30.76 \\
+        Tungsten Lamp & Sensing & 16.4 \\
+        DRV8833 PCB & Sensing & 15.54 \\
+        JLCPCB Sensor PCB v1.2 and stencil & Sensing & 61.96 \\
+        Digikey order & Misc & 90.01 \\
+        Cylindrical Lens & Sensing & 67 \\
+        Fiber Patch Cable & Sensing & 87.24 \\
+        Fiber Collimator 1 & Sensing & 177.45 \\
+        Motor Drivers & Sensing & 22.22 \\
+        Dev board and IC & Control & 131.06 \\
+        Solenoid, Antenna, CC3200 & Control & 54.06 \\
+        AD8656 & Sensing & 52.83 \\
+        Main and Sensing Containers from Harbor Freight & Misc & 26.6 \\
+        12VLiFePo4 Battery & Power & 74.99 \\
+        Solar Panel & Power & 52.98 \\
+        BQ25713RSNR & Power & 9.38 \\
+        LM317KCS & Power & 1.67 \\
+        LM2576S & Power & 10.34 \\
+        Remaining BOM Order Digikey & Misc & 126.23 \\
+        JLCPCB MCU PCB v1.1 & Control & 94.86 \\
+        JLCPCB Sensor PCB v2.1 & Sensing & 47.45 \\
+        Power PCB & Power & 105.33 \\
+        Digikey order 3/10/23 & Misc & 22.78 \\
+        TI ADS7142 eval board & Sensing & 38.63 \\
+        JLCPCB MCU v2.0 & Control & 52.09 \\
+        ACE Hardware mounting stuff & Misc & 10.66 \\
+        ACE bulb trip 1 & Sensing & 3.99 \\
+        ACE bulb trip 2 & Sensing & 8.54 \\
+        \hline
+        Total balance & & 1543.26 \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{.8\textwidth}
+        {
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedleft\arraybackslash}X
+            |
+        }
+        \caption{Total cost by area} \\
+    \hline
+    \textbf{Category} & \textbf{Cost} & \textbf{\% of Total} \\
+    \hline
+    Control & 332.07 & 21.51\% \\
+    Power & 254.69 & 16.50\% \\
+    Sensing & 680.22 & 44.10\% \\
+    Misc & 276.28 & 17.89\% \\
+    \hline
+    \textbf{Total} & \textbf{1543.26} & \textbf{100\%} \\
+    \hline
+    \end{tabularx}
+\end{table}
+
+This table shows the cost breakdown of the project by category, as well as the percentage of the total cost each category represents. Control accounts for 21.51\% of the total cost, Power accounts for 16.50\%, Sensing accounts for 44.10\%, and Misc accounts for 17.89\%. The total cost of the project is 1543.26.
