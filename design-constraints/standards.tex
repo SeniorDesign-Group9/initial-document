@@ -27,19 +27,3 @@ IPv4 was the fourth version of the Internet Protocol, a network layer protocol i
     \centering
     \includegraphics[width=\textwidth]{images/ipv4_frame.png}
 \end{figure}
-
-\subsubsection{JSON Web Token (RFC 7519)}
-This standard specified a ``compact, URL-safe means of representing claims to be transferred between two parties.'' The means was via the JSON Web Token (JWT). JWTs were split into 3 parts, the header which specified the algorithm the key(s) used to encrypt the message and the type of token, JSON Web Encryption (JWE) or JSON Web Signature (JWS). The second part was the payload. The payload was a JSON formatted object which carried claims. And the third part was the verification signature which was the Base64 encoded header plus a '.' plus the Base64 encoded payload, another '.' and finally this was all encrypted by the key. When a JWT was received, the header and payload could be read by just Base64 decoding these portions of the token. The JWT was verified by decrypting the verification signature, if the signature could not be decrypted with the key then the token was invalid. \autoref{fig:jwt} gives an example of a JWT that was signed with a secret key.
-\begin{figure}[H]
-\centering
-\caption{Example JWT from jwt.io}
-\includegraphics[width=\textwidth]{images/jwt.png}
-\label{fig:jwt}
-\end{figure}
-
-\paragraph{Claims}
-Claims were in the payload of a JWT. The basic claims specified by this standard were \verb|iss| ``issuer'', \verb|sub| ``subject'', \verb|aud| ``audience'', \verb|exp| ``expiration'', \verb|nbf| ``not before'', \verb|iat| ``issued at'', and \verb|jti| ``JSON Token ID''. For our purposes, all of the JWTs were self-signed so the issuer, JSON Token ID, audience, and issuer claims could all be disregarded as they were meant for cross-service authentication. However, following the standard, the ``subject'' claim was the user principal, and the expiration and issued at claims were used to invalidate a token cookie after a certain period of time. The standard allowed for public and private claims outside of these as well. Public claims were registered with the IANA while private claims were collision prone, neither of these were of true concern to us.
-\subsubsection{HTTP/1.1 (RFC 2616)}
-This standard defined an application-level protocol communicating across the internet. RFC 2616 was an update to previous protocols that increased the capabilities of the original in the form of persistent connections and the ability to send files in the form of MIME types. MIME types held metadata and the binary data of a file. This standard also served to define how dates/times were handled on the web as well.
-\subsubsection{WebSocket Protocol (RFC 6455)} \label{websocket_protocol}
-The WebSocket Protocol standard (aka. "WebSockets") was an application layer protocol that allowed full-duplex communication over a single TCP connection. WebSockets could be considered a comparable to HTTP, but were compatible with HTTP, though it functioned effectively similarly to TCP serial bytestreams, with the advantage in using WebSockets being in that devices connected via a URL. This allowed devices to rely on URLs for addressing instead of statically-assigned IP addresses. The WebSocket Protocol also further specificied how the connection was made, how the data was formatted, and some security considerations. Most of these items were abstracted away from users in the forms of libraries---however, the security concerns were likely the most important part of this standard in terms of this project. This reason being that we were receiving location and IP data from the packets in order to build out commands like where to point the solar panels. Exposing PII such as location

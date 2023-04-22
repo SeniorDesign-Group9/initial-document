@@ -102,7 +102,8 @@ In our research for part selection we wanted to create a generalized comparison 
 \end{itemize}
 Therefore, all of the MCUs listed above support either the 802.11 or Bluetooth standards.
 
-\paragraph{External ADC Module} Use of an external ADC was considered, but ultimately decided against. An external ADC module would only add further cost and complexity to a project where the on-chip ADC is sufficiently effective for the project's requirements. The sample rate and resolution of an on-chip ADC is more than enough for our needs, and the low-cost goal of the project directly conflicts with the idea of purchasing an external ADC module.
+\paragraph{External ADC Module} Use of an external ADC was considered, and originally was decided against because an external ADC module would only add further cost and complexity to a project where the on-chip ADC is sufficiently effective for the project's requirements. The sample rate and resolution of an on-chip ADC is more than enough for our needs, and the low-cost goal of the project directly conflicts with the idea of purchasing an external ADC module.
+Ultimately, the team had to use an external ADC module because the operational range of the onboard ADC was not sufficient.
 
 \paragraph{Selection} Ultimately, the \href{https://www.ti.com/tool/LAUNCHCC3220MODASF}{LAUNCHCC3220MODASF} was chosen as the microcontroller development board for this project. In the event that the aforementioned LaunchPad is not able to be obtained, the \href{https://www.ti.com/tool/CC3220SF-LAUNCHXL}{CC3220SF-LAUNCHXL} has  quivalent capability for the project's needs.
 
@@ -142,7 +143,7 @@ These boards, henceforth referred to as the CC3220, are able to be requested fro
 
 \paragraph{Bill of Materials} The bill of materials for the controller subsystem can be found in \autoref{table:controller_bom}.
 
-\begin{table}
+\begin{table}[H]
 	\centering
 	\begin{tabularx}{\textwidth}
 		{
@@ -686,4 +687,37 @@ As stated above, the beam that needed to be coupled into the fiber was not colli
 	\hline
 	\end{tabular}
 \end{table}
-Since cost was equivalent for all models, the only factors to consider were numerical aperture and beam size. All three beam sizes were acceptable and would not have had a significant impact on the system quality. In order to maximize the amount of light that could be coupled into the fiber, the numerical aperture was selected to match that of the fiber. Model F240SMA-980 was selected by our group for these reasons.
+
+
+Since cost is equivalent for all models, the only factors are numerical aperture and beam size. All three beam sizes are acceptable and will not have a significant impact on the system quality. In order to maximize the amount of light that can be coupled into the fiber, the numerical aperture will be selected to match that of the fiber. Our group selected Model F240SMA-980 for these reasons.
+
+\paragraph{Bill of Materials}
+The BOM for the sensing subsystem can be found in the table below.
+
+\begin{table}[H]
+	\centering
+	\label{table:SensingBOM}
+	\caption{Sensing Subsystem Bill of Materials}
+	\bigskip
+	\begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2.75cm}|p{1.75cm}|}
+	\hline
+	Qty & Cost (\textdollar) & Manufacturer & Item & Model\\
+	\hline
+	1 & 13.06 & Newark & VIS Photodiode & BPX 61\\
+	\hline
+	1 & 50.21 & Excelitas & NIR Photodiode & 0800-3111-01\\
+	\hline
+	1 & 30.76 & Rattmmotor & Linear Rail Actuator & T0601-50\\
+	\hline
+	1 & 30.76 & Edmund Optics & Blazed Reflection Grating & 43-753\\
+	\hline
+	1 & 30.76 & Thorlabs & Biconvex Lens & LB1471\\
+	\hline
+	1 & 30.76 & Thorlabs & Fiber Patch Cable & M45L02\\
+	\hline
+	1 & 30.76 & Thorlabs & Fiber Collimator & F240SMA-980\\
+	\hline
+	1 & 30.76 & Osram Sylvania & Tungsten Halogen Bulb & 54262\\
+	\hline
+	\end{tabular}
+\end{table}

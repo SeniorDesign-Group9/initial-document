@@ -33,13 +33,29 @@
 \pagenumbering{arabic}
 %\input{your tex file here}
 \section{Executive Summary}                     % Section 1
-New gardeners typically struggle getting their garden started due to a lack of tending to their plants. This project seeks to solve  many of the problems that new gardeners have through sensing and control. The main issues with plant growth relate to soil composition, soil moisture, temperatue, and sun light. This project seeks to use optics to measure the soil moisture and composition; then an MCU will capture this data and control solar shades to control sunlight and solenoids to control watering. A web component will be included to check the weather as well as notify the user of impending weather events that could affect their plants adversively (frost or heat wave). The entire system will be powered with solar panels that are capable of tracking the sun through the sky and can act as blinds over the plants.
+Soil characterization is shifting away from laboratory analysis and toward optical
+sensing. While chemistry experiments may determine soil composition with high degrees of accuracy,
+they are unfeasible on economies of scale. Every sample must be preserved for a trip back to the lab,
+and lab work takes time and other valuable resources to evaluate even a single sample. Some lab work
+can be done in the field, but this limits the accuracy and types of elements that can be investigated.
+Spectral sensing offers two advantages: results returned by devices are limited only by scanning speeds
+and computing power, and scanning covers a lot of ground, rather than a small spot. There is now a
+market for precision agricultural technology, and research is ongoing to improve the efficiency of
+these devices.
 
-This project all starts with scoping out the project. The team has immediately compiling a list of must-have requirements and some things the team would like to accomplish as ``nice to haves". The team started this process by looking at all the similar projects that have already been done and looked at all the ways the team can expand on the work they have already accomplished. For example, the team liked the weather aspects of a project for getting rain information; a problem the team were thinking about was how to get the system in as much of a ``set it and forget it" state as possible as it pertained to frost. The solution is to integrate with a weather service online and send notifications when there is a frost or freeze advisory.
+Soil Scanners, like those developed by AgroCares, MertControl Group, and NPC Agro, typically employ
+a broadband light source to probe the soil, then collect reflectance data using an array of photodetectors.
+Relevant spectral data is mostly contained within the near and mid infrared regimes. However, Moisture
+Content, Carbon, Phosphorous, and pH all have spectral fingerprints that can be detected within the visible
+and near infrared spectrum. A reflectance scanning spectrometer with a broadband source and one or two
+cheap detectors covering the 400-1700nm range are sufficient to measure these variables\cite{Mouazen2007}.
 
-After assembling the list of requirements, the team set out to create a high-level functional block diagram for each of the subsystems. This helps the team see where the different systems integrate for the future as well as breaking out all the different components that may need to be purchased.
-
-The ultimate novelty in this project is all of the sensing that will be done through spectroscopy. The team has found a plethora of research on the topic and has started familiarizing themselves with the limitations and capabilities of the available technology. Ideally, the team would like to find a scalable solution to the sensing in which the optical sensing could be attached to a drone or satellite to survey fields for farming.
+In addition to professional products and services, hobby project forums are also advancing the
+accessibility of complex systems. Hydroponic gardeners are experimenting with water distribution systems,
+Arduino programmers have created a market for cheap network communication devices, and optoelectronics
+hobbyists have even developed DIY optical spectrometers\cite{Cao}. These projects represent a major development in
+engineering activity. It is now possible for a small, poorly funded team of amateurs to create a device
+with not only mechanical function, but also wireless control and user interfacing.
 \newpage
 \section{Project Description}                   % Section 2
 At the core, this project is a microcontroller project that anybody with a slight understanding of digital communications could accomplish. Our team in the background of our project will cover the novelties of this project that separates us from any ``Garduino'' project that can be found on numerous blogs. In our Goals and Objectives, we will cover how we will accomplish the novelties as well as the specifics as to why our project is better and more marketable.
@@ -59,7 +75,6 @@ In this section we will cover the standards we will be adhering to throughout th
 \input{design-details/mcu.tex}                  % Section 5.1 
 \input{design-details/power.tex}                % Section 5.2
 \input{design-details/sensing.tex}              % Section 5.3
-\input{design-details/web.tex}                  % Section 5.4
 \input{design-details/integration.tex}          % section 5.5
 \section{Testing}                               % Section 6 - add sections for individual test plans, and integration test
 Incremental unit testing will be used during the development process
@@ -74,12 +89,15 @@ be performed with the criteria defined in \autoref{sec:integration_testing}.
 \input{testing/mcu-testing.tex}                 % Section 6.1
 \input{testing/power-testing.tex}               % Section 6.2
 \input{testing/sensing-testing.tex}             % Section 6.3
-\input{testing/web.tex}
 \input{testing/integration-testing.tex}         % Section 6.5
 \section{Administrative Content}                % Section 7
 This next section will detail our plans for designing and implementing the project. We will review the methodologies that our team has decided to use and give a brief overview of when we plan to complete different parts of the project. Because this is a living document with our project, you will notice that some items from our Fall section were not completed as originally planned and have been marked as so and also moved to the Spring section. We decided to leave the items in Fall as well as any real project would so that future projects can plan their time more accurately. 
 \input{admin-content/milestones.tex}            % Section 7.1 - refine backlog and move here, create gantt chart
 \input{admin-content/finance.tex}               % Section 7.2 - update finances what was budgeted versus what was spent
+\section{Future Work}
+This section will detail what a team starting from where we left off would do and where they could take this project.
+\input{design-details/web.tex}                  % Section 5.4
+\input{testing/web.tex}
 \clearpage
 \pagenumbering{Roman}
 \input{references/references.tex}               % References
