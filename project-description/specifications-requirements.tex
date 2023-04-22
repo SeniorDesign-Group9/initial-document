@@ -1,26 +1,24 @@
 \subsection{Specifications and Requirements}\label{sec:specs-and-reqs}
-This project idea requires the integration of power, systems, computer, optical, and web engineering to achieve a final product of a self-sustaining plant bed. The design in \autoref{fig:overall-block} shows four different subsystems the team has designated as power, control, sensing, and web.
+This project idea requires the integration of power, systems, computer, and optical engineering to achieve a final product of a self-sustaining plant bed. The design in \autoref{fig:overall-block} shows the different subsystems the team plans to build.
 \begin{figure}[H]
     \caption{Overall block diagram}
     \centering
     \includegraphics[width=\textwidth]{images/Overall Block Diagram.png}
     \label{fig:overall-block}
 \end{figure}
+Blue is for Brendan, yellow is for Justin, purple for Scott and green for Nicholas.
 \paragraph{Control}
 The control subsystem is the brains of the entire operation. This subsystem has to accomplish four distinct tasks:
 \begin{enumerate}
     \item Actuate mechanical components (linear rail, solenoid valve)
     \item Convert analog sensor data to digital data
-    \item Send plant bed telemetry to web subsystem
-    \item Receive commands from web subsystem and modify system accordingly
+    \item Communicate plant bed telemetry to user
 \end{enumerate}
-In order to accomplish the first task, the chosen microcontroller (MCU) must be capable of driving the currents for these components and also support pulse-width modulation (PWM) for interacting with the motor controller. The second task requires that the MCU have an analog-to-digital converter. The third and fourth tasks necessitate WiFi connectivity as well as firmware support for either HTTP requests or WebSockets. These requirements for the control subsystem weigh heavily in the discussion of which MCU to choose found in Section \ref{sec:ps-control}.
+In order to accomplish the first task, the chosen microcontroller (MCU) must be capable of driving the currents for these components and also support pulse-width modulation (PWM) for interacting with the motor controller. The second task requires that the MCU have an analog-to-digital converter. The third  task necessitates WiFi connectivity or the ability to communicate over UART. These requirements dictate the chosen MCU, this discussion can be found in Section \ref{sec:ps-control}.
 \paragraph{Power}
 The power system's function is self-explanatory, supply power to the entire system. This will be accomplished in two ways. First, using a DC barrel-plug to the wall, the system could be powered this way. The second way, is via the solar panels, batteries, and charge controller. Both manners of supplying power to the system must be regulated. Discussed in Section \ref{sec:ps-power} are the different ways that the charge controller can efficiently switch between battery power and the panels to increase battery health and charge level.
 \paragraph{Sensing}
 The sensing subsystem is where the majority of the novelty of this project lies. Electronic sensing is a popular method for measuring the chemical contents of soil, however the moisture and friction of a growing environment accelerate corrosion. To improve upon this problem and hopefully offer a more sustainable and expandable approach, the team is going to try to accomplish sensing optically via infrared spectroscopy. Through the use of spectroscopy the team will be able to collect a wider range of data than just soil moisture content which includes soil Carbon content, Moisture Content, Phosphorous, and acidity.
-\paragraph{Web}
-The web component of this project accomplishes three things; data analysis, reporting, and user specified control of components. The data analysis is occurring on the web because of the greater availability of compute power and greater ease of programmability. For reporting, the web will use databases to store data ad infinitum and serve this data in the form of graphs or ``live'' metrics. The web component also will be able to take a user's input to send commands back to the control system to actuate different parts such as the solenoids or to ask for a more recent data reading.
 \subsubsection{Engineering Specifications}
 The team compiled a set of specifications for each of the subsystems that would need to be implemented to accomplish the requirements from above. \autoref{table:eng-specs} shows breaks down these specifications by the corresponding subystem.
 \begin{table}[H]
@@ -47,14 +45,11 @@ The team compiled a set of specifications for each of the subsystems that would 
         \hline
         \multirow{3}{*}{\textbf{Sensing}} & Spectral Range & 400nm - 1700nm \\\cline{2-3}
                                         & Spatial Resolution & \textless50nm \\\cline{2-3}
-                                        & Output voltage range & 0-1.8V \\\cline{2-3}
+                                        & Output voltage range & 0-3.3V \\\cline{2-3}
                                         & SNR & 2:1 \\\cline{2-3}
         \hline
-        \multirow{2}{*}{\textbf{Web}} & Up-time & 95\textpm.1\% \\\cline{2-3}
-                                    & Storage Capacity & \textgreater16 GB \\\cline{2-3}
-        \hline
         \multirow{2}{*}{\textbf{Miscellaneous}} & Dimensions & 1 m\textsuperscript{3} \\\cline{2-3}
-                                                & Weight\tablefootnote{The weight of the system includes a full soil load} & \textless 50lb \\
+                                                & Weight & \textless 50lb \\
         \hline
     \end{tabular}
     \label{table:eng-specs}
@@ -67,11 +62,10 @@ The power specifications were made throughout the design process. For example, t
 
 \paragraph{Sensing}
 In order to ensure a suitable growing environment, the system needs to detect Carbon, Moisture Content, Phosphorous, and pH. These materials have spectral traces across the 400nm to 1700nm range. In order to create a spectrograph from the spatially separated light, the system needs sufficient spatial resolution to detect individual material fingerprints. The system must also generate electrical signals that a microcontroller can detect.
-\paragraph{Web}
-The web engineering specifications were hard to put into words. In general, the team wanted a reliable service quantified by the up-time of the web service. The service also needs to be able to store data in perpetuity for at least a single plantbed. Due to the efficiency of data storage and compression as well as the frequency of scans, the team felt that 16GB was effective enough to showcase the full system for now.
 
 \paragraph{Miscellaneous}
 The current miscellaneous specifications regard the physical qualities of the system. The dimensions of a meter cubed are necessary for the depth needed for various plants as well as solar panels. The weight is heavily correlated to weight of batteries, control and sensing components, as well as the soil and water hosing system. 
+
 \subsubsection{Marketing Requirements}
 When thinking about the target market for a project like this, the team put together a list of requirements important to the consumers. The most important feature for the consumer would be how easy the product is to use and navigate. This feature ranks the highest and would be the main determining factor on whether a consumer purchases this product over a competitor. Two other highly important features to a consumer would be the accuracy of the product and the cost. The accuracy is important because it directly correlates to the success of the customer's garden. If the product is not accurate in watering the plants, the customer will be unsatisfied and the plants will not survive. Cost because every consumer has to consider their budget - how much they are willing to spend for the features they deem most important. Other customer requirements the team brought up include the durability, configurability, environmental friendliness, portability and update frequency; listed from more important to less for consumer preferences. Each of these requirements have a direct correlation to at least one of the engineering requirements set for the product. \\
 
