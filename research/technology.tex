@@ -30,60 +30,6 @@ Physics Open Lab is a blog posting site for do-it-yourself physics laboratory pr
     \includegraphics[width=0.5\textwidth]{images/DIYTransmissionGratingSpectrometer.png}
 \end{figure}
 
-\subsubsection{Web Technologies}\label{sec:web-tech}
-\paragraph{Docker}
-``Docker is a platform designed to help developers build, share, and run modern applications. We handle the tedious setup, so you can focus on the code.'' This quote comes directly from Docker's website on why developers should switch to Docker \cite{docker-tag}. This technology makes items more portable by making the executable platform agnostic through the use of a docker kernel and containers. The figure below should provide some clarity:
-
-\begin{figure}[H]
-    \caption{Docker architecture}
-    \centering
-    \includegraphics[width=\textwidth]{images/Docker-Architecture.png}
-    \label{fig:docker_arch}
-\end{figure}
-
-A developer can program applications such as those demonstrated in figure \ref{fig:docker_arch} \cite{docker-what-container}, package them into images and run them in containers. Docker works with the OS kernel to provide the same environment to the application each and everytime.
-
-One of the largest advantages to using and implementing Docker that the team sees is that one team member can program and package the image and it should ``just run'' on any other team member's machine. This fact will prove very useful in integration testing especially for the socket server detailed in Section \ref{sec:web_subsystem}.
-\paragraph{Elastic Compute Cloud}
-Amazon Web Services (AWS) offers a service called called Elastic Compute Cloud (EC2). EC2 is essentially a group of datacenters that provide virtual computing environments, Amazon refers to these as \textit{instances}. The entirety of AWS offers really simple ways to architecture the whole system. Because of the nature of instances, the team plans to also use the docker images from before and deploy straight to EC2.\\
-
-EC2 also takes out almost all the hassle with validation and security between systems due to the encapsulated nature of AWS. 
-\paragraph{User Interface}
-Because these are web technologies we will be using Javascript frontend frameworks/libraries for creating the frontend. Based upon cursory research, the most feature-rich and most widely used are React and VueJS.
-\subparagraph{React}
-React is a component-based library for building user interfaces.  Many libraries have extended the functionality by adding components to React for use by other developers. A React component is a stateful element in the Document Object Model (DOM). Essentially, based on the state information, a component is rendered in raw HTML to the browser. One such example of a component library is MaterialUI (MUI). MUI is a popular library for adding components like hamburger menus, tables, graphs, etc. Choosing React decreases the time spent developing due to the ease of tossing boilerplate components at the problem. The biggest issue is that all rendering is done in the browser which means that loading an uncached page may take a long time. Frameworks built ontop of React such as NextJS help speed up this process by moving some of the processing to the server.
-\subparagraph{VueJS}
-VueJS is a framework for building user interfaces. The difference between a library and a framework is that a framework provides a control flow while libraries are just used. VueJS is not too unlike raw HTML and JavaScript wherein \verb|<script>| tags are used to create dynamic pages in response to user actions. The key difference between Vue and the above is that Vue provides the access to component-based programming. Similar to React, Vue works on the basic of components but it uses the default HTML DOM and adds functionality to pre-existing components. This comes with the limitation that components are not nearly as interleaved with data from a web server. Vue is performant and designed for single-page applications, which may not server this project well in the long-run.
-\paragraph{Web and Socket Server}
-This section will host information related to technologies for building out a web and socket server for connecting the user interface to the backend. .NET, Java and JavaScript all have reasonable solutions to these but based on the JavaScript user interface, this discussion will be kept to Java and JavaScript solutions and technologies.
-\subparagraph{Java Spring Boot}
-Java Spring Boot is a full featured library that has different webservers embedded such as Apache Tomcat. Web servers are the means for which an application can be accessed from the outside world. Java Spring Boot makes this process incredibly easy. Part of this project will be communicating via TCP packets as well as through HTTP requests. Java at first glance seems like the easier way of accomplishing both tasks through the \verb|java.net| libraries and through the use of Spring Boot \verb|@Controller|.
-
-The \verb|java.net| libraries are essentially a port of the network protocols that were made in the C language for creating communications via packets. By deploying using Java Spring Boot, it is possible to create two services packaged into one, the socket server and the web server. Java's memory management and VM environment leave a lot to be desired. The current state of the language and its artifact leave a lot to be desired as well. Because of the nature of running as a server and potentially servicing multiple plant beds, Java's lack of callbacks and lacking multi-threading support means it is downgraded given its overhead.
-
-The \verb|@Controller| is such a great feature in Spring Boot. Java is strictly typed, leading to a lot really helpful features in executing backend requests. Also, because of the overhead, Java ORMs tend to be more fully featured and have support for a variety of other tools that increase velocity when programming. One such tool is Liquibase. Liquibase is a database changelog tool for creating and implementing database migrations based on a code.
-
-\subparagraph{ExpressJS}
-Express is a lightweight backend framework for implementing routes and middleware in JavaScript. The biggest disadvantage of using Express is the lack of low-level capabilities. Express was designed to be multiple layers of abstraction away from the kernel which may prove to be tumultuous when trying to create a socket server that communicates with the MCU.
-\paragraph{Databases}
-A database is essential for tracking data and persisting it for use later. There are two main types of database, SQL and NoSQL. With these two types of database comes a variety of implementations and on top of that a variety of tools to work with them. Let's compare SQL vs NoSQL first.
-
-\begin{figure}[H]
-    \caption{Difference between SQL and NoSQL}
-    \centering
-    \includegraphics[width=\textwidth]{images/SQL-vs-NoSQL.png}
-    \label{fig:sql_vs_nosql}
-\end{figure}
-
-\subparagraph{SQL vs NoSQL}
-In Figure \ref{fig:sql_vs_nosql} you can see the abstracted way to think about these two different systems. SQL records are exactly that, a record at a point in time. If one entity encapsulates another then another table holds that information. In NoSQL, the information is abstracted to a document with key-value pairs to get specific data. These documents can make references to other documents but for time-ordering this is highly ineffective. SQL records are highly effective for logs and indexing a large amount of data based on a higher level entity such as user that has many garden beds; garden beds that have a lot of data, etc.
-
-\subparagraph{MySQL vs PostgreSQL}
-The two SQL databases widely used in industry are MySQL and PostgreSQL. MySQL is touted as ``a simple relational database [... that is] very efficient and user-friendly'' while PostgreSQL is widely used in data analytic and scientific applications because of the extensibility, scalability and object models. Immediately this seems like the better option but PostgreSQL may be harder to stand up immediately. Special consideration should be given to AWS solutions as well. 
-
-\subparagraph{MongoDB vs DynamoDB}
-MongoDB is ``a general-purpose, document-based'' database. DynamoDB is AWS' proprietary solution to NoSQL databases. DynamoDB is more difficult to work with as it is the newer service, it could also potentially be more expensive over time, however, DynamoDB has improvements over MongoDB for indexing and building out reference documents. 
-
 \subsubsection{Proportional-integral-derivative Control}
 Proportional-integral-derivative control (PID control) is a common control algorithm (espectially in industrial control systems) to allow a control loop to have reliable performance in a variety of conditions. Simply put, this algorithm allows a controller to receive an input and calculate a proportional output, accounting for error and rapid changes in the process. This algorithm may be useful to our application because it will allow the product to better control its facilities without user input.
 

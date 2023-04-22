@@ -2,140 +2,55 @@
 \label{sec:sensing_subsystem_testing}
 
 \subsubsection{Component Testing}
+Three components in the Sensing subsystem required testing on arrival.
+\begin{itemize}
+    \item The Optical Sensors
+    \item The Linear Actuator
+    \item The Transimpedance Amplifier Board
+\end{itemize}
 
-The Sensing subsystem will have each of its components tested on arrival, then components will be connected together to determine whether they are fit for the project. The components fit into two general categories, Electrical and Optical.
+\paragraph{} A small transimpedance amplifier was constructed on a breadboard in the electrical lab to convert nA of electrical current to mV of electrical voltage. With an oscilloscope, the photodetectors were determined to be measuring optical power, with varying ambient light levels and light sources increasing the voltage within a measurable range.
 
-\paragraph{Electrical Optical Components:} 
+\paragraph{} Similarly, the stepper motor was connected to a Texas Instruments evaluation board with motor controller software. The stepper motor turned the screw, successfully carrying the mount in steps along the stroke length of the rail.
 
-\paragraph{Light Bulb} The tungsten light bulb produces a broad spectrum. The only optical information specified is that it produces 350 lumens. Lumens are a measure of brightness relative to human sight, and this is not usable for spectroscopy. The true power and spectral distribution of the bulb will be measured in an optical lab with a spectrometer and a power meter. The spectrometer fiber coupler will be set directly next to the bulb in a dark room and the light will be turned on and the spectral output captured. To measure the power, the bulb will be placed in a reflective enclosure and the power meter will be positioned to absorb output power. The results will be reported below.
-\bigskip
+\paragraph{} When the circuit board arrived it was installed with insulating spacers onto the metal mount on the linear rail and both components were optically isolated inside an opaque box. A fiber and diffraction grating were aligned inside to allow outside light to be dispersed in front of the rail. The photodetectors were successfully amplified by the circuit board, prompting the team to move on to permanent installation of each of the optical components.
 
-Optical Power:
+\subsubsection{Performance Testing}
 
-Spectral Output:
+In order to evaluate the performance of the system, two tests were conducted.
 
-\paragraph{Photodetectors} The two photodetectors have light-current curves as displayed below.
+\paragraph{} The first test was an integration test to connect all parts of the Spectrometer subsystem and generate a spectrograph. For the purposes of this test, it did not matter what data was produced, only that the system was capable of recording data. The light collection cone was set on top of a large piece of flattened aluminum foil. See the two resulting datasets below.
 
 \begin{figure}[H]
-    \caption{Responsivity Diagrams for Testing}
+    \caption{Aluminum Test VIS Data}
     \centering
-    \includegraphics[width=0.75\textwidth]{images/ResponsivityCurves.png}
+    \includegraphics[scale=1]{images/Aluminum VIS Data.png}
 \end{figure}
 
-The diodes will be connected to a current meter and illumined with lasers at several wavelengths. Each laser will have its optical power measured by the same detector. The corresponding current will be reported below.
+\begin{figure}[H]
+    \caption{Aluminum Test NIR Data}
+    \centering
+    \includegraphics[scale=1]{images/Aluminum NIR Data.png}
+\end{figure}
 
-\begin{table}[H]
-	\centering
-	\label{table:VIS Diode Response}
-	\bigskip
-	\begin{tabular}{|p{3cm}|p{2.5cm}|p{2cm}|p{2.75cm}|}
-	\hline
-	Silicon Photodiode & Wavelength (nm) & Optical Power (W) & Generated Current (A)\\
-	\hline
-	Laser 1 & & & \\
-	\hline
-	Laser 2 & & & \\
-	\hline
-	Laser 3 & & & \\
-	\hline
-	\end{tabular}
-\end{table}
+\paragraph{} The Second Test was to take three different soil samples and determine whether the spectrometer data was significant. To conduct this test, two fertilized bags of soil were purchased from a hardware store and one sample was collected from the ground nearby. The results of these tests are below as well.
 
-\begin{table}[H]
-	\centering
-	\label{table:NIR Diode Response}
-	\bigskip
-	\begin{tabular}{|p{3cm}|p{2.5cm}|p{2cm}|p{2.75cm}|}
-	\hline
-	InGaAs Photodiode & Wavelength (nm) & Optical Power (W) & Generated Current (A)\\
-	\hline
-	Laser 1 & & & \\
-	\hline
-	Laser 2 & & & \\
-	\hline
-	Laser 3 & & & \\
-	\hline
-	\end{tabular}
-\end{table}
+\begin{figure}[H]
+    \caption{Miracle Grow Potting Mix Soil with 0.21 0.11 0.16 fertilizer}
+    \centering
+    \includegraphics[scale=0.5]{images/Data1.png}
+\end{figure}
 
-\paragraph{Linear Actuator Rail} The linear actuator has three features that need to be verified on arrival, speed, power draw, and step size. 
-\bigskip
+\begin{figure}[H]
+    \caption{Miracle Grow Performance Composted Manure with 0.19 0.03 0.03 fertilizer}
+    \centering
+    \includegraphics[scale=0.5]{images/Data2.png}
+\end{figure}
 
-A speed test will be conducted with the rail running along its entire stroke length while an observer records the time on a stopwatch device.
-\bigskip
+\begin{figure}[H]
+    \caption{Sandy Soil from University Grounds}
+    \centering
+    \includegraphics[scale=0.5]{images/Data3.png}
+\end{figure}
 
-Speed (mm/s):
-\bigskip
-
-Power draw will be determined by running the linear actuator with no load. The actuator is rated for 0.8A current under no load. To test this, the actuator rail will be run through its full stroke length with a ammeter connected in series with its power line. An observer will record the total current draw.
-\bigskip
-
-Current Draw (A):
-\bigskip
-
-The step size of the rail is determined by the stepper motor step angle and the screw pitch. Based on its specs, this rail should have a step size of 0.005mm. In order to determine if this is the case, the rail will be taken through a set of 400 discrete steps, pausing rather than passing through them. A millimeter ruler will be fixed in place next to the rail plate to allow an observer to measure whether the total distance is 2mm.
-\bigskip
-
-400 Stroke Distance (mm):
-\bigskip
-
-\paragraph{Passive Optical Components:}
-
-\paragraph{Fiber Patch Cable} The numerical aperture of the Fiber patch cable will be measured through trigonometry. An observer will collimate light into an optical fiber at one end and the other end they will place a flat surface a small distance away from the fiber output. By changing the distance to the surface and measuring the spot size, the numerical aperture can be approximated.
-\bigskip
-
-Fiber NA:
-\bigskip
-
-\paragraph{Fiber Collimator} The fiber collimator will have a similar test to determine its numerical aperture. A laser will be shone into one end of the optical system and a target surface will be placed nearby.
-\bigskip
-
-Collimator NA:
-\bigskip
-
-Incidentally, this is when the fiber and collimator will be tested together as well. The laser will be collimated into one end of the fiber and the beam will proceed out of the collimating lens on the other side. The beam diameter will be measured at 1 cm, 10cm and a meter to ensure sufficient collimation. The beam diameter should be no more than 2mm.
-\bigskip
-
-Beam Diameter at 1 cm (mm):	
-
-Beam Diameter at 10 cm (mm):	
-
-Beam Diameter at 1 m (mm):	
-
-\paragraph{Focusing Lens} The focal length of the lens will be tested with a simple far field focus test. The observer will hold the optic low above a flat surface until images of the lighting overhead come into focus. The distance to the surface will be measured with an upright ruler.
-\bigskip
-
-Effective Focal Length (mm):
-\bigskip
-
-This value does not need to be known with exact certainty, the length of the carriage rail and the unbounded alignment distance add flexibility for this parameter.
-
-\paragraph{Diffraction Grating} There are two parameters worth knowing from the diffraction grating. First we must check if it is the correct design. This will be done by setting it in the beam path of a laser and turning it 45 degrees so that the light interferes with the grooved surface. The angle will be checked to ensure that the groove count and blaze angle are correct. Next, the efficiency of the surface will be tested. This will be done by testing the laser power before and after hitting the surface. In order to increase the value of the measurement, optics will be added to expand the beam and make use of as much of the grating’s surface as possible.
-\bigskip
-
-Estimated Active Area (mm\textsuperscript{2}):
-
-Efficiency:
-
-\subsubsection{Composite Testing}
-
-The optical components connect together much like the human skeleton, with everything adding to the chain, but each component working most closely with it’s neighboring parts. These groups will be tested separately.
-
-\paragraph{Collector Group} This group is composed of the Tungsten lamp, the acrylic block, the fiber collimator, and the fiber optic cable. This group will be tested to ensure that the light coming from the lamp and reflecting off the soil is sufficiently bright, contained, and aligned with the fiber collimator that a readable signal enters the optical fiber. Each of the components will be connected together and placed on the surface of a test bed of soil. The lamp will be turned on, and the optical power coming through the fiber will be measured with a power meter. The ratio of maximum power from dark to light will be recorded here:
-\bigskip
-
-SNR:
-
-\paragraph{Scanning Group} The other components will need to be isolated inside a weatherproof box away from the light of the bulb and the sun. The scanner group consists of the linear actuator rail, the NIR and VIS sensors, the focusing lens, and the diffraction grating. In order to effectively align and test these, a laser will be needed to collimate into the fiber. This will produce a visible beam in the system that can be used for reference to align the system and test the optical alignment during linear motion from the actuator. Next, the laser will be replaced with the tungsten bulb. The bulb will increase in optical power until it achieves a signal to noise ratio of at least 2:1 across half the spectral range of the sensor. If the maximum power of the bulb is reached, more bulbs will be added.
-\bigskip
-
-SNR:
-
-\paragraph{Circuit Group} The circuit group is composed of the VIS and NIR photodetectors, the signal filter circuitry, the linear actuator, and the microcontroller. The circuit group must be able to assign a set of wavelengths with a set of rail positions, and then cycle through those positions and record the optical power for each wavelength. To test the circuit group, the Scanning group need not be assembled. To test the scanning group, a light will be suspended in front of the rail, so that it illuminates the whole scanning area. Then two scans will be taken, one with the light on, one with the light off. The circuit group needs to be able to distinguish between the two conditions for every position with a SNR of at least 1:2.
-\bigskip
-
-SNR:
-
-\subsubsection{Full Subsystem Test}
-
-The full system test will follow the successful trials of the component and composite tests. The system will be placed near a bed of soil with a known spectral output, then it will scan the soil.
+These tests proved successful. At this time there is a call to cease activity on the project, and further tests will not be conducted. However, if there were more time to develop the system, the next test would be to engage the full resolution of the device in measurement and begin calibrating it against larger and larger datasets.
