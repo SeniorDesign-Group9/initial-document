@@ -131,19 +131,16 @@ more than 64 KB of space in memory.
 \subparagraph{Results} Due to the large hardware abstraction layer and the large amount of stack space allocated, our product fails this test. The program for the system takes up 126 KB of space in memory. However if we only consider heap space allocation for this program, then our system passes this test. 32 KB of memory are allocated for the program heap, and only 28 KB were allocated by the developers for use.
 
 % Software behavior (actual program)
-\subsubsection{Software Behavior} The MCU subsystem shall pass the following
-tests related to use of the MCU to support application of the product. The
-programming developed and test the below criteria is intended to be the
-product software build.
+\subsubsection{Software Behavior} The MCU subsystem shall pass the following tests related to use of the MCU to support application of the product. The programming developed and test the below criteria is intended to be the product software build.
 
 \paragraph{Startup} The microcontroller behaves according to the specifications on startup in \autoref{sec:controller_subsystem} during its startup sequence.
-\subparagraph{Results} Verified.
+\subparagraph{Results} Upon startup, the microcontroller allocates heap space for our pthreads and successfully initializes them. While the state of the LEDs do not reflect what we originally had in mind, the LEDs are able help us differentiate when the system is on or off, when the system is initializing, and when the system is reading measurements.
 
 \paragraph{Shutdown} The microcontroller ishave according to the specifications on shutdown in \autoref{sec:controller_subsystem} during its shutdown sequence.
-\subparagraph{Results} Verified.
+\subparagraph{Results} While there is no longer a formal shutdown interrupt and process, the microcontroller safely shuts down without harm to the user, environment, or the system itself. The microcontroller is successfully able to start up the next time as well.
 
 \paragraph{Reset} The microcontroller ishave according to the specifications on reset in \autoref{sec:controller_subsystem} during its reset sequence.
-\subparagraph{Results} Verified.
+\subparagraph{Results} The reset sequence was revised to be a simple power cycle of the system. As the system has been verified to startup and shutdown successfully, this metric is verified as well.
 
 \paragraph{Networking} The system is able to connect to the user's WLAN if it meets the following standards:
 \begin{itemize}
@@ -156,4 +153,4 @@ product software build.
     \item Provides DNS to LAN devices
     \item Able to resolve and successfully connect to \texttt{8.8.8.8} and \texttt{google.com} within 5 seconds
 \end{itemize}
-\subparagraph{Results} Verified.
+\subparagraph{Results} Unfortunately, not all of these metrics were able to be verified. The system is able to connect to a 2.4 GHz-based wireless network conforming to 802.11b, g, or n that uses NAT, and is able to receive an address via DHCP or static assignment---however, the requirement to connect to the internet and resolve an address was not tested due to the project's shifting goals. Signal strength of $\geq$-70 dBm was unable to be verified as well.
